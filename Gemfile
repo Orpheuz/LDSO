@@ -39,3 +39,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin]
 
 gem 'angular-rails-templates'
 gem 'bower-rails'
+gem 'devise'
+gem 'coffee-script-source', '1.8.0'
+gem 'turbolinks'
+gem 'bootstrap-sass'
