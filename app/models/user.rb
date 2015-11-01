@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
       user.uid = auth["uid"]
       user.name = auth["info"]["name"]
       user.password = auth["uid"]
-      user.email= auth["uid"]@fake.com
+      user.email= auth["uid"]+"@fake.com"
     end
   end
 end
