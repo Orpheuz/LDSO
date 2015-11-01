@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   resources :dashboard
   resources :home
+  get '/recipes/:id' => 'recipes#show', as: :recipe
+  get '/recipes/:id/steps' => 'steps#show', as: :steps
 
   root  to: "home#index"
 
@@ -10,6 +12,7 @@ Rails.application.routes.draw do
   match "/signout" => "sessions#destroy", :as => :signout, :via => [:get]
 
 
+ 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
