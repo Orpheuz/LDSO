@@ -5,6 +5,11 @@ Rails.application.routes.draw do
   resources :home
 
   root  to: "home#index"
+
+  match "/auth/facebook/callback" => "sessions#create", :via => [:get]
+  match "/signout" => "sessions#destroy", :as => :signout, :via => [:get]
+
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
