@@ -1,6 +1,13 @@
-<h1> <%= @recipe.name %></h1>
-<div>
-  <p><%= @recipe.description %></p>
 
-  <%= link_to "Start cooking", steps_path(params[:id]) %>
+<div id="main-container" class="container">
+  <div class="row">
+    <div id="recipe-specs" class=".col-xs-6">
+        <h1> <%= @recipe.name %></h1>
+    </div>
+    <div id="recipe-content" class=".col-xs-">
+      <p><%= @recipe.description %></p>
+
+      <%= link_to "Start cooking", steps_path(params[:id]) %>
+    </div>
+  </div>
 </div>
