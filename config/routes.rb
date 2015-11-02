@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :dashboard
   resources :home
   get '/recipes/:id' => 'recipes#show', as: :recipe
-  get '/recipes/:id/steps' => 'steps#show', as: :steps
+  get '/recipes/:id/steps' => 'steps#index', as: :steps
 
   root  to: 'home#index'
   # The priority is based upon order of creation: first created -> highest priority.

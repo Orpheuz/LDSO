@@ -1,4 +1,6 @@
 <h1> <%= @recipe.name %></h1>
 <div>
   <p><%= @recipe.description %></p>
+
+  <%= link_to "Start cooking", steps_path(params[:id]) %>
 </div>

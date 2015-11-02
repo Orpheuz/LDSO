@@ -1,0 +1,11 @@
+<div class="main">
+  <div class="container">
+    <h1><%= @recipe.name %></h1>
+    <% @steps.each do |step| %>
+        <div class="step">
+          <h3><%= step.stepnumber %>. <%= step.name %></h3>
+          <p><%= step.description %></p>
+        </div>
+    <% end %>
+  </div>
+</div>
