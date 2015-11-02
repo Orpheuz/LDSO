@@ -1,3 +1,23 @@
 // Place all the styles related to the Recipes controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+#main-container{
+  margin-top: -20px;
+  border-style: solid;
+  border-bottom: 0;
+  border-top: 0;
+  height: 2000px;
+  padding-top: 7%;
+  width: 60%;
+}
+#recipe-content{
+  text-align: center;
+  margin-top: 63px;
+}
+#recipe-btn{
+  margin-top: 45%;
+  background-color: #0C0C0C;
+  border-color: #151515;
+}

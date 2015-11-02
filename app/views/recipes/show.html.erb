@@ -1,13 +1,14 @@
 
 <div id="main-container" class="container">
   <div class="row">
-    <div id="recipe-specs" class=".col-xs-6">
+    <div id="recipe-specs" class="col-xs-6">
         <h1> <%= @recipe.name %></h1>
+        <img id="recipe-image" src="<%= @recipe.image %>" width="100%"/>
     </div>
-    <div id="recipe-content" class=".col-xs-">
+    <div id="recipe-content" class="col-xs-6">
       <p><%= @recipe.description %></p>
 
-      <%= link_to "Start cooking", steps_path(params[:id]) %>
+      <%= link_to "Start cooking", steps_path(params[:id]),class: 'btn btn-success', id:'recipe-btn' %>
     </div>
   </div>
 </div>
