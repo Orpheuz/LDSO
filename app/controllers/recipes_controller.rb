@@ -18,9 +18,8 @@ class RecipesController < ApplicationController
       @step= @recipe.steps.create(name: params[:SN][stepID], description: params[:S][stepID],stepnumber: stepID+1)
       stepID=stepID+1
     end
-    sturl="/recipes/"+@recipe.id.to_s
-    redirect_to sturl
 
+    redirect_to "/recipes/"+@recipe.id.to_s
   end
   private
 
