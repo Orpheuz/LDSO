@@ -1,0 +1,172 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Dosis:700);
+
+/* mixins, variables, etc. */
+
+@font-face {
+  font-family: billabong;
+  src: url('http://social-fonts.com/assets/fonts/billabong/billabong.ttf') format('truetype');
+}
+
+$gray-medium-light: #eaeaea;
+$border-gray: #edeeee;
+$blue-logo: #006699;
+
+/* universal */
+
+html, body {
+  height: 100%;
+}
+
+body {
+  background-color: #fafafa;
+}
+
+section {
+  overflow: auto;
+}
+
+textarea {
+  resize: vertical;
+}
+
+.center {
+  text-align: center;
+  h1 {
+    margin-bottom: 10px;
+  }
+}
+
+/* typography */
+
+h1, h2, h3, h4, h5, h6 {
+  line-height: 1;
+}
+
+h1 {
+  font-size: 3em;
+  letter-spacing: -2px;
+  margin-bottom: 30px;
+  text-align: center;
+}
+
+h2 {
+  font-size: 1.2em;
+  letter-spacing: -1px;
+  margin-bottom: 30px;
+  text-align: center;
+  font-weight: normal;
+  color: $gray-light;
+}
+
+p {
+  font-size: 1.1em;
+  line-height: 1.7em;
+}
+
+
+/* header */
+
+
+.container {
+  height: 80px;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  font-family: 'Dosis', sans-serif;
+  text-transform: uppercase;
+  font-size: 1.5em;
+  color: white;
+  padding-top: 30px;
+  &:hover {
+    color: #f8a631
+  }
+}
+
+.navbar-right{
+  margin-right: 100px !important;
+  li a {
+    padding-left: 50px;
+  }
+}
+
+.navbar-left {
+  margin-left: 100px;
+  li a {
+    padding-right: 50px;
+  }
+}
+
+.navbar {
+    position: relative;
+    background-color: #232323;
+    border-bottom-color: $border-gray;
+    border-bottom-width: 1px;
+}
+
+#logo {
+  position: absolute;
+  left: 50%;
+  margin-left: -79px !important;
+  display: block;
+  font-family: billabong;
+  font-size: 3.5em;
+  color: white;
+  padding-top: 9px;
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+/* wrapper */
+
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -70px;
+}
+
+/* footer */
+
+.push {
+  height: 70px;
+}
+
+footer {
+  height: 70px;
+  padding-top: 5px;
+  border-top: 1px solid $gray-medium-light;
+  color: $gray-light;
+  a {
+    color: $gray;
+    &:hover {
+      color: $gray-darker;
+    }
+  }
+  small {
+    float: left;
+  }
+  ul {
+    float: right;
+    list-style: none;
+    li {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+}
+
+.footerInfo {
+	text-align: center;
+	padding-top: 15px;
+}
+
+#login, #signup {
+  margin-top: 10px;
+}
+
+.login_form {
+  text-align: center;
+}
