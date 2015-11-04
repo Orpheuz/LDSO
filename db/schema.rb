@@ -35,14 +35,16 @@ ActiveRecord::Schema.define(version: 20151104123807) do
     t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
+
+  add_index "recipes", ["user_id"], name: "index_recipes_on_user_id"
 
   create_table "steps", force: true do |t|
     t.integer  "recipe_id"
     t.integer  "stepnumber"
     t.string   "name"
     t.text     "description"
-    t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

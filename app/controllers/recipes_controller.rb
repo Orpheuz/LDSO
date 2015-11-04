@@ -15,11 +15,12 @@ class RecipesController < ApplicationController
     stepID=0
 
     while params[:S][stepID].present? do
-      @step= @recipe.steps.create(description: params[:S][stepID],stepnumber: stepID+1)
+      @step= @recipe.steps.create(name: params[:SN][stepID], description: params[:S][stepID],stepnumber: stepID+1)
       stepID=stepID+1
     end
+    sturl="/recipes/"+@recipe.id.to_s
+    redirect_to sturl
 
-    redirect_to '/'
   end
   private
 
