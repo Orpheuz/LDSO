@@ -17,3 +17,5 @@
 /Gemfile.lock
 /.idea/*
 Gemfile.lock
+*.lock
+Gemfile.lock
