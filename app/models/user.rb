@@ -4,7 +4,6 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
 
-
   validates_format_of :username, with: /\A[a-zA-Z0-9_\.]*\Z/
 
   attr_accessor :login
@@ -24,5 +23,7 @@ class User < ActiveRecord::Base
       where(conditions.to_hash).first
     end
   end
+
+  has_many :recipes
 
 end
