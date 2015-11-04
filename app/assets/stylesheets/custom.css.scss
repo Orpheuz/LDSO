@@ -15,6 +15,10 @@ $blue-logo: #006699;
 
 /* universal */
 
+html, body {
+  height: 100%;
+}
+
 body {
   background-color: #fafafa;
 }
@@ -115,10 +119,23 @@ p {
   }
 }
 
+/* wrapper */
+
+.wrapper {
+	min-height: 100%;
+	height: auto !important;
+	height: 100%;
+	margin: 0 auto -70px;
+}
+
 /* footer */
 
+.push {
+  height: 70px;
+}
+
 footer {
-  margin-top: 45px;
+  height: 70px;
   padding-top: 5px;
   border-top: 1px solid $gray-medium-light;
   color: $gray-light;
@@ -139,6 +156,11 @@ footer {
       margin-left: 15px;
     }
   }
+}
+
+.footerInfo {
+	text-align: center;
+	padding-top: 15px;
 }
 
 #login, #signup {
