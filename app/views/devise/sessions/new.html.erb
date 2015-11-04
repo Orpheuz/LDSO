@@ -2,8 +2,8 @@
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, class: 'form-control'%>
+    <%= f.label :login %><br />
+    <%= f.text_field :login, autofocus: true, class: 'form-control'%>
 
     <%= f.label :password %><br />
     <%= f.password_field :password, autocomplete: "off", class: 'form-control'%>

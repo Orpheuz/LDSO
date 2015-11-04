@@ -3,8 +3,10 @@ Rails.application.routes.draw do
 
   resources :dashboard
   resources :home
-  get '/recipes/:id' => 'recipes#show', as: :recipe
-  get '/recipes/:id/steps' => 'steps#index', as: :steps
+  resources :recipes
+
+  get '/recipes/:id/steps' => 'steps#show', as: :steps
+  post '/recipes/new' => 'recipes#create'
 
   root  to: "home#index"
 
