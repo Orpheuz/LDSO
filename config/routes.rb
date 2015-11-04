@@ -7,12 +7,12 @@ Rails.application.routes.draw do
   get '/recipes/:id/steps' => 'steps#show', as: :steps
   post '/recipes/new' => 'recipes#create'
 
-  root  to: "home#index"
+  root to: "home#index"
 
 
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
 
-
+  devise_scope(:user) { delete 'sign_out', :to => 'devise/sessions#destroy', :as => :destroy_user_session }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
