@@ -1,14 +1,22 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+@import url(http://fonts.googleapis.com/css?family=Dosis:700);
 
 /* mixins, variables, etc. */
 
+@font-face {
+  font-family: billabong;
+  src: url('http://social-fonts.com/assets/fonts/billabong/billabong.ttf') format('truetype');
+}
+
 $gray-medium-light: #eaeaea;
+$border-gray: #edeeee;
+$blue-logo: #006699;
 
 /* universal */
 
 body {
-  padding-top: 60px;
+  background-color: #fafafa;
 }
 
 section {
@@ -56,17 +64,53 @@ p {
 
 /* header */
 
-#logo {
-  float: left;
-  margin-right: 10px;
-  font-size: 1.7em;
-  color: white;
+
+.container {
+  height: 80px;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+  font-family: 'Dosis', sans-serif;
   text-transform: uppercase;
-  letter-spacing: -1px;
-  padding-top: 9px;
-  font-weight: bold;
+  font-size: 1.5em;
+  color: white;
+  padding-top: 30px;
   &:hover {
-    color: white;
+    color: #f8a631
+  }
+}
+
+.navbar-right{
+  margin-right: 100px;
+  li a {
+    padding-left: 50px;
+  }
+}
+
+.navbar-left {
+  margin-left: 100px;
+  li a {
+    padding-right: 50px;
+  }
+}
+
+.navbar {
+    position: relative;
+    background-color: #232323;
+    border-bottom-color: $border-gray;
+    border-bottom-width: 1px;
+}
+
+#logo {
+  position: absolute;
+  left: 50%;
+  margin-left: -79px !important;
+  display: block;
+  font-family: billabong;
+  font-size: 3.5em;
+  color: white;
+  padding-top: 9px;
+  &:hover {
     text-decoration: none;
   }
 }
