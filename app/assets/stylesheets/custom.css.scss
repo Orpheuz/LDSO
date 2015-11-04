@@ -76,12 +76,12 @@ p {
   color: white;
   padding-top: 30px;
   &:hover {
-    color: #f8a631;
+    color: #f8a631
   }
 }
 
 .navbar-right{
-  margin-right: 100px;
+  margin-right: 100px !important;
   li a {
     padding-left: 50px;
   }
