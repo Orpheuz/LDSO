@@ -1,11 +1,37 @@
-<div class="main">
-  <div class="container">
-    <h1><%= @recipe.name %></h1>
-    <% @steps.each do |step| %>
-        <div class="step">
-          <h3><%= step.stepnumber %>. <%= step.name %></h3>
-          <p><%= step.description %></p>
+
+<div id="main-container" class="container">
+  <div class="row">
+    <div class="col-xs-12">
+        <h1><%= @recipe.name %></h1>
+        <img id="recipe-image" src="<%= @recipe.image %>"/>
+    </div>
+    <div class="col-xs-12" id="steps-content">
+        <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+          <% @steps.each do |step| %>
+          <div class="panel panel-default">
+            <div class="panel-heading" role="tab" id="heading<%=step.stepnumber%>">
+              <h4 class="panel-title">
+                <a id="header-<%=step.stepnumber%>" role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=step.stepnumber%>" aria-expanded=<%= if step.stepnumber == 1 then 'true' else 'false class=collapsed' end%>
+                        aria-controls="collapse<%=step.stepnumber%>">
+                  <%= step.stepnumber %>. <%= step.name %>
+                </a>
+              </h4>
+            </div>
+            <div id="collapse<%=step.stepnumber%>" class="panel-collapse collapse <%= if step.stepnumber == 1 then 'in' end%>" role="tabpanel" aria-labelledby="heading<%=step.stepnumber%>">
+              <div class="panel-body">
+                <%= step.description %>
+                <br>
+                <br>
+                <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=step.stepnumber+1%>" aria-expanded=<%= if step.stepnumber == 1 then 'true' else 'false class=collapsed' end%>
+                        aria-controls="collapse<%=step.stepnumber%>">
+                  <span id="<%=step.stepnumber%>" class="glyphicon glyphicon-ok next-step" aria-hidden="true"></span>
+                </a>
+              </div>
+            </div>
+          </div>
+          <%end%>
         </div>
-    <% end %>
+    </div>
   </div>
 </div>
+

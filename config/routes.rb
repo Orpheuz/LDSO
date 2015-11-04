@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   resources :home
   resources :recipes
 
-  get '/recipes/:id/steps' => 'steps#show', as: :steps
+  get '/recipes/:id/steps' => 'steps#index', as: :steps
   post '/recipes/new' => 'recipes#create'
 
   root  to: "home#index"
