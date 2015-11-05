@@ -9,13 +9,15 @@
 stepN = 1
 $(document).ready ->
   $("#add_step").on "click", ->
-    $('#add_step').before '<div class=\'col-md-12\' name=\'S[]\'><input required type=\'text\' class=\'step\' placeholder=\'Describe step ' + stepN + '\' name= \'S[]\' id= \'S' + stepN + '\'/></div>'
+    $('#add_step').before '<div  name=\'S[]\'><legend>Step: <span class="number"> ' + stepN + '\ </span>  </legend><input required type=\'text\' class=\'step\' placeholder=\'Title for step ' + stepN + '\' name= \'SN[]\' id= \'SN' + stepN + '\'/><textarea required type=\'text\' class=\'step\' placeholder=\'Describe step ' + stepN + '\' name= \'S[]\' id= \'S' + stepN + '\'/></div>'
     stepN++
   $("#create").on "click", ->
     size=$('.step').length
     if size < 1
       alert('Please write a step')
       return false
+  $("#book-btn").on "click", ->
+    $("#bookmark_ico").first().addClass('fa-spinner fa-pulse').removeClass('fa-bookmark');
 
   return
 

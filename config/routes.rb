@@ -2,11 +2,13 @@ Rails.application.routes.draw do
 
   resources :dashboard
   resources :home
-  resources :recipes
+  resources :recipes do
+    put :bookmark, on: :member
+  end
 
   get '/recipes/:id/steps' => 'steps#index', as: :steps
-  post '/recipes/new' => 'recipes#create'
 
+  post '/recipes/new' => 'recipes#create'
   root to: "home#index"
 
 
