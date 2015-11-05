@@ -1,35 +1,38 @@
 
-    <div id="main-container" class="container">
-        <div class="row">
-            <div id="recipe-specs" class="col-xs-6">
-                <h1> <%= @recipe.name %></h1>
-                <img id="recipe-image" src="<%= @recipe.image %>" width="100%"/>
-                <h3>Rating <%= rating_for @recipe, "rating" %></h3>
-            </div>
-            <div id="recipe-content" class="col-xs-6">
-              <p><%= @recipe.description %></p>
-
-
-              <% if current_user %>
-              <% if @bookmark_visible %>
-              <%= link_to bookmark_recipe_path(@recipe,type: "add"), method: :put, id:'book-btn' do %>
-                <span class="fa-stack fa-lg">
+<div id="main-container" class="container">
+  <div class="row">
+    <div id="recipe-specs" class="col-xs-6">
+      <h1> <%= @recipe.name %></h1>
+      <img id="recipe-image" src="<%= @recipe.image %>" width="100%"/>
+      <div class="row">
+        <div id="rating-col" class="col-xs-6">
+          <h3>Rating <%= rating_for @recipe, "rating" %></h3>
+        </div>
+        <div id="bookmark-col" class="col-xs-6">
+          <p>Bookmark <% if current_user %>
+                <% if @bookmark_visible %>
+                    <%= link_to bookmark_recipe_path(@recipe,type: "add"), method: :put, id:'book-btn' do %>
+                <span class="fa-stack fa-lg bookmark-recipe-btn" id="bookmark-recipe-btn1">
                   <i class="fa fa-circle fa-stack-2x"></i>
                       <i class="fa fa-bookmark fa-stack-1x fa-inverse" id="bookmark_ico" ></i>
                 </span>
-                  <% end %>
-                  <% else %>
-                      <%= link_to bookmark_recipe_path(@recipe,type: "remove"), method: :put, id:'book-btn' do %>
-
-                  <span class="fa-stack fa-lg">
+                    <% end %>
+                <% else %>
+                    <%= link_to bookmark_recipe_path(@recipe,type: "remove"), method: :put, id:'book-btn' do %>
+                  <span class="fa-stack fa-lg" id="bookmark-recipe-btn2">
                   <i class="fa fa-circle fa-stack-2x"></i>
                       <i class="fa fa-times fa-stack-1x fa-inverse" id="bookmark_ico" ></i>
                 </span>
-                      <% end %>
-              <% end %>
-              <% end %>
-
-              <%= link_to "Start cooking", steps_path(params[:id]), class: 'btn btn-success', id:'recipe-btn' %>
-            </div>
+                    <% end %>
+                <% end %>
+            <% end %>
+          </p>
         </div>
+      </div>
     </div>
+    <div id="recipe-content" class="col-xs-6">
+      <p><%= @recipe.description %></p>
+      <%= link_to "Start cooking", steps_path(params[:id]), class: 'btn btn-success', id:'recipe-btn' %>
+    </div>
+  </div>
+</div>

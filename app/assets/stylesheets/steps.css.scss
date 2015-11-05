@@ -2,7 +2,7 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-#recipe-image {
+#recipe-step-image {
   display: block;
   margin-left: auto;
   margin-right: auto;
@@ -17,4 +17,9 @@
 .next-step{
   float: right;
   color: green;
+}
+
+#step-btn{
+  background-color: #0C0C0C;
+  border-color: #151515;
 }
