@@ -31,12 +31,16 @@
       @recipe = Recipe.find(params[:id])
       if type=="add"
         @bookmark = current_user.bookmarks.create(recipe_id: params[:id])
-        redirect_to :back, notice: 'Favorited #{@recipe.name}'
+        redirect_to :back
       elsif type=="remove"
         bookmark=@recipe.bookmarks.find_by(user_id: current_user.id)
         bookmark.destroy
-        redirect_to :back, notice: 'Unfavorited #{@recipe.name}'
+        redirect_to :back
       end
+    end
+    def viewbookmarks
+      @bookmarks=Recipe.joins(:bookmarks).where("bookmarks.user_id=?",current_user.id)
+
     end
 
 

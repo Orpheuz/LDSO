@@ -1,0 +1,16 @@
+<div class="bookmarks_region" >
+<ul class="rig">
+    <% @bookmarks.each do |bookmark| %>
+      <%= link_to recipe_path(bookmark.id),id:'book-btn' do %>
+
+          <li>
+            <img src=<%= bookmark.image %> alt="recipes">
+          <legend><span class="number"> 3.3 </span> <%= bookmark.name %></legend>
+            <p><%= bookmark.description %></p>
+            <p><b>Created by: </b> <%= bookmark.user_id %> </p>
+          </li>
+
+      <% end %>
+    <% end %>
+</ul >
+</div>

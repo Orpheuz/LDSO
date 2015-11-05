@@ -6,6 +6,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+
 stepN = 1
 $(document).ready ->
   $("#add_step").on "click", ->

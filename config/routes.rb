@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   end
 
   get '/recipes/:id/steps' => 'steps#index', as: :steps
+  get '/users/:id/bookmarks' => 'recipes#viewbookmarks', as: :bookmarks
 
   post '/recipes/new' => 'recipes#create'
   root to: "home#index"
