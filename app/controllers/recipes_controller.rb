@@ -2,9 +2,11 @@
     def show
       @recipe = Recipe.find(params[:id])
       @ingredients = @recipe.ingredients
-      @bookmark_visible=true
-      if Bookmark.exists?(recipe_id: params[:id], user_id: current_user.id)
-        @bookmark_visible=false
+      if(current_user)
+        @bookmark_visible=true
+        if Bookmark.exists?(recipe_id: params[:id], user_id: current_user.id)
+          @bookmark_visible=false
+        end
       end
     end
 
@@ -23,10 +25,11 @@
         stepID=stepID+1
       end
 
-      redirect_to "/recipes/"+@recipe.id.to_s
+      redirect_to recipe_path(@recipe.id)
     end
 
     def bookmark
+
       type = params[:type]
       @recipe = Recipe.find(params[:id])
       if type=="add"
@@ -37,10 +40,10 @@
         bookmark.destroy
         redirect_to :back
       end
+
     end
     def viewbookmarks
-      @bookmarks=Recipe.joins(:bookmarks).where("bookmarks.user_id=?",current_user.id)
-
+      @bookmarks=Recipe.joins(:bookmarks).where("bookmarks.user_id=?", params[:id])
     end
 
 

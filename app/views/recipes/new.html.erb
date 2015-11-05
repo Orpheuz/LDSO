@@ -1,5 +1,5 @@
         <div class="form-style-5">
-        <%= form_for @recipe, :remote => true, url: {action: "new"}, :html=> { :'data-type' => 'html',class: "nifty_form", :id => 'create_recipe_form'} do |f| %>
+        <%= form_for @recipe, url: {action: "new"}, :html=> { :'data-type' => 'html',class: "nifty_form", :id => 'create_recipe_form'} do |f| %>
               <legend><span class="number">1</span> Recipe name</legend>
               <%= f.text_field :name, :required => true%><br />
               <legend><span class="number">2</span>Recipe description</legend>

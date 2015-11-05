@@ -9,7 +9,7 @@
           <h3>Rating <%= rating_for @recipe, "rating" %></h3>
         </div>
         <div id="bookmark-col" class="col-xs-6">
-          <p>Bookmark <% if current_user %>
+          <p> <% if current_user %> Bookmark
                 <% if @bookmark_visible %>
                     <%= link_to bookmark_recipe_path(@recipe,type: "add"), method: :put, id:'book-btn' do %>
                 <span class="fa-stack fa-lg bookmark-recipe-btn" id="bookmark-recipe-btn1">
