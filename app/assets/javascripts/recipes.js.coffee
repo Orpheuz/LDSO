@@ -16,6 +16,8 @@ $(document).ready ->
     if size < 1
       alert('Please write a step')
       return false
+  $("#book-btn").on "click", ->
+    $("#bookmark_ico").first().addClass('fa-spinner fa-pulse').removeClass('fa-bookmark');
 
   return
 

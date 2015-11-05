@@ -26,6 +26,7 @@ class User < ActiveRecord::Base
   end
 
   has_many :recipes
+  has_many :bookmarks
 
 
   def self.from_omniauth(auth)
