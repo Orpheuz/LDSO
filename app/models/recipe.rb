@@ -5,5 +5,6 @@ class Recipe < ActiveRecord::Base
   has_many :steps
   has_many :bookmarks
 
+  ratyrate_rateable "rating"
 
 end

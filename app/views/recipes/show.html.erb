@@ -4,6 +4,7 @@
             <div id="recipe-specs" class="col-xs-6">
                 <h1> <%= @recipe.name %></h1>
                 <img id="recipe-image" src="<%= @recipe.image %>" width="100%"/>
+                <h3>Rating <%= rating_for @recipe, "rating" %></h3>
             </div>
             <div id="recipe-content" class="col-xs-6">
               <p><%= @recipe.description %></p>

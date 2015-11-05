@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
     :recoverable, :rememberable, :trackable, :validatable
   devise :omniauthable, :omniauth_providers => [:facebook]
 
+  ratyrate_rater
+
   validates_format_of :username, with: /\A[a-zA-Z0-9_\.]*\Z/
 
   attr_accessor :login
