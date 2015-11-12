@@ -9,6 +9,10 @@ class User < ActiveRecord::Base
 
   validates_format_of :username, with: /\A[a-zA-Z0-9_\.]*\Z/
 
+  validates_format_of :firstname, with: /\A[a-zA-Z\.]*\Z/
+
+  validates :firstname, length: {in: 3..15}
+
   attr_accessor :login
 
   validates :username,
