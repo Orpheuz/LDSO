@@ -105,6 +105,9 @@ p {
     color: #f8a631
   }
 }
+.nav > li > a {
+  padding-right: 40px;
+}
 @media (min-width:992px) {
   .navbar-right {
     margin-right: 100px !important;
@@ -201,12 +204,8 @@ footer {
   text-align: center;
   padding-top: 15px;
 }
-#login, #signup {
-  margin-top: 10px;
-}
-.login_form {
-  text-align: center;
-}
+
+/* login */
 #login-dp {
   padding: 0px;
   min-width: 250px;
