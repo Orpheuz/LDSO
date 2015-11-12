@@ -1,8 +1,14 @@
 Rails.application.routes.draw do
 
+  get 'category/index'
+
+  post '/category/new' => 'category#create'
+
+
   post '/rate' => 'rater#create', :as => 'rate'
   resources :dashboard
   resources :home
+  resources :category
   resources :recipes do
     put :bookmark, on: :member
   end
