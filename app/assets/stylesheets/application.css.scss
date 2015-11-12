@@ -18,6 +18,7 @@
  *= require font-awesome
  */
 
+$screen-sm: 992px;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import url(http://fonts.googleapis.com/css?family=Dosis:700);
@@ -32,13 +33,16 @@ $border-gray: #edeeee;
 $blue-logo: #006699;
 
 /* universal */
+* {
+  margin: 0;
+}
 html, body {
   height: 100%;
 }
 body {
   background-color: #fafafa;
 }
-#main-container{
+#main-container {
   margin-top: -20px;
   border-style: solid;
   border-bottom: 0;
@@ -47,7 +51,6 @@ body {
   padding-top: 7%;
   width: 60%;
 }
-
 section {
   overflow: auto;
 }
@@ -86,12 +89,11 @@ p {
 }
 
 /* header */
-@media (min-width:768px) {
-  .container {
-    height: 80px;
-  }
+.navbar-header {
+  height: 80px;
 }
 .navbar-inverse .navbar-nav > li > a {
+  height: 80px;
   font-family: 'Dosis', sans-serif;
   text-transform: uppercase;
   font-size: 1.5em;
@@ -106,38 +108,51 @@ p {
 @media (min-width:992px) {
   .navbar-right {
     margin-right: 100px !important;
-
-    li a {
-      padding-left: 50px;
-    }
   }
-}
-@media (min-width:992px) {
   .navbar-left {
     margin-left: 100px;
-
-    li a {
-      padding-right: 50px;
-    }
+  }
+  li a {
+    padding-left: 60px;
   }
 }
-@media (min-width:992px) {
-  .navbar {
-    position: relative;
-    background-color: #232323;
-    border-bottom-color: $border-gray;
-    border-bottom-width: 1px;
+@media (min-width:1200px) {
+  .navbar-right {
+    margin-right: 150px !important;
   }
+  .navbar-left {
+    margin-left: 150px;
+  }
+  li a {
+    padding-left: 60px;
+  }
+}
+@media (min-width:1500px) {
+  .navbar-right {
+    margin-right: 300px !important;
+  }
+  .navbar-left {
+    margin-left: 300px;
+  }
+  li a {
+    padding-left: 60px;
+  }
+}
+.navbar {
+  position: relative;
+  background-color: #232323;
+  border-bottom-color: $border-gray;
+  border-bottom-width: 1px;
 }
 #logo {
   position: absolute;
   left: 50%;
-  margin-left: -79px !important;
+  margin-left: -86px !important;
   display: block;
   font-family: billabong;
   font-size: 3.5em;
   color: white;
-  padding-top: 9px;
+  margin-top: 15px;
 
   &:hover {
     text-decoration: none;
@@ -191,4 +206,63 @@ footer {
 }
 .login_form {
   text-align: center;
+}
+#login-dp {
+  padding: 0px;
+  min-width: 250px;
+  padding: 14px 14px 0;
+  overflow: hidden;
+  background-color: #fafafa;
+}
+#login-dp .help-block {
+  font-size: 12px
+}
+#login-dp .bottom {
+  background-color: #fafafa;
+  border-top: 1px solid #ddd;
+  clear: both;
+  padding: 14px;
+}
+#login-dp .social-buttons {
+  margin: 12px 0
+}
+#login-dp .social-buttons a {
+  width: 49%;
+}
+#login-dp .form-group {
+  margin-bottom: 10px;
+}
+.btn-ig {
+  color: #fff;
+  background-color: #3F729B;
+}
+.btn-ig:hover {
+  color: #fff;
+  background-color: #538cb9;
+}
+.btn-fb {
+  color: #fff;
+  background-color: #3b5998;
+}
+.btn-fb:hover {
+  color: #fff;
+  background-color: #496ebc;
+}
+.btn-tw {
+  color: #fff;
+  background-color: #55acee;
+}
+.btn-tw:hover {
+  color: #fff;
+  background-color: #59b5fa;
+}
+@media(max-width:768px) {
+  #login-dp {
+    background-color: inherit;
+    color: #fff;
+  }
+  #login-dp .bottom {
+    background-color: inherit;
+    border-top: 0 none;
+  }
 }
