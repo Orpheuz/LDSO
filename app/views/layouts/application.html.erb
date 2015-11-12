@@ -28,7 +28,7 @@
           <li><%= link_to current_user.firstname %></li>
           <li><%= link_to "Sign Out", destroy_user_session_path, :method => :delete %></li>
           <% else %>
-          <li class="dropdown">
+          <li class="dropdown login">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
             <ul id="login-dp" class="dropdown-menu">
               <li>
@@ -40,46 +40,46 @@
                     <a href="#" class="btn btn-ig"><i class="fa fa-instagram"></i> Instagram</a>
                   </div>
                   or
-                  <form class="form" role="form" method="post" action="login" accept-charset="UTF-8" id="login-nav">
+                  <br>
+                  <div class="login-nav">
+                    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
                     <div class="form-group">
-                     <label class="sr-only" for="exampleInputEmail2">Email address</label>
-                     <input type="email" class="form-control" id="exampleInputEmail2" placeholder="Email address" required>
-                   </div>
-                   <div class="form-group">
-                     <label class="sr-only" for="exampleInputPassword2">Password</label>
-                     <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-                     <div class="help-block text-right"><a href="">Forget the password ?</a></div>
-                   </div>
-                   <div class="form-group">
-                     <%= button_to "Sign-in", new_user_session_path, :class => "btn btn-primary btn-block"%>
-                   </div>
-                   <div class="checkbox">
-                     <label>
-                     <input type="checkbox"> Keep me logged in
-                     </label>
-                   </div>
-                 </form>
-               </div>
-               <div class="bottom text-center">
-                New here ? <a href="#"><b>Join Us</b></a>
-              </div>
-            </div>
+                      <%= f.text_field :login, autofocus: true, class: 'form-control', :placeholder => 'Username or Email'%>
+                      <div class="form-group">
+                        <%= f.password_field :password, autocomplete: "off", class: 'form-control', :placeholder => 'Password'%>                    
+                      </div>
+                      <%= link_to "Forgot the password?", new_user_session_path, :class => "help-block text-right"%>
+                      <% if devise_mapping.rememberable? -%>
+                      <div class="form-group">
+                        <%= f.check_box :remember_me %>
+                        <%= f.label :remember_me %>
+                      </div>
+                      <% end -%>
+
+                      <%= f.submit "Log in", class: "btn btn-primary btn-block", id: "login" %>
+                      <% end %>
+                    </div>
+                    <div class="bottom text-center">
+                      New here? <%= link_to "Join us!", new_user_registration_path %>
+                    </div>
+                  </div>
+                </div>
+              </li>
+            </ul>
           </li>
+          <li><%= link_to "Search", new_user_registration_path %></li>
+          <% end %>
         </ul>
-      </li>
-      <li><%= link_to "Search", new_user_registration_path %></li>
-      <% end %>
-    </ul>
+      </div>
+    </nav>
+    <% flash.each do |message_type, message| %>
+    <div class="alert alert-<%= message_type %>"><%= message %></div>
+    <% end %>
+    <%= yield %>
+    <div class="push"> </div>
   </div>
-</nav>
-<% flash.each do |message_type, message| %>
-<div class="alert alert-<%= message_type %>"><%= message %></div>
-<% end %>
-<%= yield %>
-<div class="push"> </div>
-</div>
-<footer>
-  <p class="footerInfo"> © 2015 INSTACHEF </p>
-</footer>
+  <footer>
+    <p class="footerInfo"> © 2015 INSTACHEF </p>
+  </footer>
 </body>
 </html>
