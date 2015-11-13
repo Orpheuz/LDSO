@@ -1,0 +1,12 @@
+<h1>Add a new Category</h1>
+<div class="form-style-5">
+  <%= form_for @category, url: {action: "new"}, :html=> { :'data-type' => 'html',class: "nifty_form", :id => 'create_category_form'} do |f| %>
+  <legend><span class="number">1</span> Category name</legend>
+  <%= f.text_field :name, :required => true%><br />
+  <div class="actions">
+    <%= f.submit "Create category" %>
+  </div>
+
+
+  <% end %>
+</div>

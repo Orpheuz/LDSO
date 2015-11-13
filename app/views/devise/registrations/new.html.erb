@@ -1,14 +1,17 @@
 <h2>Sign up</h2>
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
-<%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-  <%= devise_error_messages! %>
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
 
     <%= f.label :username %><br />
     <%= f.text_field :username, autofocus: true, class: 'form-control'%>
 
-    <%= f.label :name %><br />
-    <%= f.text_field :name, class: 'form-control'%>
+    <%= f.label :firstname %><br />
+    <%= f.text_field :firstname, class: 'form-control'%>
+
+    <%= f.label :lastname %><br />
+    <%= f.text_field :lastname, class: 'form-control'%>
 
     <%= f.label :email %><br />
     <%= f.email_field :email, class: 'form-control'%>
@@ -24,8 +27,7 @@
 
     <%= f.submit "Sign up", class: "btn btn-primary", id: "signup" %>
 
-<% end %>
+    <% end %>
 
-<%= render "devise/shared/links" %>
 </div>
 </div>

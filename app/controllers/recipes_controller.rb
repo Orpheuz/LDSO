@@ -42,8 +42,13 @@
       end
 
     end
+
     def viewbookmarks
-      @bookmarks=Recipe.joins(:bookmarks).where("bookmarks.user_id=?", params[:id])
+      if User.exists?(:id => params[:id])
+        @bookmarks=Recipe.joins(:bookmarks).where("bookmarks.user_id=?", params[:id])
+      else
+        redirect_to '/'
+      end
     end
 
 

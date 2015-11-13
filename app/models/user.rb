@@ -3,11 +3,15 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
-  devise :omniauthable, :omniauth_providers => [:facebook]
+  devise :omniauthable, :omniauth_providers => [:facebook,:instagram]
 
   ratyrate_rater
 
   validates_format_of :username, with: /\A[a-zA-Z0-9_\.]*\Z/
+
+  validates_format_of :firstname, with: /\A[a-zA-Z\.]*\Z/
+
+  validates :firstname, length: {in: 3..15}
 
   attr_accessor :login
 
