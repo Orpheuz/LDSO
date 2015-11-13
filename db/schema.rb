@@ -97,6 +97,7 @@ ActiveRecord::Schema.define(version: 20151105150227) do
     t.integer  "stepnumber"
     t.string   "name"
     t.text     "description"
+    t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
