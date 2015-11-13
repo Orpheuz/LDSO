@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  get 'category/index'
+
 
   post '/category/new' => 'category#create'
 

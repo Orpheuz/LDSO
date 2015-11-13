@@ -6,12 +6,18 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
-
 stepN = 1
+categoryN = 1
 $(document).ready ->
   $("#add_step").on "click", ->
     $('#add_step').before '<div  name=\'S[]\'><legend>Step: <span class="number"> ' + stepN + '\ </span>  </legend><input required type=\'text\' class=\'step\' placeholder=\'Title for step ' + stepN + '\' name= \'SN[]\' id= \'SN' + stepN + '\'/><textarea required type=\'text\' class=\'step\' placeholder=\'Describe step ' + stepN + '\' name= \'S[]\' id= \'S' + stepN + '\'/></div>'
     stepN++
+  $("#add_category").on "click", ->
+    i = 0
+    while i < gon.categories.length
+      $("#add_category").before '<button type="button" class="btn-xs" id="cat-'+i+'">'+gon.categories[i].name+'</button>'
+      i++
+
   $("#create").on "click", ->
     size=$('.step').length
     if size < 1

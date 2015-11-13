@@ -1,4 +1,4 @@
 class CategoriesToRecipe < ActiveRecord::Base
-  belongs_to :period
-  belongs_to :user
+  belongs_to :category
+  belongs_to :recipe
 end

@@ -12,7 +12,9 @@
 
     def new
       @recipe=Recipe.new
-
+      gon.push({
+                   :categories => Category.all
+               })
     end
 
     def create

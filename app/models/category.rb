@@ -1,3 +1,3 @@
 class Category < ActiveRecord::Base
-  has_many :recipes, :through => :period_to_user
+  has_many :recipes, :through => :categories_to_recipes
 end
