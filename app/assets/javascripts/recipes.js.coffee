@@ -8,6 +8,9 @@
 
 stepN = 1
 categoryN = 1
+
+
+
 $(document).ready ->
   $("#add_step").on "click", ->
     $('#add_step').before '<div  name=\'S[]\'><legend>Step: <span class="number"> ' + stepN + '\ </span>  </legend><input required type=\'text\' class=\'step\' placeholder=\'Title for step ' + stepN + '\' name= \'SN[]\' id= \'SN' + stepN + '\'/><textarea required type=\'text\' class=\'step\' placeholder=\'Describe step ' + stepN + '\' name= \'S[]\' id= \'S' + stepN + '\'/></div>'
@@ -15,9 +18,14 @@ $(document).ready ->
   $("#add_category").on "click", ->
     i = 0
     while i < gon.categories.length
-      $("#add_category").before '<button type="button" class="btn-xs" id="cat-'+i+'">'+gon.categories[i].name+'</button>'
+      $("#add_category").before '<button type="button" class="btn-xs cat" id="cat-'+i+'">'+gon.categories[i].name+'</button>'
       i++
 
+  $("body").on "click", ".cat", ->
+    $('#' + event.target.id).toggleClass 'cat chosen-cat'
+    $('#' + event.target.id).disabled = true
+    $(".cat").remove()
+    return
   $("#create").on "click", ->
     size=$('.step').length
     if size < 1
