@@ -18,11 +18,16 @@ $(document).ready ->
   $("#add_category").on "click", ->
     i = 0
     while i < gon.categories.length
-      $("#add_category").before '<button type="button" class="btn-xs cat" id="cat-'+i+'">'+gon.categories[i].name+'</button>'
+      if document.getElementById('cat-'+i) == null
+        $("#add_category").before '<button type="button" class="btn btn-primary btn-xs cat" id="cat-'+i+'" value="' + gon.categories[i].name + '">'+gon.categories[i].name+'</button>'
       i++
 
   $("body").on "click", ".cat", ->
     $('#' + event.target.id).toggleClass 'cat chosen-cat'
+    realID = parseInt(event.target.id.slice(4)) + 1
+    catValue=$('#' + event.target.id).attr 'value'
+    $('#' + event.target.id).before  '<input type="hidden" name="CN[]" id="CN' + categoryN + '" value="' + realID + '">'
+    categoryN++
     $('#' + event.target.id).disabled = true
     $(".cat").remove()
     return

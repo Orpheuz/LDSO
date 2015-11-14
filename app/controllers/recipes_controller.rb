@@ -21,10 +21,21 @@
 
       @recipe = current_user.recipes.create(name: params[:recipe][:name], description: params[:recipe][:description])
       stepID=0
-
+      categoryN = 0
       while params[:S][stepID].present? do
         @step= @recipe.steps.create(name: params[:SN][stepID], description: params[:S][stepID],stepnumber: stepID+1)
         stepID=stepID+1
+      end
+
+      while params[:CN][categoryN].present? do
+        @temp = params[:CN][categoryN].to_f
+        @category = Category.find(@temp)
+        if @recipe.save
+          @category.recipes << @recipe
+        else
+          render :new
+        end
+        categoryN=categoryN+1
       end
 
       redirect_to recipe_path(@recipe.id)
