@@ -28,3 +28,6 @@ s5 = Step.create(stepnumber: 2, name: "Por o bife",
 
 r1.steps << [s2,s1,s3]
 r2.steps << [s4,s5]
+
+Category.create(name: "Almoço")
+Category.create(name: "Jantar")
