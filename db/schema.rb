@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151112102409) do
+ActiveRecord::Schema.define(version: 20151114193915) do
 
   create_table "average_caches", force: :cascade do |t|
     t.integer  "rater_id"
@@ -94,6 +94,16 @@ ActiveRecord::Schema.define(version: 20151112102409) do
 
   add_index "rating_caches", ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
 
+  create_table "recipe_tag_associations", force: :cascade do |t|
+    t.integer  "recipe_id"
+    t.integer  "tag_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "recipe_tag_associations", ["recipe_id"], name: "index_recipe_tag_associations_on_recipe_id"
+  add_index "recipe_tag_associations", ["tag_id"], name: "index_recipe_tag_associations_on_tag_id"
+
   create_table "recipes", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
@@ -116,6 +126,12 @@ ActiveRecord::Schema.define(version: 20151112102409) do
   end
 
   add_index "steps", ["recipe_id"], name: "index_steps_on_recipe_id"
+
+  create_table "tags", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false

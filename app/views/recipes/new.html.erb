@@ -4,12 +4,12 @@
               <%= f.text_field :name, :required => true%><br />
               <legend><span class="number">2</span>Recipe description</legend>
               <%= f.text_area :description, size: "60x12", :required => true %><br />
+              <legend><span class="number">3</span> Tags</legend>
+              <input name="tags" id="taginput"><br />
               <button type="button" class="btn-md" id="add_step">Add step</button>
               <button type="button" class="btn-md" id="add_category">Add category</button>
               <div class="actions">
               <%= f.submit "Create recipe", :id => 'create' %>
             </div>
-
-
         <% end %>
         </div>

@@ -5,6 +5,8 @@ class Recipe < ActiveRecord::Base
   has_many :steps
   has_many :bookmarks
   has_many :categories, through: :categories_to_recipes
+  has_many :tags, through: :recipe_tag_associations
+  has_many :recipe_tag_associations
   has_many :categories_to_recipes
   ratyrate_rateable "rating"
 
