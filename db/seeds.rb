@@ -27,7 +27,7 @@ s5 = Step.create(stepnumber: 2, name: "Por o bife",
                  description: "Bife pa panela")
 
 r1.steps << [s2,s1,s3]
-r2.steps << [s4,s5]
+
 
 Category.create(name: "Almoco")
 Category.create(name: "Pequeno-Almoco")
