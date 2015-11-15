@@ -1,0 +1,16 @@
+<%= form_tag search_path, :method => :get do %>
+<p>
+  <%= text_field_tag :search, params[:search] %>
+  <%= submit_tag "Search", :name => nil %>
+</p>
+<% end %>
+<div id="facets">
+  <h3>Published</h3>
+  <ul>
+    <% for recipe in @recipes  %>
+    <li>
+      <strong><%= recipe.name %></strong>
+    </li>
+    <% end %>
+  </ul>
+</div>

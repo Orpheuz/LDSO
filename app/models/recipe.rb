@@ -1,4 +1,9 @@
 class Recipe < ActiveRecord::Base
+
+  searchable do
+    text :name, :as => :code_textp
+  end
+
   belongs_to :user
   has_many :ingredient_recipe_associations
   has_many :ingredients, through: :ingredient_recipe_associations
@@ -9,5 +14,7 @@ class Recipe < ActiveRecord::Base
   has_many :recipe_tag_associations
   has_many :categories_to_recipes
   ratyrate_rateable "rating"
+
+
 
 end
