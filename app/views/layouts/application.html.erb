@@ -37,8 +37,12 @@
                     <div class="col-md-12">
                       Login via
                       <div class="social-buttons">
-                        <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
-                        <a href="#" class="btn btn-ig"><i class="fa fa-instagram"></i> Instagram</a>
+                        <%= link_to omniauth_authorize_path(resource_name, :facebook), class: "btn btn-fb" do %>
+                            <i class="fa fa-facebook"></i> Facebook
+                        <%end%>
+                        <%= link_to omniauth_authorize_path(resource_name, :instagram), class: "btn btn-ig" do %>
+                            <i class="fa fa-instagram"></i> Instagram
+                        <%end%>
                       </div>
                       or
                       <br>
