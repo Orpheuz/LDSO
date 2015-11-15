@@ -27,15 +27,33 @@
         stepID=stepID+1
       end
 
-      while params[:CN][categoryN].present? do
-        @temp = params[:CN][categoryN].to_f
-        @category = Category.find(@temp)
-        if @recipe.save
-          @category.recipes << @recipe
-        else
-          render :new
+      if params[:CN].present?
+        while params[:CN][categoryN].present? do
+          @temp = params[:CN][categoryN].to_f
+          @category = Category.find(@temp)
+          if @recipe.save
+            @category.recipes << @recipe
+          else
+            render :new
+          end
+          categoryN=categoryN+1
         end
-        categoryN=categoryN+1
+      end
+
+      if params[:tags].present?
+        @tagarray = params[:tags].split(/[\s,]+/)
+        @tagarray.each do |tag|
+            @tag = Tag.find_by_name(tag)
+            if @tag.nil?
+              @tag = @recipe.tags.create(name: tag)
+            else
+              if @recipe.save
+                @tag.recipes << @recipe
+              else
+                render :new
+              end
+            end
+        end
       end
 
       redirect_to recipe_path(@recipe.id)
