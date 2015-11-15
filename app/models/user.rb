@@ -13,6 +13,13 @@ class User < ActiveRecord::Base
 
   attr_accessor :login
 
+  extend FriendlyId
+  friendly_id :username, use: :slugged
+
+  def should_generate_new_friendly_id?
+    new_record?
+  end
+
   validates :username,
     :presence => true,
   :uniqueness => {
@@ -31,7 +38,6 @@ class User < ActiveRecord::Base
 
   has_many :recipes
   has_many :bookmarks
-
 
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|

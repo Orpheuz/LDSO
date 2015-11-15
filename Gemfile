@@ -51,5 +51,5 @@ gem 'font-awesome-rails'
 gem 'ratyrate'
 gem 'gon'
 gem 'sunspot_rails'
-
 gem 'sunspot_solr'
+gem 'friendly_id', '~> 5.1.0'

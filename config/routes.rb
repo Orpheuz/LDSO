@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
 
-
-
   post '/category/new' => 'category#create'
   get '/search/index' => 'search#index', :as => 'search'
 
@@ -19,8 +17,10 @@ Rails.application.routes.draw do
   post '/recipes/new' => 'recipes#create'
   root to: "home#index"
 
-
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
+
+  get '/users/:id' => 'users#show', :as => 'user'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
