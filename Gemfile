@@ -50,3 +50,6 @@ gem 'omniauth-instagram'
 gem 'font-awesome-rails'
 gem 'ratyrate'
 gem 'gon'
+gem 'sunspot_rails'
+
+gem 'sunspot_solr'
