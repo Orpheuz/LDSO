@@ -13,16 +13,16 @@
 
 ActiveRecord::Schema.define(version: 20151114193915) do
 
-  create_table "average_caches", force: :cascade do |t|
+  create_table "average_caches", force: true do |t|
     t.integer  "rater_id"
     t.integer  "rateable_id"
-    t.string   "rateable_type", limit: 255
-    t.float    "avg",                       null: false
+    t.string   "rateable_type"
+    t.float    "avg",           null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "bookmarks", force: :cascade do |t|
+  create_table "bookmarks", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
@@ -32,20 +32,23 @@ ActiveRecord::Schema.define(version: 20151114193915) do
   add_index "bookmarks", ["recipe_id"], name: "index_bookmarks_on_recipe_id"
   add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id"
 
-  create_table "categories", force: :cascade do |t|
-    t.string   "name",       limit: 255
+  create_table "categories", force: true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "categories_to_recipes", force: :cascade do |t|
-    t.integer  "category_id"
+  create_table "categories_to_recipes", force: true do |t|
     t.integer  "recipe_id"
+    t.integer  "categories_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "ingredient_recipe_associations", force: :cascade do |t|
+  add_index "categories_to_recipes", ["categories_id"], name: "index_categories_to_recipes_on_categories_id"
+  add_index "categories_to_recipes", ["recipe_id"], name: "index_categories_to_recipes_on_recipe_id"
+
+  create_table "ingredient_recipe_associations", force: true do |t|
     t.integer  "recipe_id"
     t.integer  "ingredient_id"
     t.datetime "created_at"
@@ -55,26 +58,27 @@ ActiveRecord::Schema.define(version: 20151114193915) do
   add_index "ingredient_recipe_associations", ["ingredient_id"], name: "index_ingredient_recipe_associations_on_ingredient_id"
   add_index "ingredient_recipe_associations", ["recipe_id"], name: "index_ingredient_recipe_associations_on_recipe_id"
 
-  create_table "ingredients", force: :cascade do |t|
-    t.string   "name",       limit: 255
+  create_table "ingredients", force: true do |t|
+    t.string   "name"
+    t.integer  "calories"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "overall_averages", force: :cascade do |t|
+  create_table "overall_averages", force: true do |t|
     t.integer  "rateable_id"
-    t.string   "rateable_type", limit: 255
-    t.float    "overall_avg",               null: false
+    t.string   "rateable_type"
+    t.float    "overall_avg",   null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "rates", force: :cascade do |t|
+  create_table "rates", force: true do |t|
     t.integer  "rater_id"
     t.integer  "rateable_id"
-    t.string   "rateable_type", limit: 255
-    t.float    "stars",                     null: false
-    t.string   "dimension",     limit: 255
+    t.string   "rateable_type"
+    t.float    "stars",         null: false
+    t.string   "dimension"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -82,19 +86,19 @@ ActiveRecord::Schema.define(version: 20151114193915) do
   add_index "rates", ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type"
   add_index "rates", ["rater_id"], name: "index_rates_on_rater_id"
 
-  create_table "rating_caches", force: :cascade do |t|
+  create_table "rating_caches", force: true do |t|
     t.integer  "cacheable_id"
-    t.string   "cacheable_type", limit: 255
-    t.float    "avg",                        null: false
-    t.integer  "qty",                        null: false
-    t.string   "dimension",      limit: 255
+    t.string   "cacheable_type"
+    t.float    "avg",            null: false
+    t.integer  "qty",            null: false
+    t.string   "dimension"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "rating_caches", ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
 
-  create_table "recipe_tag_associations", force: :cascade do |t|
+  create_table "recipe_tag_associations", force: true do |t|
     t.integer  "recipe_id"
     t.integer  "tag_id"
     t.datetime "created_at", null: false
@@ -104,10 +108,10 @@ ActiveRecord::Schema.define(version: 20151114193915) do
   add_index "recipe_tag_associations", ["recipe_id"], name: "index_recipe_tag_associations_on_recipe_id"
   add_index "recipe_tag_associations", ["tag_id"], name: "index_recipe_tag_associations_on_tag_id"
 
-  create_table "recipes", force: :cascade do |t|
-    t.string   "name",        limit: 255
+  create_table "recipes", force: true do |t|
+    t.string   "name"
     t.text     "description"
-    t.string   "image",       limit: 255
+    t.string   "image"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
@@ -115,10 +119,10 @@ ActiveRecord::Schema.define(version: 20151114193915) do
 
   add_index "recipes", ["user_id"], name: "index_recipes_on_user_id"
 
-  create_table "steps", force: :cascade do |t|
+  create_table "steps", force: true do |t|
     t.integer  "recipe_id"
     t.integer  "stepnumber"
-    t.string   "name",        limit: 255
+    t.string   "name"
     t.text     "description"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -126,29 +130,30 @@ ActiveRecord::Schema.define(version: 20151114193915) do
 
   add_index "steps", ["recipe_id"], name: "index_steps_on_recipe_id"
 
-  create_table "tags", force: :cascade do |t|
+  create_table "tags", force: true do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "email",                  limit: 255, default: "", null: false
-    t.string   "encrypted_password",     limit: 255, default: "", null: false
-    t.string   "name",                   limit: 255
-    t.string   "uid",                    limit: 255
-    t.string   "provider",               limit: 255
-    t.string   "reset_password_token",   limit: 255
+  create_table "users", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "name"
+    t.string   "lastname"
+    t.string   "uid"
+    t.string   "provider"
+    t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                      default: 0,  null: false
+    t.integer  "sign_in_count",          default: 0,  null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.string   "current_sign_in_ip",     limit: 255
-    t.string   "last_sign_in_ip",        limit: 255
-    t.datetime "created_at",                                      null: false
-    t.datetime "updated_at",                                      null: false
-    t.string   "username",               limit: 255
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                          null: false
+    t.datetime "updated_at",                          null: false
+    t.string   "username"
   end
 
   add_index "users", ["email"], name: "index_users_on_email", unique: true
