@@ -262,7 +262,7 @@ Devise.setup do |config|
 
   config.authentication_keys = [:login]
 
-  config.omniauth :facebook, 1647823412140946, "da12c90e597871ebbe9d7c4f0873a78a" , {:client_options => {:ssl => {:verify => false}}}
-  config.omniauth :instagram, "8f8e84526a314a999341c19dc5136a45", "f90a356f8e8745ef918134ceda36f686"
+  config.omniauth :facebook, 1647823412140946, "da12c90e597871ebbe9d7c4f0873a78a" , :scope => 'user_photos'
+  #config.omniauth :instagram, "8f8e84526a314a999341c19dc5136a45", "f90a356f8e8745ef918134ceda36f686"
 
 end

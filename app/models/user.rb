@@ -3,7 +3,7 @@ class User < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
     :recoverable, :rememberable, :trackable, :validatable
-  devise :omniauthable, :omniauth_providers => [:facebook,:instagram]
+  devise :omniauthable, :omniauth_providers => [:facebook]
 
   ratyrate_rater
 
@@ -46,6 +46,7 @@ class User < ActiveRecord::Base
       user.username = auth.uid
       user.provider = auth.provider
       user.name = auth.info.name
+      user.token= auth.credentials.token
 
     end
   end
