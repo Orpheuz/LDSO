@@ -1,1 +1,56 @@
-<h1> <%= @user.email %> </h1>
+<br>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-12 lead">Profile<hr></div>
+          </div>
+          <div class="row">
+           <div class="col-md-4 text-center">
+            <img class="img-circle avatar avatar-original" style="-webkit-user-select:none; 
+            display:block; margin:auto;" src="http://cdn.overclock.net/a/a0/120x120px-LS-a0ae1256_avatar95329_4.jpeg">
+          </div>
+          <div class="col-md-4">
+            <div class="row">
+              <div class="col-md-8">
+                <h1 class="only-bottom-margin"> <%= @user.username %></h1>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-8">
+                <span class="text-muted">Name:</span> <%= @user.name %> <br>
+                <span class="text-muted">Email:</span> <%= @user.email %> <br>
+                <span class="text-muted">Age:</span> 20 <br>
+                <span class="text-muted">Gender:</span> Male <br><br>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="row">
+              <div class="col-md-4">
+                <h1 class="only-bottom-margin">Activity</h1>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-4">
+                <span class="text-muted">Followers</span> 1000 <br>
+                <span class="text-muted">Comments</span> 500 <br>
+              </div>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-default pull-right pull-down"><i class="glyphicon glyphicon-pencil"></i> Edit</button> <br>
+        <hr>
+        <div class="row">
+          <div class="col-md-12 lead">Badges<hr></div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 lead">Recipes<hr></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

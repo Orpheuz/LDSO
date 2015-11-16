@@ -19,7 +19,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
 
-  get '/users/:id' => 'users#show', :as => 'user'
+  get '/users/:id' => 'users#show', :as => :userpage
 
 
   # The priority is based upon order of creation: first created -> highest priority.
