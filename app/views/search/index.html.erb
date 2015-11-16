@@ -9,7 +9,10 @@
   <ul>
     <% for recipe in @recipes  %>
     <li>
-      <strong><%= recipe.name %></strong>
+      <strong>
+        <%=link_to recipe.name, recipe %>
+      </strong>
+      <%= recipe.description %>
     </li>
     <% end %>
   </ul>

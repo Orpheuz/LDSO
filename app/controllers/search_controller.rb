@@ -6,6 +6,8 @@ class SearchController < ApplicationController
         fields(:name)
       end
     end
+
+
     @recipes = @search.results
   end
 
