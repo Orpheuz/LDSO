@@ -20,4 +20,4 @@ Gemfile.lock
 *.lock
 Gemfile.lock
 
-solr/data
+solr/development/*
