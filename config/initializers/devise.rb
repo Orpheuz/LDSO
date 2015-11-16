@@ -261,8 +261,11 @@ Devise.setup do |config|
   # config.omniauth_path_prefix = '/my_engine/users/auth'
 
   config.authentication_keys = [:login]
+  
+config.omniauth :instagram, "8f8e84526a314a999341c19dc5136a45", "f90a356f8e8745ef918134ceda36f686", :client_options => {ssl: {ca_file: Rails.root.join('lib/assets/cacert.pem').to_s}}
 
-  config.omniauth :facebook, 1647823412140946, "da12c90e597871ebbe9d7c4f0873a78a" , :scope => 'user_photos'
-  config.omniauth :instagram, "8f8e84526a314a999341c19dc5136a45", "f90a356f8e8745ef918134ceda36f686"
+  Rails.application.config.middleware.use OmniAuth::Builder do
+    provider :facebook, 1647823412140946, "da12c90e597871ebbe9d7c4f0873a78a", {client_options: {ssl: {ca_file: Rails.root.join('lib/assets/cacert.pem').to_s}}}
+  end
 
 end
