@@ -22,7 +22,7 @@ $(document).ready ->
         $("#add_category").before '<button type="button" class="btn btn-primary btn-xs cat" id="cat-'+i+'" value="' + gon.categories[i].name + '">'+gon.categories[i].name+'</button>'
       i++
 
-  $("body").on "click", ".cat", ->
+  $("body").on "click", ".cat",(event) -> 
     $('#' + event.target.id).toggleClass 'cat chosen-cat'
     realID = parseInt(event.target.id.slice(4)) + 1
     catValue=$('#' + event.target.id).attr 'value'

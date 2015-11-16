@@ -34,20 +34,32 @@
               </div>
             </div>
             <div class="row">
-              <div class="col-md-4">
-                <span class="text-muted">Followers</span> 1000 <br>
-                <span class="text-muted">Comments</span> 500 <br>
+              <div class="col-md-6">
+                <span class="text-muted"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Likes: 500</span>
+                <br>
+                <span class="text-muted"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Followers: 1000</span> <br>
+                <span class="text-muted"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Comments: 500</span>
+                <br>
               </div>
             </div>
           </div>
         </div>
+        <% if user_signed_in? %>
+        <% if current_user.username = @user.username %>
         <button class="btn btn-default pull-right pull-down"><i class="glyphicon glyphicon-pencil"></i> Edit</button> <br>
+        <% end %>
+        <% end %>
         <hr>
         <div class="row">
-          <div class="col-md-12 lead">Badges<hr></div>
+          <div class="col-md-12 lead">Badges <hr></div>
         </div>
         <div class="row">
           <div class="col-md-12 lead">Recipes<hr></div>
+          <% @recipes.each do |recipe| %>
+          <%= div_for recipe, :class => "row" do %>
+          <h1> <%= recipe.name %> </h1> <br>
+          <% end %>
+          <% end %>
         </div>
       </div>
     </div>
