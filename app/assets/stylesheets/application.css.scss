@@ -22,6 +22,7 @@ $screen-sm: 992px;
 @import "bootstrap-sprockets";
 @import "bootstrap";
 @import url(http://fonts.googleapis.com/css?family=Dosis:700);
+@import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
 
 /* mixins, variables, etc. */
 @font-face {
@@ -92,7 +93,7 @@ p {
 .navbar-header {
   height: 80px;
 }
-.navbar-inverse .navbar-nav > li > a {
+.navbar-inverse .navbar-nav > li > a, #loggedin > li > a {
   height: 80px;
   font-family: 'Dosis', sans-serif;
   text-transform: uppercase;
@@ -102,11 +103,15 @@ p {
   display: inline-block;
 
   &:hover {
-    color: #f8a631
+    color: #f8a631;
+    background-color: #232323;
   }
 }
 .nav > li > a {
   padding-right: 40px;
+}
+#loggedin {
+  background-color: #232323;
 }
 @media (min-width:992px) {
   .navbar-right {
