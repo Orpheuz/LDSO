@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   post '/category/new' => 'category#create'
-  get '/search/index' => 'search#index', :as => 'search'
+  get '/search/' => 'search#index', :as => 'search'
 
   post '/rate' => 'rater#create', :as => 'rate'
   resources :dashboard

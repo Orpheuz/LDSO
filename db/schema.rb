@@ -112,6 +112,7 @@ ActiveRecord::Schema.define(version: 20151114193915) do
     t.string   "name"
     t.text     "description"
     t.string   "image"
+    t.float    "time"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"

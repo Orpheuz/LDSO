@@ -2,7 +2,9 @@ class Recipe < ActiveRecord::Base
 
   searchable do
     text :name, :as => :code_textp
+    integer :time
   end
+
 
   belongs_to :user
   has_many :ingredient_recipe_associations

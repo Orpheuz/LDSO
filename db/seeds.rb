@@ -1,5 +1,5 @@
-r1 = Recipe.create!(user_id: 1, name: "Massa a bolonhesa", description: "E mesmo boa", image: "http://definicaototal.com.br/wp-content/uploads/2014/06/Bolonhesa_Macarr%C3%A3oEnergia.jpg")
-r2 = Recipe.create!(user_id: 1, name: "Bife", description: "Se for de cavalo ainda melhor", image: "http://www.gastrobahia.com.br/wp-content/uploads/2015/01/bife.jpg")
+r1 = Recipe.create!(user_id: 1, name: "Massa a bolonhesa", description: "E mesmo boa", image: "http://definicaototal.com.br/wp-content/uploads/2014/06/Bolonhesa_Macarr%C3%A3oEnergia.jpg", time: 20)
+r2 = Recipe.create!(user_id: 1, name: "Bife", description: "Se for de cavalo ainda melhor", image: "http://www.gastrobahia.com.br/wp-content/uploads/2015/01/bife.jpg",time: 9)
 
 i1 = Ingredient.create!(name: "Esparguete")
 i2 = Ingredient.create!(name: "Tomate")
