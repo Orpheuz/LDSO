@@ -53,3 +53,4 @@ gem 'gon'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'friendly_id', '~> 5.1.0'
+gem "koala", "~> 2.2"
