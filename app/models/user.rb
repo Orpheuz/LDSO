@@ -39,17 +39,31 @@ class User < ActiveRecord::Base
   has_many :recipes
   has_many :bookmarks
 
-  def self.from_omniauth(auth)
+  def self.from_fb_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid).first_or_create! do |user|
       user.email = auth.info.email
       user.password = Devise.friendly_token[0,20]
       user.username = auth.uid
-      user.provider = auth.provider
       user.name = auth.info.name
-      user.token= auth.credentials.token
+      user.fbtoken= auth.credentials.token
 
     end
   end
+
+
+  def self.from_insta_omniauth(auth)
+
+    where(uid: auth.uid).first_or_create! do |user|
+
+      user.email =auth.info.nickname+ "@instagram.com"
+      user.password = Devise.friendly_token[0,20]
+      user.username = auth.info.nickname
+      user.name = auth.info.name
+      user.instatoken = auth.credentials.token
+
+    end
+  end
+
 
   def self.new_with_session(params, session)
     super.tap do |user|
