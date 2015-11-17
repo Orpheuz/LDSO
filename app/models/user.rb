@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
 
   validates_format_of :username, with: /\A[a-zA-Z0-9_\.]*\Z/
 
-  validates_format_of :name, with: /\A[a-zA-Z\.\s]*\Z/
+  #validates_format_of :name, with: /\A[a-zA-Z\.\s]*\Z/
 
   attr_accessor :login
 

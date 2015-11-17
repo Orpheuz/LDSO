@@ -54,3 +54,6 @@ gem 'sunspot_rails'
 gem 'sunspot_solr'
 gem 'friendly_id', '~> 5.1.0'
 gem "koala", "~> 2.2"
+gem 'instagram'
+
+gem 'omniauth-oauth2', "1.3.1"
