@@ -27,9 +27,7 @@ class SearchController < ApplicationController
 
           recipes = Array.new
           @tags.each do |tag|
-            RecipeTagAssociation.where(tag_id: tag.id).each do |rta|
-              recipes.push(Recipe.find(rta.recipe_id))
-            end
+            recipes.concat tag.recipes
           end
 
           @recipes = recipes

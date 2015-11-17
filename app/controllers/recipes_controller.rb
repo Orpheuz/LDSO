@@ -32,7 +32,7 @@
           @temp = params[:CN][categoryN].to_f
           @category = Category.find(@temp)
           if @recipe.save
-            @category.recipes << @recipe
+            @recipe.categories << @category
           else
             render :new
           end

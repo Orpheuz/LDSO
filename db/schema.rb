@@ -40,12 +40,12 @@ ActiveRecord::Schema.define(version: 20151114193915) do
 
   create_table "categories_to_recipes", force: :cascade do |t|
     t.integer  "recipe_id"
-    t.integer  "categories_id"
+    t.integer  "category_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "categories_to_recipes", ["categories_id"], name: "index_categories_to_recipes_on_categories_id"
+  add_index "categories_to_recipes", ["category_id"], name: "index_categories_to_recipes_on_category_id"
   add_index "categories_to_recipes", ["recipe_id"], name: "index_categories_to_recipes_on_recipe_id"
 
   create_table "ingredient_recipe_associations", force: :cascade do |t|
