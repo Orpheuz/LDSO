@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :home
   resources :category
   resources :recipes do
+    resources :comments
     put :bookmark, on: :member
   end
 
