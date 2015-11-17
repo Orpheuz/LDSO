@@ -1,8 +1,9 @@
 class Recipe < ActiveRecord::Base
 
   searchable do
-    text :name, :as => :code_textp
+    text :name
     integer :time
+    integer :id
   end
 
 
