@@ -8,8 +8,8 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :slug              , unique: true
       t.string :lastname
       t.string :uid
-      t.string :provider
-      t.string :token
+      t.string :fbtoken
+      t.string :instatoken
 
 
       ## Recoverable
