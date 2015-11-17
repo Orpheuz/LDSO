@@ -15,7 +15,8 @@
     def new
       @recipe=Recipe.new
       gon.push({
-                   :categories => Category.all
+                   :categories => Category.all,
+                   :current_user => current_user
                })
     end
 

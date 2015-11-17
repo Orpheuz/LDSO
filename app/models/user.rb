@@ -58,6 +58,7 @@ class User < ActiveRecord::Base
       user.email =auth.info.nickname+ "@instagram.com"
       user.password = Devise.friendly_token[0,20]
       user.username = auth.info.nickname
+      user.uid =  auth.uid
       user.name = auth.info.name
       user.instatoken = auth.credentials.token
 

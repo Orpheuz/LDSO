@@ -12,8 +12,27 @@ categoryN = 1
 
 
 $(document).ready ->
+
+  $("body").on "click", ".open_modal",(event) -> 
+    $.ajax
+      url: "https://api.instagram.com/v1/users/"+ gon.current_user.uid+"/media/recent?access_token="+gon.current_user.instatoken
+      dataType: "jsonp"
+      success: (data, textStatus, jqXHR) ->
+        $("#modal_"+event.target.id).html data.meta.code
+
+
   $("#add_step").on "click", ->
-    $('#add_step').before '<div  name=\'S[]\'><legend>Step: <span class="number"> ' + stepN + '\ </span>  </legend><input required type=\'text\' class=\'step\' placeholder=\'Title for step ' + stepN + '\' name= \'SN[]\' id= \'SN' + stepN + '\'/><textarea required type=\'text\' class=\'step\' placeholder=\'Describe step ' + stepN + '\' name= \'S[]\' id= \'S' + stepN + '\'/></div>'
+    $('#add_step').before '<div  name=\'S[]\'><legend>Step: <span class="number"> ' + stepN + '\ </span> <div class="btn btn-default open_modal" data-toggle="modal" data-target="#Modal' + stepN + '" id ="' + stepN + '" >Add Instagram content</div>  <div class="modal fade" id="Modal' + stepN + '" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Select a photo</h4>
+        </div>
+        <div class="modal-body" id="modal_' + stepN + '">
+        </div>
+      </div>
+    </div>
+  </div></legend><input required type=\'text\' class=\'step\' placeholder=\'Title for step ' + stepN + '\' name= \'SN[]\' id= \'SN' + stepN + '\'/><textarea required type=\'text\' class=\'step\' placeholder=\'Describe step ' + stepN + '\' name= \'S[]\' id= \'S' + stepN + '\'/></div>'
     stepN++
   $("#add_category").on "click", ->
     i = 0
