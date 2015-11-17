@@ -1,3 +1,17 @@
+
+
+<div class="list-group panel col-md-1" id="cat-bar">
+  <a href="#cats" class="list-group-item list-group-item-success" id="cat_men" data-toggle="collapse" >Categories</a>
+  <div class="collapse" id="cats">
+    <% @categories.each do |category| %>
+    <a href="javascript:;" class="list-group-item cat_name">
+      <%=category.name %>
+    </a>
+    <% end %>
+  </div>
+</div>
 </br>
 </br>
 <h1> Homepage </h1>
+</br>
+</br>

@@ -2,6 +2,8 @@
     def show
       @recipe = Recipe.find(params[:id])
       @ingredients = @recipe.ingredients
+      @comments=@recipe.comments
+      @comment=Comment.new(:recipe_id=>@recipe.id)
       if(current_user)
         @bookmark_visible=true
         if Bookmark.exists?(recipe_id: params[:id], user_id: current_user.id)

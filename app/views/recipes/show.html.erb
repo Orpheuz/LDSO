@@ -34,5 +34,59 @@
       <p><%= @recipe.description %></p>
       <%= link_to "Start cooking", steps_path(params[:id]), class: 'btn btn-success', id:'recipe-btn' %>
     </div>
+
+
+
+
   </div>
+
+  <br />
+  <br />
+  <br />
+  <br />
+  <link type="text/css" rel="stylesheet" href="dreamcodes/comment_boxes/css/tsc_comment_boxes.css" />
+
+
+  <!-- Comments Form -->
+  <div class="well">
+    <h4>Leave a Comment:</h4>
+    <%= form_for([@recipe, @comment]) do |f| %>
+        <div class="form-group">
+          <textarea class="form-control" rows="3" name="text"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    <% end %>
+
+  </div>
+
+  <hr>
+
+  <br />
+
+  <% if @comments.present? %>
+
+      <% @comments.each do |comment|
+        user=User.find(comment.user_id)%>
+
+          <div class="media">
+            <a class="pull-left" href="#">
+              <img class="media-object img-circle avatar avatar-original" style="-webkit-user-select:none;
+                      display:block; margin:auto;" src="http://cdn.overclock.net/a/a0/120x120px-LS-a0ae1256_avatar95329_4.jpeg"  alt="">
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading"><legend> <%= link_to user.username, userpage_path(comment.user_id) %> said:</legend>
+
+              </h4>
+              <%= comment.comment_text %>
+              <h4 class="media-heading pull-right"><small> <%= comment.created_at.strftime("%B %d, %Y, %A, %H:%M:%S") %> </small></h4>
+            </div>
+          </div>
+
+      <% end %>
+
+  <% end %>
+
+
+
+
 </div>
