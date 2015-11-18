@@ -4,14 +4,14 @@
   <a href="#cats" class="list-group-item list-group-item-success" id="cat_men" data-toggle="collapse" >Categories</a>
   <div class="collapse" id="cats">
     <% @categories.each do |category| %>
-    <a href="javascript:;" class="list-group-item cat_name">
-      <%=category.name %>
-    </a>
+
+      <%=link_to category.name , category ,class: "list-group-item cat_name"  %>
+
     <% end %>
   </div>
 </div>
-</br>
-</br>
-<h1> Homepage </h1>
-</br>
-</br>
+
+<div class="col-md-10 ">
+  <h1> Homepage </h1>
+
+</div>

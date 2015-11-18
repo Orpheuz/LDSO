@@ -1,4 +1,11 @@
 class CategoryController < ApplicationController
+
+  def show
+    @categories = Category.all
+    @category = Category.find(params[:id])
+    @recipes = @category.recipes
+  end
+
   def index
     @categories = Category.all
     gon.push({

@@ -9,16 +9,18 @@
 }
 
 #cat-bar{
-  position: fixed;
   visibility: hidden;
+
 }
 #cat-bar > a{
+  border:0;
   visibility: visible;
-  background-color: #696969;
+  background-color: #333333;
   color: #ffffff;
 }
 #cat-bar div a{
+  border:0;
   visibility: visible;
-  background-color: #335332;
+  background-color: #a4afab;
   color: #ffffff;
 }
