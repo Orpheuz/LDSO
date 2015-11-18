@@ -2,9 +2,9 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @ingredients = @recipe.ingredients
-    @reviews=@recipe.comments.where(type: 'Review')
-    @suggestions=@recipe.comments.where(type: 'Suggestion')
-    @tips=@recipe.comments.where(type: 'Tip')
+    @reviews=@recipe.comments.where(typen: 'Review')
+    @suggestions=@recipe.comments.where(typen: 'Suggestion')
+    @tips=@recipe.comments.where(typen: 'Tip')
     @comment=Comment.new(:recipe_id=>@recipe.id)
     @author=User.find(@recipe.user_id)
     if(current_user)

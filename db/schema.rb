@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20151116193912) do
     t.integer  "user_id"
     t.integer  "recipe_id"
     t.text     "comment_text"
-    t.text     "type"
+    t.text     "typen"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
@@ -156,8 +156,8 @@ ActiveRecord::Schema.define(version: 20151116193912) do
     t.string   "slug"
     t.string   "lastname"
     t.string   "uid"
-    t.string   "provider"
-    t.string   "token"
+    t.string   "fbtoken"
+    t.string   "instatoken"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
