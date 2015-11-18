@@ -97,10 +97,32 @@
                   <h4 class="media-heading"><legend> <%= link_to user.username, userpage_path(review.user_id) %> said:</legend>
 
                   </h4>
-                  <%= review.comment_text %>
-                  <h4 class="media-heading pull-right"><small> <%= review.created_at.strftime("%B %d, %Y, %A, %H:%M:%S") %> </small></h4>
+                  <div class="bubble">
+
+                  <p><%= review.comment_text %></p>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                      <div class="commentstats">
+                        <ul class=>
+                          <li>
+                            <div id="rating-col" class="media pull-left ">
+                              <h4 class="media-heading "><small> Rating: <%= rating_for Comment.find(review.id), "points" %></small></h4>
+                            </div>
+                          </li>
+                          <li>
+                            <h4 class="media-heading pull-right"><small> <%= review.created_at.strftime("%B %d, %Y, %H:%M:%S") %> </small></h4>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 </div>
+                <br/>
+
               </div>
+              <br/>
+
 
           <% end %>
 
@@ -140,8 +162,26 @@
                   <h4 class="media-heading"><legend> <%= link_to user.username, userpage_path(suggestion.user_id) %> said:</legend>
 
                   </h4>
-                  <%= suggestion.comment_text %>
-                  <h4 class="media-heading pull-right"><small> <%= suggestion.created_at.strftime("%B %d, %Y, %A, %H:%M:%S") %> </small></h4>
+                  <div class="bubble">
+                  <p><%= suggestion.comment_text %></p>
+                  </div>
+
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                      <div class="commentstats">
+                        <ul class=>
+                          <li>
+                            <div id="rating-col" class="media pull-left ">
+                              <h4 class="media-heading "><small> Rating: <%= rating_for Comment.find(suggestion.id), "points" %></small></h4>
+                            </div>
+                          </li>
+                          <li>
+                            <h4 class="media-heading pull-right"><small> <%= suggestion.created_at.strftime("%B %d, %Y, %H:%M:%S") %> </small></h4>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
@@ -183,14 +223,32 @@
                   <h4 class="media-heading"><legend> <%= link_to user.username, userpage_path(tip.user_id) %> said:</legend>
 
                   </h4>
-                  <%= tip.comment_text %>
-                  <h4 class="media-heading pull-right"><small> <%= tipr.created_at.strftime("%B %d, %Y, %A, %H:%M:%S") %> </small></h4>
+                  <div class="bubble">
+                  <p><%= tip.comment_text %></p>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                      <div class="commentstats">
+                        <ul class=>
+                          <li>
+                            <div id="rating-col" class="media pull-left ">
+                              <h4 class="media-heading "><small> Rating: <%= rating_for Comment.find(tip.id), "points" %></small></h4>
+                            </div>
+                          </li>
+                          <li>
+                            <h4 class="media-heading pull-right"><small> <%= tip.created_at.strftime("%B %d, %Y, %H:%M:%S") %> </small></h4>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
 
           <% end %>
 
       <% end %>
+
     </section>
 
     <section id="content4">

@@ -5,6 +5,7 @@ class CreateSteps < ActiveRecord::Migration
       t.integer :stepnumber
       t.string :name
       t.text :description
+      t.text :media
       t.timestamps
     end
   end

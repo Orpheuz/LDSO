@@ -52,9 +52,10 @@
         <hr>
         <div class="row">
           <div class="col-md-12 lead">Badges <hr></div>
+          <center> <%= image_tag("http://orig02.deviantart.net/290f/f/2009/150/1/8/valmio_gym_badges_big_version_by_pokemon_diamond.png") %> </center>
         </div>
         <div class="row">
-          <div class="col-md-12 lead">Recipes<hr></div>
+        <div class="col-md-12 lead">Recipes<hr></div>
           <% @recipes.each do |recipe| %>
           <%= div_for recipe, :class => "row" do %>
           <h1> <%= recipe.name %> </h1> <br>

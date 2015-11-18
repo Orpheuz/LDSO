@@ -12,6 +12,10 @@ IngredientN = 1
 
 $(document).ready ->
 
+  $("body").on "click", ".modal-image",(event) -> 
+    $("#SM_"+event.target.id).attr 'value', event.target.src
+    $('#Modal'+event.target.id).modal 'hide'
+
   $("body").on "click", ".open_modal",(event) -> 
     $.ajax
       url: "https://api.instagram.com/v1/users/self/media/recent?access_token="+gon.current_user.instatoken
@@ -20,7 +24,7 @@ $(document).ready ->
         i = 0
         $("#modal-body_"+event.target.id).html '<div id="modal_'+event.target.id+'"> </div>'
         while i < result.data.length
-          $("#modal_"+event.target.id).before '<div class="col-md-4"><div class="thumbnail" ><img  style="width:150px;height:150px" src="'+result.data[i].images.standard_resolution.url+'"></div></div>'
+          $("#modal_"+event.target.id).before '<div class="col-md-4"><div class="thumbnail" ><img id="'+event.target.id+'"class="modal-image" style="width:150px;height:150px" src="'+result.data[i].images.standard_resolution.url+'"></div></div>'
           i++
 
 
@@ -38,8 +42,9 @@ $(document).ready ->
         </div>
       </div>
     </div>
-  </div></legend><input required type=\'text\' class=\'step\' placeholder=\'Title for step ' + stepN + '\' name= \'SN[]\' id= \'SN' + stepN + '\'/><textarea required type=\'text\' class=\'step\' placeholder=\'Describe step ' + stepN + '\' name= \'S[]\' id= \'S' + stepN + '\'/></div>'
+  </div></legend><input type="hidden" value="NaN" name="SM[]" id= "SM_' + stepN + '"/><input required type=\'text\' class=\'step\' placeholder=\'Title for step ' + stepN + '\' name= \'SN[]\' id= \'SN' + stepN + '\'/><textarea required type=\'text\' class=\'step\' placeholder=\'Describe step ' + stepN + '\' name= \'S[]\' id= \'S' + stepN + '\'/></div>'
     stepN++
+
   $("#add_category").on "click", ->
     i = 0
     while i < gon.categories.length

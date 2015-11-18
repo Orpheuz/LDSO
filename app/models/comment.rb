@@ -1,7 +1,4 @@
 class Comment < ActiveRecord::Base
   belongs_to :recipe
+  ratyrate_rateable "points"
 end
-
-class Review < Comment; end
-class Suggestion < Comment; end
-class Tip < Comment; end
