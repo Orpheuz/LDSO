@@ -39,8 +39,9 @@ $(document).ready ->
         </div>
       </div>
     </div>
-  </div></legend><input required type=\'text\' class=\'step\' placeholder=\'Title for step ' + stepN + '\' name= \'SN[]\' id= \'SN' + stepN + '\'/><textarea required type=\'text\' class=\'step\' placeholder=\'Describe step ' + stepN + '\' name= \'S[]\' id= \'S' + stepN + '\'/></div>'
+  </div></legend><input type="hidden" value="NaN" name="SM[]" id= "SM' + stepN + '"/><input required type=\'text\' class=\'step\' placeholder=\'Title for step ' + stepN + '\' name= \'SN[]\' id= \'SN' + stepN + '\'/><textarea required type=\'text\' class=\'step\' placeholder=\'Describe step ' + stepN + '\' name= \'S[]\' id= \'S' + stepN + '\'/></div>'
     stepN++
+
   $("#add_category").on "click", ->
     i = 0
     while i < gon.categories.length
@@ -66,7 +67,7 @@ $(document).ready ->
     $("#bookmark_ico").first().addClass('fa-spinner fa-pulse').removeClass('fa-bookmark');
 
   $("body").on "click", ".SIResult",(event) ->
-    $('#ingredients-input').before 'fds'
+    $('#search-result').append 'fds'
 
   $("#ingredients-input").keyup ->
     tempValue = $(this).val()
