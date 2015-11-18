@@ -66,7 +66,7 @@ $(document).ready ->
     $("#bookmark_ico").first().addClass('fa-spinner fa-pulse').removeClass('fa-bookmark');
 
   $("body").on "click", ".SIResult",(event) ->
-    $('#search-result').append 'fds'
+    $('#ingredients-input').before 'fds'
 
   $("#ingredients-input").keyup ->
     tempValue = $(this).val()

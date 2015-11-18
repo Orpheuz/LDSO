@@ -1,17 +1,16 @@
-  class RecipesController < ApplicationController
-    def show
-      @recipe = Recipe.find(params[:id])
-      @ingredients = @recipe.ingredients
-      @reviews=@recipe.comments.where(type: 'Review')
-      @suggestions=@recipe.comments.where(type: 'Suggestion')
-      @tips=@recipe.comments.where(type: 'Tip')
-      @comment=Comment.new(:recipe_id=>@recipe.id)
-      @author=User.find(@recipe.user_id)
-      if(current_user)
-        @bookmark_visible=true
-        if Bookmark.exists?(recipe_id: params[:id], user_id: current_user.id)
-          @bookmark_visible=false
-        end
+class RecipesController < ApplicationController
+  def show
+    @recipe = Recipe.find(params[:id])
+    @ingredients = @recipe.ingredients
+    @reviews=@recipe.comments.where(type: 'Review')
+    @suggestions=@recipe.comments.where(type: 'Suggestion')
+    @tips=@recipe.comments.where(type: 'Tip')
+    @comment=Comment.new(:recipe_id=>@recipe.id)
+    @author=User.find(@recipe.user_id)
+    if(current_user)
+      @bookmark_visible=true
+      if Bookmark.exists?(recipe_id: params[:id], user_id: current_user.id)
+        @bookmark_visible=false
       end
     end
   end
@@ -25,14 +24,24 @@
   end
 
   def search
-      @search = Ingredient.search do
-        fulltext params[:ingredients] do
-          fields(:name)
-        end
+    @search = Ingredient.search do
+      fulltext params[:ingredients] do
+        fields(:name)
       end
-      @ingredients = @search.results
+    end
+    @ingredients = @search.results
   end
 
+
+  def create
+
+    @recipe = current_user.recipes.create(name: params[:recipe][:name], description: params[:recipe][:description])
+    stepID=0
+    categoryN = 0
+    while params[:S][stepID].present? do
+      @step= @recipe.steps.create(name: params[:SN][stepID], description: params[:S][stepID],stepnumber: stepID+1)
+      stepID=stepID+1
+    end
 
     if params[:CN].present?
       while params[:CN][categoryN].present? do
@@ -85,14 +94,15 @@
       else
         flash[:error] = "The user you tried to access doesn't exist."
         redirect_to root_url
+        endto '/'
       end
     end
-  end
 
 
-  private
+    private
 
-  def recipe_params
-    params.require(:recipe).permit(:name, :description)
+    def recipe_params
+      params.require(:recipe).permit(:name, :description)
+    end
   end
 end
