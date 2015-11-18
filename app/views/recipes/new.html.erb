@@ -5,7 +5,10 @@
               <legend><span class="number">2</span>Recipe description</legend>
               <%= f.text_area :description, size: "60x12", :required => true %><br />
               <legend><span class="number">3</span> Tags</legend>
-              <input name="tags" id="taginput"><br />
+              <input name="tags" id="taginput" class="recipe-form"><br />
+              <legend><span class="number">4</span> Ingredients</legend>
+              <input name="ingredients" id="ingredients-input" class="recipe-form"><br />
+              <div id="search-result"></div>
               <button type="button" class="btn-md" id="add_step">Add step</button>
               <button type="button" class="btn-md" id="add_category">Add category</button>
               <div class="actions">

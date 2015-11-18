@@ -1,0 +1,42 @@
+<% @ingredients.each do |ing|%>
+    <div id="all-ingredients">
+      <%= ing.name %>
+      <%= ing.calories %>
+    </div>
+<% end %>
+
+
+<%= form_tag ingredient_path, :method => :get do %>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="input-group">
+          <div class="input-group-btn">
+            <%= hidden_field_tag 'SCN' ,'Name' %>
+            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="search-choice-btn">Name</button>
+            <ul class="dropdown-menu">
+              <li><a href="#" id="search-choice-opt" class="search-choice">Tag</a></li>
+            </ul>
+          </div><!-- /btn-group -->
+          <%= text_field_tag :ingredientsinput, params[:cenas], class: "form-control"%>
+        </div>
+      </div>
+      <div class="col-xs-3">
+        <%= number_field_tag(:number, params[:number],:value =>60, in: 0.0..500.0, step: 1, class: "form-control") %>
+      </div>
+      <%= submit_tag "Search", :name => nil,class: "btn btn-default" %>
+    </div>
+<% end %>
+<div id="facets">
+  <h3>Recipes</h3>
+  <ul>
+    <% @ingredients.each do |ingredient| %>
+        <li>
+          <strong>
+            <%= ingredient.name %>
+          </strong>
+          <%= ingredient.calories %>
+        </li>
+    <% end %>
+  </ul>
+</div>

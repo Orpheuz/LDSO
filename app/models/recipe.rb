@@ -3,7 +3,6 @@ class Recipe < ActiveRecord::Base
   searchable do
     text :name
     integer :time
-    integer :id
   end
 
 

@@ -22,7 +22,7 @@ $(document).ready ->
         $("#add_category").before '<button type="button" class="btn btn-primary btn-xs cat" id="cat-'+i+'" value="' + gon.categories[i].name + '">'+gon.categories[i].name+'</button>'
       i++
 
-  $("body").on "click", ".cat",(event) -> 
+  $("body").on "click", ".cat",(event) ->
     $('#' + event.target.id).toggleClass 'cat chosen-cat'
     realID = parseInt(event.target.id.slice(4)) + 1
     catValue=$('#' + event.target.id).attr 'value'
@@ -38,6 +38,21 @@ $(document).ready ->
       return false
   $("#book-btn").on "click", ->
     $("#bookmark_ico").first().addClass('fa-spinner fa-pulse').removeClass('fa-bookmark');
+
+  $("body").on "click", ".SIResult",(event) ->
+    $('#search-result').append 'fds'
+
+  $("#ingredients-input").keyup ->
+    tempValue = $(this).val()
+    $.ajax
+      url: '/recipe/ingredients'
+      type: 'post'
+      data: ingredients: tempValue
+      success: (response) ->
+        ing=$(response).find('#div-ing').html()
+        $('#search-result').html ing
+
+
 
   return
 

@@ -1,0 +1,6 @@
+
+<% @ingredients.each do |ing| %>
+    <div id="div-ing">
+      <a class="SIResult" id="ing-' + <%= ing.id %> + '"href=""><%= ing.name %>  <%= ing.calories %> Calories</a>
+    </div>
+<% end %>

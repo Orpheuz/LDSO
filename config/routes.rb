@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   post '/category/new' => 'category#create'
   get '/search/' => 'search#index', :as => 'search'
+  get '/ingredient/' => 'ingredients#index', :as => 'ingredient'
+  post '/recipe/ingredients/' => 'recipes#search'
 
   post '/rate' => 'rater#create', :as => 'rate'
   resources :dashboard
@@ -15,9 +17,9 @@ Rails.application.routes.draw do
   get '/users/:id/bookmarks' => 'recipes#viewbookmarks', as: :bookmarks
 
   post '/recipes/new' => 'recipes#create'
-  root to: "home#index"
+  root to: 'home#index'
 
-  devise_for :users, :controllers => {:omniauth_callbacks => "users/omniauth_callbacks"}
+  devise_for :users, :controllers => {:omniauth_callbacks => 'users/omniauth_callbacks'}
 
   get '/users/:id' => 'users#show', :as => :userpage
 
