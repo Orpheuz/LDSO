@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
 
   def create
     @recipe = Recipe.find(params[:recipe_id])
-    @comment = @recipe.comments.create(comment_text: params[:text], user_id: current_user.id)
+    @comment = @recipe.comments.create(comment_text: params[:text], user_id: current_user.id, type: params[:typecom])
     redirect_to @recipe
   end
 

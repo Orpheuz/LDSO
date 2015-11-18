@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(version: 20151116193912) do
     t.integer  "user_id"
     t.integer  "recipe_id"
     t.text     "comment_text"
+    t.text     "type"
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end

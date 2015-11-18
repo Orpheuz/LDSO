@@ -2,7 +2,9 @@
     def show
       @recipe = Recipe.find(params[:id])
       @ingredients = @recipe.ingredients
-      @comments=@recipe.comments
+      @reviews=@recipe.comments.where(type: 'Review')
+      @suggestions=@recipe.comments.where(type: 'Suggestion')
+      @tips=@recipe.comments.where(type: 'Tip')
       @comment=Comment.new(:recipe_id=>@recipe.id)
       if(current_user)
         @bookmark_visible=true
