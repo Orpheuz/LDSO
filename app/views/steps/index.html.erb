@@ -19,7 +19,9 @@
               </div>
               <div id="collapse<%=step.stepnumber%>" class="panel-collapse collapse <%= if step.stepnumber == 1 then 'in' end%>" role="tabpanel" aria-labelledby="heading<%=step.stepnumber%>">
                 <div class="panel-body">
-                  <%= image_tag(step.media, :class => "recipe-step-image", :style =>"") %>
+                  <%if step.media != "NaN" %>
+                    <%= image_tag(step.media, :class => "recipe-step-image", :style =>"") %>
+                    <%end%>
                   <%= step.description %>
                   <br>
                   <br>
