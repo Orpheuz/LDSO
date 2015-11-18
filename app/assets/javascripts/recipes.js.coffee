@@ -8,8 +8,7 @@
 
 stepN = 1
 categoryN = 1
-
-
+IngredientN = 1
 
 $(document).ready ->
 
@@ -66,7 +65,12 @@ $(document).ready ->
     $("#bookmark_ico").first().addClass('fa-spinner fa-pulse').removeClass('fa-bookmark');
 
   $("body").on "click", ".SIResult",(event) ->
-    $('#ingredients-input').before 'fds'
+    IngID = event.target.id.slice(4)
+    $('#sel-ingredients').append '<span id="span-sel-ing">' + ($(event.target).data 'name') + '  </span>'
+    $('#ingredients-input').before '<input type="hidden" name="IN[]" id="IN' + IngredientN + '" value="' + IngID + '">'
+    $(event.target).remove()
+    $('#ingredients-input').val ''
+    IngredientN++
 
   $("#ingredients-input").keyup ->
     tempValue = $(this).val()

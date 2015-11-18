@@ -37,13 +37,14 @@ class RecipesController < ApplicationController
 
     @recipe = current_user.recipes.create(name: params[:recipe][:name], description: params[:recipe][:description])
     stepID=0
-    categoryN = 0
+
     while params[:S][stepID].present? do
       @step= @recipe.steps.create(name: params[:SN][stepID], description: params[:S][stepID],stepnumber: stepID+1)
       stepID=stepID+1
     end
 
     if params[:CN].present?
+      categoryN = 0
       while params[:CN][categoryN].present? do
         @temp = params[:CN][categoryN].to_f
         @category = Category.find(@temp)
@@ -53,6 +54,20 @@ class RecipesController < ApplicationController
           render :new
         end
         categoryN=categoryN+1
+      end
+    end
+
+    if params[:IN].present?
+      ingredientN = 0
+      while params[:IN][ingredientN].present? do
+        @temp = params[:IN][ingredientN].to_f
+        @ingredient = Ingredient.find(@temp)
+        if @recipe.save
+          @recipe.ingredients << @ingredient
+        else
+          render :new
+        end
+        ingredientN=ingredientN+1
       end
     end
 

@@ -1,6 +1,6 @@
 
 <% @ingredients.each do |ing| %>
     <div id="div-ing">
-      <div class="SIResult btn btn-default" id="ing-' + <%= ing.id %> + '"href=""><%= ing.name %>  <%= ing.calories %> Calories</div>
+      <div class="SIResult btn btn-default" data-name="<%= ing.name %>" id="ing-<%= ing.id %>"href=""><%= ing.name %>  <%= ing.calories %> Calories</div>
     </div>
 <% end %>
