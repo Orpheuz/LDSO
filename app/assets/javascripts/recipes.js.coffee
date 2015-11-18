@@ -15,10 +15,14 @@ $(document).ready ->
 
   $("body").on "click", ".open_modal",(event) -> 
     $.ajax
-      url: "https://api.instagram.com/v1/users/"+ gon.current_user.uid+"/media/recent?access_token="+gon.current_user.instatoken
+      url: "https://api.instagram.com/v1/users/self/media/recent?access_token="+gon.current_user.instatoken
       dataType: "jsonp"
-      success: (data, textStatus, jqXHR) ->
-        $("#modal_"+event.target.id).html data.meta.code
+      success: (result, textStatus, jqXHR) ->
+        i = 0
+        $("#modal-body_"+event.target.id).html '<div id="modal_'+event.target.id+'"> </div>'
+        while i < result.data.length
+          $("#modal_"+event.target.id).before '<div class="col-md-4"><div class="thumbnail" ><img  style="width:150px;height:150px" src="'+result.data[i].images.standard_resolution.url+'"></div></div>'
+          i++
 
 
   $("#add_step").on "click", ->
@@ -28,7 +32,10 @@ $(document).ready ->
         <div class="modal-header">
           <h4 class="modal-title">Select a photo</h4>
         </div>
-        <div class="modal-body" id="modal_' + stepN + '">
+        <div class="modal-body">
+          <div class="row" id="modal-body_'+stepN+'">
+            <div id="modal_'+stepN+'"> </div>
+          </div>
         </div>
       </div>
     </div>

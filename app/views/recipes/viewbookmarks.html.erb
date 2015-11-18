@@ -1,5 +1,6 @@
 <div class="bookmarks_region" >
 <ul class="rig">
+  <% if @bookmarks.count>0 %>
     <% @bookmarks.each do |bookmark| %>
       <%= link_to recipe_path(bookmark.id),id:'book-btn' do %>
 
@@ -15,5 +16,8 @@
 
       <% end %>
     <% end %>
+  <% else %>
+      <% flash[:alert] = "This user didn't add any bookmarks yet." %>
+  <% end %>
 </ul >
 </div>

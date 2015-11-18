@@ -6,6 +6,7 @@
       @suggestions=@recipe.comments.where(type: 'Suggestion')
       @tips=@recipe.comments.where(type: 'Tip')
       @comment=Comment.new(:recipe_id=>@recipe.id)
+      @author=User.find(@recipe.user_id)
       if(current_user)
         @bookmark_visible=true
         if Bookmark.exists?(recipe_id: params[:id], user_id: current_user.id)
@@ -83,7 +84,8 @@
       if User.exists?(:id => params[:id])
         @bookmarks=Recipe.joins(:bookmarks).where("bookmarks.user_id=?", params[:id])
       else
-        redirect_to '/'
+        flash[:error] = "The user you tried to access doesn't exist."
+        redirect_to root_url
       end
     end
 
