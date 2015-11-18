@@ -19,7 +19,7 @@ class RecipesController < ApplicationController
     @recipe=Recipe.new
     gon.push({
                  :categories => Category.all,
-                 :recing => 'temp'
+                 :current_user => current_user
              })
   end
 
