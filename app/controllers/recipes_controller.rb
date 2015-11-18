@@ -84,7 +84,8 @@
       if User.exists?(:id => params[:id])
         @bookmarks=Recipe.joins(:bookmarks).where("bookmarks.user_id=?", params[:id])
       else
-        redirect_to '/'
+        flash[:error] = "The user you tried to access doesn't exist."
+        redirect_to root_url
       end
     end
 
