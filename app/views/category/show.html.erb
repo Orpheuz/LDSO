@@ -1,0 +1,27 @@
+<div id="main-container-cat">
+
+  <div class="list-group panel col-md-1" id="cat-bar">
+    <a href="#cats" class="list-group-item list-group-item-success" id="cat_men" data-toggle="collapse" ><%= @category.name %></a>
+    <div class="collapse" id="cats">
+      <% @categories.each do |category| %>
+      <% if @category.name == category.name %>
+      <% else %>
+      <%=link_to category.name , category ,class: "list-group-item cat_name"  %>
+      <%end%>
+      <% end %>
+    </div>
+  </div>
+  <div id="results" class ="col-md-6 col-md-offset-2">
+    <h3>Recipes</h3>
+    <ul class="list-group">
+      <% @recipes.each do |recipe| %>
+      <li class="list-group-item">
+        <strong>
+          <%=link_to recipe.name, recipe %>
+        </strong>
+        <%= recipe.description %>
+      </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

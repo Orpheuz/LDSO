@@ -23,6 +23,8 @@ $screen-sm: 992px;
 @import "bootstrap";
 @import url(http://fonts.googleapis.com/css?family=Dosis:700);
 @import url("//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap-glyphicons.css");
+@import url("http://fonts.googleapis.com/css?family=Open+Sans:400,600,700");
+@import url("http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css");
 
 /* mixins, variables, etc. */
 @font-face {
@@ -269,4 +271,36 @@ footer {
     background-color: inherit;
     border-top: 0 none;
   }
+}
+.alert-error {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
+  margin-right: 25%;
+  margin-left: 25%;
+}
+.alert-alert {
+  background-color: #f2dede;
+  border-color: #eed3d7;
+  color: #b94a48;
+  text-align: left;
+  margin-right: 25%;
+  margin-left: 25%;
+}
+.alert-success {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  text-align: left;
+  margin-right: 25%;
+  margin-left: 25%;
+}
+.alert-notice {
+  background-color: #dff0d8;
+  border-color: #d6e9c6;
+  color: #468847;
+  text-align: left;
+  margin-right: 25%;
+  margin-left: 25%;
 }

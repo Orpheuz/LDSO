@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151114193915) do
+ActiveRecord::Schema.define(version: 20151116193912) do
 
   create_table "average_caches", force: :cascade do |t|
     t.integer  "rater_id"
@@ -47,6 +47,18 @@ ActiveRecord::Schema.define(version: 20151114193915) do
 
   add_index "categories_to_recipes", ["category_id"], name: "index_categories_to_recipes_on_category_id"
   add_index "categories_to_recipes", ["recipe_id"], name: "index_categories_to_recipes_on_recipe_id"
+
+  create_table "comments", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "recipe_id"
+    t.text     "comment_text"
+    t.text     "type"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
+  add_index "comments", ["recipe_id"], name: "index_comments_on_recipe_id"
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
   create_table "ingredient_recipe_associations", force: :cascade do |t|
     t.integer  "recipe_id"
@@ -144,8 +156,8 @@ ActiveRecord::Schema.define(version: 20151114193915) do
     t.string   "slug"
     t.string   "lastname"
     t.string   "uid"
-    t.string   "provider"
-    t.string   "token"
+    t.string   "fbtoken"
+    t.string   "instatoken"
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"

@@ -16,6 +16,7 @@ class Recipe < ActiveRecord::Base
   has_many :recipe_tag_associations
   has_many :categories_to_recipes
   ratyrate_rateable "rating"
+  has_many :comments
 
 
 
