@@ -6,6 +6,7 @@
       @suggestions=@recipe.comments.where(type: 'Suggestion')
       @tips=@recipe.comments.where(type: 'Tip')
       @comment=Comment.new(:recipe_id=>@recipe.id)
+      @author=User.find(@recipe.user_id)
       if(current_user)
         @bookmark_visible=true
         if Bookmark.exists?(recipe_id: params[:id], user_id: current_user.id)

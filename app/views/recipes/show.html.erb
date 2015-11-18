@@ -40,6 +40,11 @@
 
   </div>
 
+  <div class="panel panel-default">
+    <div class="panel-body">
+  <legend> Created by: <%= link_to @author.username, userpage_path(@author.id) %> </legend>
+    </div>
+  </div>
   <br />
   <br />
   <br />
@@ -179,7 +184,7 @@
 
                   </h4>
                   <%= tip.comment_text %>
-                  <h4 class="media-heading pull-right"><small> <%= tip.created_at.strftime("%B %d, %Y, %A, %H:%M:%S") %> </small></h4>
+                  <h4 class="media-heading pull-right"><small> <%= tipr.created_at.strftime("%B %d, %Y, %A, %H:%M:%S") %> </small></h4>
                 </div>
               </div>
 
