@@ -6,6 +6,7 @@ class CreateComments < ActiveRecord::Migration
       t.text :comment_text
       t.text :typen
       t.timestamps null: false
+      t.text :media
     end
   end
 

@@ -69,9 +69,25 @@
       <div class="well">
         <h4>Leave a review:</h4>
         <%= form_for([@recipe, @comment]) do |f| %>
+        <div class="btn btn-default open_modal" data-toggle="modal" data-target="#MyModal1" id =""> Add Instagram content</div>
+          <div class="modal fade" id="MyModal1" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Select a photo</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="row" id="modal-body_'+stepN+'">
+                    <div id="modal_'+stepN+'"> </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
             <div class="form-group">
               <textarea class="form-control" rows="3" name="text"></textarea>
             </div>
+            <input id="media" name="media" type="hidden" value="NaN" />
             <input id="tags_list" name="typecom" type="hidden" value="Review" />
             <button type="submit" class="btn btn-primary">Submit</button>
         <% end %>
@@ -134,6 +150,21 @@
       <div class="well">
         <h4>Leave a suggestion:</h4>
         <%= form_for([@recipe, @comment]) do |f| %>
+          <div class="btn btn-default open_modal" data-toggle="modal" data-target="#MyModal2" id =""> Add Instagram content</div>
+          <div class="modal fade" id="MyModal2" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Select a photo</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="row" id="modal-body_'+stepN+'">
+                    <div id="modal_'+stepN+'"> </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
             <div class="form-group">
               <textarea class="form-control" rows="3" name="text"></textarea>
             </div>
@@ -195,6 +226,21 @@
       <div class="well">
         <h4>Leave a tip:</h4>
         <%= form_for([@recipe, @comment]) do |f| %>
+        <div class="btn btn-default open_modal" data-toggle="modal" data-target="#MyModal3" id =""> Add Instagram content</div>
+          <div class="modal fade" id="MyModal3" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h4 class="modal-title">Select a photo</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="row" id="modal-body_'+stepN+'">
+                    <div id="modal_'+stepN+'"> </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
             <div class="form-group">
               <textarea class="form-control" rows="3" name="text"></textarea>
             </div>

@@ -31,10 +31,7 @@ $(document).ready ->
   $("#add_step").on "click", ->
     $('#add_step').before '<div  name=\'S[]\'><legend>Step: <span class="number"> ' + stepN + '\ </span>
         <div class="btn btn-default open_modal" data-toggle="modal" data-target="#Modal' + stepN + '" id ="' + stepN + '" >Add Instagram content</div>
-
-
     <div class="modal fade" id="Modal' + stepN + '" role="dialog">
-
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
