@@ -29,7 +29,12 @@ $(document).ready ->
 
 
   $("#add_step").on "click", ->
-    $('#add_step').before '<div  name=\'S[]\'><legend>Step: <span class="number"> ' + stepN + '\ </span> <div class="btn btn-default open_modal" data-toggle="modal" data-target="#Modal' + stepN + '" id ="' + stepN + '" >Add Instagram content</div>  <div class="modal fade" id="Modal' + stepN + '" role="dialog">
+    $('#add_step').before '<div  name=\'S[]\'><legend>Step: <span class="number"> ' + stepN + '\ </span>
+        <div class="btn btn-default open_modal" data-toggle="modal" data-target="#Modal' + stepN + '" id ="' + stepN + '" >Add Instagram content</div>
+
+
+    <div class="modal fade" id="Modal' + stepN + '" role="dialog">
+
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
@@ -42,7 +47,14 @@ $(document).ready ->
         </div>
       </div>
     </div>
-  </div></legend><input type="hidden" value="NaN" name="SM[]" id= "SM_' + stepN + '"/><input required type=\'text\' class=\'step\' placeholder=\'Title for step ' + stepN + '\' name= \'SN[]\' id= \'SN' + stepN + '\'/><textarea required type=\'text\' class=\'step\' placeholder=\'Describe step ' + stepN + '\' name= \'S[]\' id= \'S' + stepN + '\'/></div>'
+  </div></legend>
+
+  <input type="hidden" value="NaN" name="SM[]" id= "SM_' + stepN + '"/>' +
+        '<input required type=\'text\' class=\'step\' placeholder=\'Title for step ' + stepN + '\' name= \'SN[]\' id= \'SN' + stepN + '\'/>' +
+        '<textarea required type=\'text\' class=\'step\' placeholder=\'Describe step ' + stepN + '\' name= \'S[]\' id= \'S' + stepN + '\'/></div>' +
+        '<label for="inputsm">Time (minutes):</label>' +
+        '<input class="input-sm col-sm-2 col-lg-2 input-xs" value="0" min="0" id="inputsm" name="T[]" type="number">'
+
     stepN++
 
   $("#add_category").on "click", ->
@@ -88,8 +100,11 @@ $(document).ready ->
         $('#search-result').html ing
 
 
+$('.selectpicker').selectpicker()
+  style: 'btn-info'
+  size: 4
 
-  return
+return
 
 
 # ---

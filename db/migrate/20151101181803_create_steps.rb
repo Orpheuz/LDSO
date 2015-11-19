@@ -4,6 +4,7 @@ class CreateSteps < ActiveRecord::Migration
       t.belongs_to :recipe, index: true
       t.integer :stepnumber
       t.string :name
+      t.float :time
       t.text :description
       t.text :media
       t.timestamps

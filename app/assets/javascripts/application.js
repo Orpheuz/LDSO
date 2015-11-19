@@ -17,4 +17,7 @@
 //= require jquery.raty
 //= require jquery.turbolinks
 //= require ratyrate
+//= require jquery-ui
+//= require bootstrap/alert
+//= require bootstrap/dropdown
 //= require_tree .

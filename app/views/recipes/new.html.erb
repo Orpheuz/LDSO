@@ -12,8 +12,19 @@
               <div id="search-result"></div>
               <button type="button" class="btn-md" id="add_step">Add step</button>
               <button type="button" class="btn-md" id="add_category">Add category</button>
+
+              <legend>Difficulty:</legend>
+              <select class="selectpicker" name="difficulty">
+                <option>Easy</option>
+                <option>Average</option>
+                <option>Hard</option>
+              </select>
+
+
               <div class="actions">
               <%= f.submit "Create recipe", :id => 'create' %>
             </div>
         <% end %>
         </div>
+
+
