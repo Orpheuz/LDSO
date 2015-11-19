@@ -3,6 +3,7 @@ class Recipe < ActiveRecord::Base
   searchable do
     text :name
     integer :time
+    string :difficulty
   end
 
 

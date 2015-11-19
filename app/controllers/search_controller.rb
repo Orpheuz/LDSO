@@ -9,10 +9,10 @@ class SearchController < ApplicationController
           end
           if(params[:number])
             without(:time).greater_than(params[:number][0])
+            with(:difficulty).any_of([params[:difficulty]])
           end
           params.delete :number
           order_by :time, :asc
-          paginate :per_page => 15
         end
         @recipes = @search.results
       else
@@ -21,7 +21,12 @@ class SearchController < ApplicationController
             fulltext params[:search] do
               fields(:name)
             end
-            paginate :per_page => 15
+            if(params[:number])
+              without(:time).greater_than(params[:number][0])
+              with(:difficulty).any_of([params[:difficulty]])
+            end
+            params.delete :number
+            order_by :time, :asc
           end
           @tags = @search.results
 
