@@ -1,10 +1,9 @@
 language: ruby
 rvm:
   - 2.2.3
-  - ruby-head
 notifications:
   slack: superldso:rcBWVLO1AxWgdF9sA19AoyCG
 script:
   - bundle install
   - rake db:drop
-  - rake db:migrate 
+  - rake db:migrate
