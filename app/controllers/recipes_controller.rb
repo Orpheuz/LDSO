@@ -106,8 +106,6 @@ class RecipesController < ApplicationController
       bookmark.destroy
       redirect_to :back
     end
-  end
-
 
     def viewbookmarks
       if User.exists?(:id => params[:id])
@@ -126,3 +124,4 @@ class RecipesController < ApplicationController
       params.require(:recipe).permit(:name, :description)
     end
   end
+end

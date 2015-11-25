@@ -4,3 +4,7 @@ rvm:
   - ruby-head
 notifications:
   slack: superldso:rcBWVLO1AxWgdF9sA19AoyCG
+script:
+  - bundle install
+  - rake db:drop
+  - rake db:migrate 
