@@ -21,6 +21,12 @@ Rails.application.routes.draw do
   root to: 'home#index'
 
   devise_for :users, :controllers => {:omniauth_callbacks => 'users/omniauth_callbacks'}
+  resources :users do
+    member do
+      get :follow
+      get :unfollow
+    end
+  end
 
   get '/users/:id' => 'users#show', :as => :userpage
 

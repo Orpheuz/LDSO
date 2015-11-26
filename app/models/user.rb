@@ -38,6 +38,8 @@ class User < ActiveRecord::Base
 
   has_many :recipes
   has_many :bookmarks
+  acts_as_follower
+  acts_as_followable
 
   def self.from_fb_omniauth(auth)
     where(uid: auth.uid).first_or_create! do |user|
