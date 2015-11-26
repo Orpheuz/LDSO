@@ -7,3 +7,7 @@ script:
   - bundle install
   - rake db:drop
   - rake db:migrate
+  - rake sunspot:solr:start
+  - rake sunspot:solr:reindex
+  - rake db:seed
+  - rake sunspot:solr:stop
