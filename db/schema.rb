@@ -169,6 +169,8 @@ ActiveRecord::Schema.define(version: 20151126101109) do
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "name"
+    t.string   "gender"
+    t.date     "birth"
     t.string   "slug"
     t.string   "lastname"
     t.string   "uid"
