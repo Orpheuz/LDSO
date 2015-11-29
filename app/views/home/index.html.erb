@@ -14,3 +14,26 @@
   <h1> Homepage </h1>
 
 </div>
+<div class ='list-group col-md-12'>
+
+<% if current_user %>
+<% @users.each do |user| %>
+<% user.recipes.each do |recipe| %>
+<%=link_to recipe.name,recipe,class: "list-group-item" %>
+<% end %>
+
+<% end %>
+<% end %>
+</div>
+<div class ='list-group col-md-12'>
+
+<% if current_user %>
+<% @comments.each do |com| %>
+
+<div class: "list-group-item">
+
+  <%= com.typen   %>
+</div>
+<% end %>
+<% end %>
+</div>
