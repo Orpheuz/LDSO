@@ -10,7 +10,7 @@
    <div class="col-md-3">
      <img src="http://www.johndoe.pro/img/John_Doe.jpg" class="img-responsive img-thumbnail" />
      <br/>
-     <% if current_user %>
+     <% if @user != current_user %>
      <% if  @followable %>
      <%= link_to "Follow", follow_user_path(@user.id), class: "btn btn-primary center-block"%>
      <% else %>
@@ -33,7 +33,7 @@
       <a href="#" class="btn btn-danger" >Google <i class="glyphicon glyphicon-play"></i></a>
       <a href="#" class="btn btn-info" >Twitter <i class="glyphicon glyphicon-play"></i></a>
       <% if user_signed_in? %>
-      <% if current_user.username = @user.username %>
+      <% if @user == current_user %>
       <%= link_to raw("<i class=\"glyphicon glyphicon-pencil\"></i>  Edit"), edit_user_registration_path, class: "btn btn-default pull-right pull-down" %>
       <br>
       <% end %>
