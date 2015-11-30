@@ -6,6 +6,9 @@
      <br />
    </div>
  </div>
+ <% if @user.private? && @user != current_user %>
+ <h2 style="align=center"> This user's profile is private :( </h2>
+ <% else %>
  <div class="row " style="padding-bottom:50px; ">
    <div class="col-md-3">
      <img src="http://www.johndoe.pro/img/John_Doe.jpg" class="img-responsive img-thumbnail" />
@@ -48,7 +51,11 @@
    <h3>About me:</h3>  
    <hr />
    <p>
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris ac nisl tempus, sollicitudin elit vel, pellentesque lorem. Maecenas hendrerit laoreet lectus a feugiat. Nunc sodales id ipsum ut maximus. Morbi pellentesque quis diam nec ullamcorper. Nulla facilisi. Donec non nunc augue. Integer tincidunt consequat porta.
+    <% if @user.about? %>
+    <%= @user.about %>
+    <% else %>
+    About me not complete yet.
+    <% end %>
   </p>
 
 </div>
@@ -74,3 +81,4 @@
   <% end %>
 </div>
 </div>
+<% end %>

@@ -20,6 +20,15 @@
     <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
     <%= f.password_field :current_password, autocomplete: "off", class: 'form-control'%>
 
+    <%= f.label :about %><br />
+    <%= f.text_area :about, size: "60x12", class: 'form-control' %> <br />
+    <br />
+
+    <%= f.label 'Privacy' %> <br />
+    <%= f.check_box :private, class: 'checkbox-inline' %> <p> Make profile private </p> <br/>
+
+
+
   <%= f.submit "Update", class: "btn btn-primary", id: "signup" %>
 <% end %>
 
