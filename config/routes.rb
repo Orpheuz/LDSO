@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :dashboard
   resources :home
   resources :category
+  resources :follows
   resources :recipes do
     resources :comments
     put :bookmark, on: :member
@@ -22,10 +23,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => {:omniauth_callbacks => 'users/omniauth_callbacks'}
   resources :users do
-    member do
-      get :follow
-      get :unfollow
-    end
+
   end
 
   get '/users/:id' => 'users#show', :as => :userpage
