@@ -16,6 +16,14 @@
     <%= f.label :email %><br />
     <%= f.email_field :email, class: 'form-control'%>
 
+    <%= f.label :gender %><br />
+    <%= f.select :gender, ['Male', 'Female'], class: 'form-control btn btn-default dropdown-toggle'%><br /><br />
+
+    <%= f.label :birth %><br />
+    <%= f.date_select :birth, :start_year => 1920, :prompt => { :day => 'Select day', :month => 'Select month', :year => 'Select year' }, 
+        :class => "form-control btn btn-default dropdown-toggle" %>
+    <br /><br />
+
     <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>

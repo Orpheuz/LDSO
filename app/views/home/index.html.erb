@@ -1,39 +1,42 @@
-
 <div class="list-group panel col-md-1" id="cat-bar">
-  <a href="#cats" class="list-group-item list-group-item-success" id="cat_men" data-toggle="collapse" >Categories</a>
-  <div class="collapse" id="cats">
-    <% @categories.each do |category| %>
+	<a href="#cats" class="list-group-item list-group-item-success" id="cat_men" data-toggle="collapse" >Categories</a>
+	<div class="collapse" id="cats">
+		<% @categories.each do |category| %>
 
-    <%=link_to category.name , category ,class: "list-group-item cat_name"  %>
+		<%=link_to category.name , category ,class: "list-group-item cat_name"  %>
 
-    <% end %>
-  </div>
+		<% end %>
+	</div>
 </div>
 
 <div class="col-md-10 ">
-  <h1> Homepage </h1>
+	<h1> Homepage </h1>
 
+</div>
+<div id="countdown"> </div> 
+<button id="startButton", class="btn btn-default">Start</button>
+<button id="pauseButton", class="btn btn-default">Pause</button>
+
+<div class ='list-group col-md-12'>
+
+	<% if current_user %>
+	<% @users.each do |user| %>
+	<% user.recipes.each do |recipe| %>
+	<%=link_to recipe.name,recipe,class: "list-group-item" %>
+	<% end %>
+
+	<% end %>
+	<% end %>
 </div>
 <div class ='list-group col-md-12'>
 
-<% if current_user %>
-<% @users.each do |user| %>
-<% user.recipes.each do |recipe| %>
-<%=link_to recipe.name,recipe,class: "list-group-item" %>
-<% end %>
+	<% if current_user %>
+	<% @comments.each do |com| %>
 
-<% end %>
-<% end %>
-</div>
-<div class ='list-group col-md-12'>
+	<div class: "list-group-item">
 
-<% if current_user %>
-<% @comments.each do |com| %>
-
-<div class: "list-group-item">
-
-  <%= com.typen   %>
-</div>
-<% end %>
-<% end %>
+		<%= com.typen   %>
+	</div>
+	<% end %>
+	<% end %>
 </div>

@@ -1,76 +1,84 @@
 <br>
 <div class="container">
-  <div class="row">
+  <div class="row text-center" style="padding-top:30px;">
     <div class="col-md-12">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <div class="row">
-            <div class="col-md-12 lead">Profile<hr></div>
-          </div>
-          <div class="row">
-           <div class="col-md-4 text-center">
-            <img class="img-circle avatar avatar-original" style="-webkit-user-select:none; 
-            display:block; margin:auto;" src="http://cdn.overclock.net/a/a0/120x120px-LS-a0ae1256_avatar95329_4.jpeg">
-             <% if current_user %>
-                <% if  @followable %>
-                     <%= link_to "Follow", follow_user_path(@user.id), class: "btn btn-default"%>
-                 <% else %>
-                     <%= link_to "Unfollow", unfollow_user_path(@user.id), class: "btn btn-danger" %>
-                 <% end %>
-             <% end %>
-          </div>
-          <div class="col-md-4">
-            <div class="row">
-              <div class="col-md-8">
-                <h1 class="only-bottom-margin"> <%= @user.username %></h1>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-8">
-                <span class="text-muted">Name:</span> <%= @user.name %> <br>
-                <span class="text-muted">Email:</span> <%= @user.email %> <br>
-                <span class="text-muted">Age:</span> 20 <br>
-                <span class="text-muted">Gender:</span> Male <br><br>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="row">
-              <div class="col-md-4">
-                <h1 class="only-bottom-margin">Activity</h1>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <span class="text-muted"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Likes: 500</span>
-                <br>
-                <span class="text-muted"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Followers: 1000</span> <br>
-                <span class="text-muted"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Comments: 500</span>
-                <br>
-              </div>
-            </div>
-          </div>
-        </div>
-        <% if user_signed_in? %>
-        <% if current_user.username = @user.username %>
-        <button class="btn btn-default pull-right pull-down"><i class="glyphicon glyphicon-pencil"></i> Edit</button> <br>
-        <% end %>
-        <% end %>
-        <hr>
-        <div class="row">
-          <div class="col-md-12 lead">Badges <hr></div>
-          <center> <%= image_tag("http://orig02.deviantart.net/290f/f/2009/150/1/8/valmio_gym_badges_big_version_by_pokemon_diamond.png") %> </center>
-        </div>
-        <div class="row">
-        <div class="col-md-12 lead">Recipes<hr></div>
-          <% @recipes.each do |recipe| %>
-          <%= div_for recipe, :class => "row" do %>
-          <h1> <%= recipe.name %> </h1> <br>
-          <% end %>
-          <% end %>
-        </div>
-      </div>
+     <h1> <%= @user.username %> </h1> 
+     <br />
+   </div>
+ </div>
+ <% if @user.private? && @user != current_user %>
+ <h2 style="align=center"> This user's profile is private :( </h2>
+ <% else %>
+ <div class="row " style="padding-bottom:50px; ">
+   <div class="col-md-3">
+     <img src="http://www.johndoe.pro/img/John_Doe.jpg" class="img-responsive img-thumbnail" />
+     <br/>
+     <% if @user != current_user %>
+     <% if  @followable %>
+     <%= link_to "Follow", follow_user_path(@user.id), class: "btn btn-primary center-block"%>
+     <% else %>
+     <%= link_to "Unfollow", unfollow_user_path(@user.id), class: "btn btn-danger center-block" %>
+     <% end %>
+     <% end %>
+   </div>
+   <div class="col-md-9">
+    <br /><br />
+    <hr />
+    <div >
+      <h3><strong> Name:</strong> <%= @user.name %></h3>  
+      <h3><strong> Email:</strong><%= @user.email %></h3>  
+      <h3><strong> Age: </strong><%= age(@user.birth) %></h3>  
+      <h3><strong> Gender: </strong><%= @user.gender %></h3>  
+
+      <br />
+
+      <a href="#" class="btn btn-primary" >Facebook <i class="glyphicon glyphicon-play"></i></a>
+      <a href="#" class="btn btn-danger" >Google <i class="glyphicon glyphicon-play"></i></a>
+      <a href="#" class="btn btn-info" >Twitter <i class="glyphicon glyphicon-play"></i></a>
+      <% if user_signed_in? %>
+      <% if @user == current_user %>
+      <%= link_to raw("<i class=\"glyphicon glyphicon-pencil\"></i>  Edit"), edit_user_registration_path, class: "btn btn-default pull-right pull-down" %>
+      <br>
+      <% end %>
+      <% end %>
+      <hr/>
     </div>
+
   </div>
 </div>
+<div class="row">
+ <div class="col-md-6">
+   <h3>About me:</h3>  
+   <hr />
+   <p>
+    <% if @user.about? %>
+    <%= @user.about %>
+    <% else %>
+    About me not complete yet.
+    <% end %>
+  </p>
+
+</div>
+<div class="col-md-6">
+  <h3>Activity</h3> 
+  <hr />
+  <span class="text-muted"><span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span> Likes: 500</span> <br/><br/>
+  <span class="text-muted"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> Followers: 1000 </span> <br/><br/>
+  <span class="text-muted"><span class="glyphicon glyphicon-comment" aria-hidden="true"></span> Comments: 500 </span>
+</div>
+</div>
+<hr>
+<div class="row">
+  <div class="col-md-12 lead">Badges <hr></div>
+  <center> <%= image_tag("http://orig02.deviantart.net/290f/f/2009/150/1/8/valmio_gym_badges_big_version_by_pokemon_diamond.png") %> </center>
+</div>
+<div class="row">
+  <div class="col-md-12 lead">Recipes<hr></div>
+  <% @recipes.each do |recipe| %>
+  <%= div_for recipe, :class => "row" do %>
+  <h1> <%= recipe.name %> </h1> <br>
+  <% end %>
+  <% end %>
+</div>
+<% end %>
 </div>
