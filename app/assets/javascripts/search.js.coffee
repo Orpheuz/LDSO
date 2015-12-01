@@ -2,6 +2,7 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
+ingN = 2
 
 $(document).ready ->
   $(".search-choice").on "click",(event) ->
@@ -10,3 +11,7 @@ $(document).ready ->
     $('#search-choice-btn').html val
     $('#' + event.target.id).html oldVal
     $('#SCN').attr 'value', val
+  $("#add-ingredient").on "click",(event) ->
+    this.remove
+    $(".all-ing").append '<input name="searchIng[]" class="form-control" id="searchIng' + ingN + '" />'
+    ingN++

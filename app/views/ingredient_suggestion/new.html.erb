@@ -1,0 +1,14 @@
+<h1>Submit an ingredient suggestion!</h1>
+<div class="form-style-5">
+  <%= form_for @ingSugestion, url: {action: "new"}, :html=> { :'data-type' => 'html',class: "nifty_form", :id => 'create_ingSuggestion_form'} do |f| %>
+  <legend><span class="number">1</span> Ingredient name</legend>
+  <%= f.text_field :name, :required => true%><br />
+  <legend><span class="number">2</span> Number of calories</legend>
+  <%= f.number_field(:calories, :value => 0, :required => true, in: 0.0..99999.0, step: 1) %>
+  <div class="actions">
+    <%= f.submit "Submit suggestion" %>
+  </div>
+
+
+  <% end %>
+</div>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   post '/category/new' => 'category#create'
+  post '/ingredient_suggestion/new' => 'ingredient_suggestion#create'
   get '/search/' => 'search#index', :as => 'search'
   get '/ingredient/' => 'ingredients#index', :as => 'ingredient'
   post '/recipe/ingredients/' => 'recipes#search'
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   resources :dashboard
   resources :home
   resources :category
+  resources :ingredient_suggestion
   resources :recipes do
     resources :comments
     put :bookmark, on: :member

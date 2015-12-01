@@ -12,11 +12,11 @@ IngredientN = 1
 
 $(document).ready ->
 
-  $("body").on "click", ".modal-image",(event) -> 
+  $("body").on "click", ".modal-image",(event) ->
     $("#SM_"+event.target.id).attr 'value', event.target.src
     $('#Modal'+event.target.id).modal 'hide'
 
-  $("body").on "click", ".open_modal",(event) -> 
+  $("body").on "click", ".open_modal",(event) ->
     $.ajax
       url: "https://api.instagram.com/v1/users/self/media/recent?access_token="+gon.current_user.instatoken
       dataType: "jsonp"
@@ -99,10 +99,17 @@ $(document).ready ->
         ing=$(response).find('#div-ing').html()
         $('#search-result').html ing
 
+  ###
+  $('.selectpicker').selectpicker()
+    style: 'btn-info'
+    size: 4
+  ###
 
-$('.selectpicker').selectpicker()
-  style: 'btn-info'
-  size: 4
+  $('#change-duration').change ->
+    $('#recipe_duration').val $(this).val()
+
+  $('#recipe_duration').change ->
+    $('#change-duration').val $(this).val()
 
 return
 

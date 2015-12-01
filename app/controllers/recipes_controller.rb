@@ -18,9 +18,9 @@ class RecipesController < ApplicationController
   def new
     @recipe=Recipe.new
     gon.push({
-                 :categories => Category.all,
-                 :current_user => current_user
-             })
+     :categories => Category.all,
+     :current_user => current_user
+     })
   end
 
   def search
@@ -38,6 +38,12 @@ class RecipesController < ApplicationController
     params[:T].each do |t|
       totalTime=totalTime+t.to_f
     end
+
+    if totalTime < params[:recipe][:duration].to_f
+      totalTime = params[:recipe][:duration].to_f
+    end
+
+
 
     @recipe = current_user.recipes.create(name: params[:recipe][:name], description: params[:recipe][:description],time: totalTime,difficulty: params[:difficulty])
     stepID=0

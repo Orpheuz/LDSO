@@ -41,5 +41,23 @@ class SearchController < ApplicationController
     else
       @recipes = Recipe.all
     end
+
+    if params[:searchIng].present?
+       params[:searchIng].each do |pIng|
+        @search = Ingredient.search do
+          fulltext pIng do
+            fields(:name)
+          end
+        end
+        @ingredients = @search.results
+
+        recipes = Array.new
+        @ingredients.each do |ing|
+          recipes.concat ing.recipes
+        end
+
+        @recipes = recipes
+      end
+    end
   end
 end

@@ -20,6 +20,10 @@
                 <option>Hard</option>
               </select>
 
+              <legend>Duration of recipe (min):</legend>
+              <input type="range" value="30" name="points" min="0" max="3500" id="change-duration"><br>
+              <%= f.number_field(:duration, :class => 'recipe-form', :value => 30, :required => true, in: 0.0..3500, step: 5) %>
+
 
               <div class="actions">
               <%= f.submit "Create recipe", :id => 'create' %>
