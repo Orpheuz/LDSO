@@ -11,29 +11,46 @@
 
 
 <% if current_user %>
-<div class ='list-group col-md-10'>
+<div class ='list-group col-md-8 col-md-offset-2'>
 
 
 	<div class="container">
-		<div class="container-pins">
+		<div class="container-feed row cold-md">
 			<% for activity in @activities %>
-			<% if activity['verb'] == 'Recipe' %>
-			<%= link_to activity['actor'].slug , activity['actor'] %>
-			<%= " create a new recipe called \'"  %>
-			<%= link_to activity['object'].name , activity['object']%>
-			<%= "\' - " %>
-			<% end %>
-			<% if activity['verb'] == 'Comment' %>
-			<%= link_to activity['actor'].slug , activity['actor'] %>
-			<%= " commented " %>
-			<%= link_to activity['object'].recipe.user.slug , activity['object'].recipe.user%>
-			<%="\'s recipe : \'" %>
-			<%= link_to activity['object'].recipe.name , activity['object'].recipe %>
-			<%= " \' - " %>
-			<% end %>
-			<%= time_ago_in_words(activity['object'].created_at)  + " ago"%>
+			<div class="col-md-8">
+				<% if activity['verb'] == 'Recipe' %>
+				<%= link_to activity['actor'].slug , activity['actor'] %>
+				<%= " create a new recipe called \'"  %>
+				<%= link_to activity['object'].name , activity['object']%>
+				<%= "\'" %>
+				<a href="#" class="thumbnail">
+					<%= image_tag(activity['object'].image, :alt => activity['object']) %>
+				</a>
+				<% end %>
+				<% if activity['verb'] == 'Follow' %>
+				<%= link_to activity['actor'].slug , activity['actor'] %>
+				<%= " followed  "  %>
+				<%= link_to activity['object'].slug , activity['object']%>
 
-			<br></br>
+				<a href="#" class="thumbnail">
+					<%= image_tag(activity['object'].image, :alt => activity['object']) %>
+				</a>
+				<% end %>
+				<% if activity['verb'] == 'Comment' %>
+				<%= link_to activity['actor'].slug , activity['actor'] %>
+				<%= " commented " %>
+				<%= link_to activity['object'].recipe.user.slug , activity['object'].recipe.user%>
+				<%="\'s recipe : \'" %>
+				<%= link_to activity['object'].recipe.name , activity['object'].recipe %>
+				<%= " \'" %>
+				<a href="#" class="thumbnail">
+					<%= image_tag(activity['object'].recipe.image, :alt => activity['object'].recipe) %>
+				</a>
+				<% end %>
+				<%= time_ago_in_words(activity['object'].created_at)  + " ago"%>
+				<br></br>
+			</div>
+
 			<% end %>
 
 		</div>

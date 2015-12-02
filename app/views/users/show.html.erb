@@ -47,30 +47,7 @@
           <% end %>
         <% end %>
       </div>
-      <div class="col-md-9">
-        <br /><br />
-        <hr />
-        <div >
-          <h3><strong> Name:</strong> <%= @user.name %></h3>
-          <h3><strong> Email:</strong><%= @user.email %></h3>
-          <h3><strong> Age: </strong><%= age(@user.birth) %></h3>
-          <h3><strong> Gender: </strong><%= @user.gender %></h3>
-
-          <br />
-
-          <a href="#" class="btn btn-primary" >Facebook <i class="glyphicon glyphicon-play"></i></a>
-          <a href="#" class="btn btn-danger" >Google <i class="glyphicon glyphicon-play"></i></a>
-          <a href="#" class="btn btn-info" >Twitter <i class="glyphicon glyphicon-play"></i></a>
-          <% if user_signed_in? %>
-            <% if current_user.username = @user.username %>
-              <%= link_to raw("<i class=\"glyphicon glyphicon-pencil\"></i>  Edit"), edit_user_registration_path, class: "btn btn-default pull-right pull-down" %>
-              <br>
-            <% end %>
-          <% end %>
-          <hr/>
-        </div>
-
-      </div>
+      
     </div>
 
   </div>

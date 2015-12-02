@@ -42,8 +42,8 @@ class User < ActiveRecord::Base
   has_many :bookmarks
   has_many :follows
 
-  def followed(user = nil)
-    self.follows.where(user: user).first?
+  def followed(user)
+    user.follows.where(target_id: self.id).first
   end
 
   def self.from_fb_omniauth(auth)

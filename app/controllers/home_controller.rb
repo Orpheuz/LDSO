@@ -4,7 +4,8 @@ class HomeController < ApplicationController
 		@categories = Category.all
 		if(current_user)
 			enricher = StreamRails::Enrich.new
-			feed = StreamRails.feed_manager.get_user_feed(current_user.id)
+			feed = StreamRails.feed_manager.get_news_feeds(current_user.id)[:flat]
+
 			results = feed.get()['results']
 			@activities = enricher.enrich_activities(results)
 		end
