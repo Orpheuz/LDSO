@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
   has_many :follows
 
   def followed(user = nil)
-    self.follows.where(user: user).first
+    self.follows.where(user: user).first?
   end
 
   def self.from_fb_omniauth(auth)
