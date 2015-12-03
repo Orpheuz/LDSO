@@ -11,7 +11,7 @@ class User < ActiveRecord::Base
 
   #validates_format_of :name, with: /\A[a-zA-Z\.\s]*\Z/
 
-  validates_format_of :gender, with: /\A(Male|Female)\Z/
+  validates_format_of :gender, with: /\A(Male|Female)\Z/, :allow_nil => true
 
   attr_accessor :login
 

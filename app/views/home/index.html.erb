@@ -12,8 +12,6 @@
 
 <% if current_user %>
 <div class ='list-group col-md-8 col-md-offset-2'>
-
-
 	<div class="container">
 		<div class="container-feed row cold-md">
 			<% for activity in @activities %>
@@ -50,25 +48,12 @@
 				<%= time_ago_in_words(activity['object'].created_at)  + " ago"%>
 				<br></br>
 			</div>
-
 			<% end %>
-
 		</div>
 	</div>
-
 </div>
-
 <% else %>
-
-
-
 <div class="col-md-10 ">
 	<h1> Homepage </h1>
-
-</div>
-<div class="countdownSection">
-	<div id="countdown"> </div>
-	<button id="startButton", class="btn btn-default">Start</button>
-	<button id="pauseButton", class="btn btn-default">Pause</button>
 </div>
 <% end %>

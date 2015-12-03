@@ -31,8 +31,16 @@
       <div >
         <h3><strong> Name:</strong> <%= @user.name %></h3>
         <h3><strong> Email:</strong><%= @user.email %></h3>
+        <% if @user.birth != nil%>
         <h3><strong> Age: </strong><%= age(@user.birth) %></h3>
+        <%else%>
+        <h3><strong> Age: </strong> Not defined yet. </h3>
+        <%end%>
+        <% if @user.gender != nil%>
         <h3><strong> Gender: </strong><%= @user.gender %></h3>
+        <%else%>
+        <h3><strong> Gender: </strong> Not defined yet. </h3>
+        <%end%>
 
         <br />
 
