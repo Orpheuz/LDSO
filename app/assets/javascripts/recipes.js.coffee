@@ -99,11 +99,6 @@ $(document).ready ->
         ing=$(response).find('#div-ing').html()
         $('#search-result').html ing
 
-
-$('.selectpicker').selectpicker()
-  style: 'btn-info'
-  size: 4
-
 return
 
 

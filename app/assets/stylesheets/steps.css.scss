@@ -37,7 +37,11 @@
 #step-description {
   width: 80%;
 }
-#chronometer-btn {
+.is-countdown {
+  width: 240px;
+  height: 65px;
+}
+[id^=chrBtn] {
   float: right;
 }
 #steps-content {
@@ -45,10 +49,6 @@
   padding-left: 20%;
   padding-right: 20%;
 }
-#countdown {
-  width: 240px;
-  height: 65px;
-}
-#chronometer-section {
+[id^=chronometerSection] {
   margin-top: 20px;
 }
