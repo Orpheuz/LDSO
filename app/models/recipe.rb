@@ -1,5 +1,7 @@
 class Recipe < ActiveRecord::Base
 
+ has_attached_file :image, styles: { medium: "300x300>", thumb: "100x100>" }, default_url: "/assets/images/default_food.jpg"
+
   searchable do
     text :name
     integer :time
