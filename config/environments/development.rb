@@ -37,4 +37,5 @@ Rails.application.configure do
 
   config.fb_app_id = 1647823412140946
   config.fb_app_secret = "da12c90e597871ebbe9d7c4f0873a78a"
+  Paperclip.options[:command_path] = 'C:\Program Files (x86)\GnuWin32\bin'
 end
