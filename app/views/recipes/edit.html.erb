@@ -1,0 +1,65 @@
+<div class="form-style-5">
+  <%= form_for @recipe, :html=> { :'data-type' => 'html',class: "nifty_form", :id => 'edit_recipe_form'} do |f| %>
+
+      <div id="current_recipe_name">
+          <legend id="name"><%= @recipe.name  %></legend>
+      </div>
+        <button type="button" id="edit_recipe_name" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></button>
+      <br />
+
+      <div id="current_recipe_description">
+        <legend id="description"><%= @recipe.description  %></legend>
+      </div>
+      <button type="button" id="edit_recipe_description" class="btn btn-default"><i class="fa fa-pencil-square-o"></i></button>
+      <br />
+
+      <legend id="taglist">Tags:</legend>
+      <input name="tags" id="taginput" value="<%= @tagSentence %>"class="recipe-form">
+      <br />
+
+      <legend>Ingredients</legend>
+      <div id="sel-ingredients">
+          <ul> <% ing_number=1 %>
+              <% @ingredients.each do |ingredient| %>
+
+                <div id="ingredient<%= ing_number %>" class="btn btn-default">
+                  <%= ingredient.name %>
+                  <input type="hidden" name="IN[]" value=<%= ingredient.id %>  id="IN<%= ing_number %>">
+                  <span class="remove_ingredient">
+                    <i  class="btn fa fa-times"></i>
+                  </span>
+                </div>
+                <% ing_number=ing_number+1 %>
+              <% end %>
+          </ul>
+      </div>
+
+
+      <input name="ingredients" id="ingredients-input" class="recipe-form">
+      <br />
+
+      <div id="search-result"></div>
+
+
+      <div id="sel-steps">
+        <% step_number=1 %>
+        <% @steps.each do |step| %>
+            <div  name="S["<%= step_number %>"]">
+            <legend>Step: <span class="number"><%= step_number%></span> </legend>
+            </div>
+
+            <input required type="text" class="step" value="<%= step.name %>" name="SN[]" id="SN" <%= step_number %>"/>
+            <textarea required type="text" class="step" name="S[]" id="S<%= step.description %>" ><%= step.description %>
+            </textarea>
+            <% step_number=step_number+1 %>
+        <% end %>
+      </div>
+
+        <div class="actions">
+          <%= f.submit "Save changes", :id => 'edit' %>
+        </div>
+        <% end %>
+
+</div>
+
+

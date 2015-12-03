@@ -6,7 +6,7 @@
 
           <li>
             <img src=<%= bookmark.image %> alt="recipes">
-          <legend><%= bookmark.name %></legend>
+          <legend><%= bookmark.name  %></legend>
             <p><%= bookmark.description %></p>
             <p><b>Created by: </b> <%=  User.find(bookmark.user_id).name %> </p>
             <p>

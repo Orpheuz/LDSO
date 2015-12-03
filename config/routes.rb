@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   resources :category
   resources :follows
   resources :recipes do
+
     resources :comments
     put :bookmark, on: :member
   end
