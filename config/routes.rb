@@ -11,7 +11,9 @@ Rails.application.routes.draw do
   resources :home
   resources :category
   resources :ingredient_suggestion
+  resources :follows
   resources :recipes do
+
     resources :comments
     put :bookmark, on: :member
   end
@@ -24,10 +26,7 @@ Rails.application.routes.draw do
 
   devise_for :users, :controllers => {:omniauth_callbacks => 'users/omniauth_callbacks'}
   resources :users do
-    member do
-      get :follow
-      get :unfollow
-    end
+
   end
 
   get '/users/:id' => 'users#show', :as => :userpage

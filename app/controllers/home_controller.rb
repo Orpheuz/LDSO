@@ -1,13 +1,14 @@
 class HomeController < ApplicationController
 
 	def index
-		  @categories = Category.all
-			if current_user
-				@users = current_user.following_users
-				@users_id = @users.pluck(:id)
-				@comments = Comment.all.where(user_id: @users_id)
-			end
+		@categories = Category.all
+		if(current_user)
+			enricher = StreamRails::Enrich.new
+			feed = StreamRails.feed_manager.get_news_feeds(current_user.id)[:flat]
 
+			results = feed.get()['results']
+			@activities = enricher.enrich_activities(results)
+		end
 	end
 
 end

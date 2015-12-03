@@ -1,25 +1,54 @@
 // Place all the styles related to the Steps controller here.
 // They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// You can use Sass (SCSS) here:http://sass-lang.com/
 
+.panel-body {
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+}
 .recipe-step-image {
   display: block;
   margin-left: auto;
   margin-right: auto;
   width: 50%;
 }
-#steps-content{
+.next-step {
+  float: right;
+  color: green;
+}
+#left-menu {
+  height: 100%;
+  width: 20%;
+  position: absolute;
+  right: 0%;
+  top: 0%;
+  padding: 15px;
+}
+#step-btn {
+  background-color: #0C0C0C;
+  border-color: #151515;
+  position: absolute;
+  right: 0px;
+  bottom: 0px;
+  margin-bottom: 15px;
+  margin-right: 15px;
+}
+#step-description {
+  width: 80%;
+}
+.is-countdown {
+  width: 240px;
+  height: 65px;
+}
+[id^=chrBtn] {
+  float: right;
+}
+#steps-content {
   margin-top: 5%;
   padding-left: 20%;
   padding-right: 20%;
 }
-
-.next-step{
-  float: right;
-  color: green;
-}
-
-#step-btn{
-  background-color: #0C0C0C;
-  border-color: #151515;
+[id^=chronometerSection] {
+  margin-top: 20px;
 }

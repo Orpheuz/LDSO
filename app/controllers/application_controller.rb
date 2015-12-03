@@ -13,5 +13,8 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:account_update) { |u| u.permit(:name, :lastname, :private, :birth, :about, :image, :gender, :username, :email, :password, :password_confirmation, :current_password) }
   end
 
+  def not_found
+    raise ActionController::RoutingError.new('Not Found')
+  end
 
 end

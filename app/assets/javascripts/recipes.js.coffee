@@ -100,17 +100,60 @@ $(document).ready ->
         ing=$(response).find('#div-ing').html()
         $('#search-result').html ing
 
-  ###
-  $('.selectpicker').selectpicker()
-    style: 'btn-info'
-    size: 4
-  ###
+  $(( ".remove_ingredient" )).on "click", (e) ->
+    realID=$(".remove_ingredient").index(this)+1
+    $("#ingredient"+realID).remove()
 
   $('body').on 'change', '.change-duration',(event) ->
     $('.recipe_duration').val $(this).val()
 
+
   $('body').on 'change' , '.recipe_duration',(event) ->
     $('.change-duration').val $(this).val()
+
+  $("#edit_recipe_name").on "click", ->
+    $("#current_recipe_name").before( "<legend id='recipe_name_label'> Recipe name:</legend>" +
+        "<input required type=\'text\' name= \'new_name\' id= \'input_new_recipe_name\' value=\'"+ $("#name").text() + "\' />" +
+        "<button type='button' id='button_change_name_done' class='btn btn-default'><i class='fa fa-check-square'></i></button>" )
+    $("#current_recipe_name").remove()
+    $("#edit_recipe_name").remove()
+    $("#button_change_name_done").on "click", ->
+      new_name= $("#input_new_recipe_name").val()
+      $("#input_new_recipe_name").before('<input type="hidden" name="new_name" value="' + new_name + '">' +
+          '<legend>
+          <p>
+            <div id="current_recipe_name"> ' + new_name + ' </div>
+            <button type="button" id="edit_recipe_name" class="btn btn-default">\
+              <i class="fa fa-pencil-square-o"></i>\
+            </button>
+        </p>
+        </legend>' )
+      $("#input_new_recipe_name").remove()
+      $("#recipe_name_label").remove()
+      $("#button_change_name_done").remove()
+
+
+  $("#edit_recipe_description").on "click", ->
+    $("#current_recipe_description").before( "<legend id='recipe_name_description'> Recipe description:</legend>" +
+        "<textarea rows='12' cols='60' name= \'new_description\' id= \'input_new_recipe_description\'>"+ $("#description").text() + "</textarea>" +
+        "<button type='button' id='button_change_description_done' class='btn btn-default'><i class='fa fa-check-square'></i></button>" )
+    $("#current_recipe_description").remove()
+    $("#edit_recipe_description").remove()
+    $("#button_change_description_done").on "click", ->
+      new_description= $("#input_new_recipe_description").val()
+      $("#input_new_recipe_description").before('<input type="hidden" name="new_description" value="' + new_description + '">' +
+          '<legend>
+          <p>
+            <div id="current_recipe_description"> ' + new_description + ' </div>
+            <button type="button" id="edit_recipe_description" class="btn btn-default">\
+              <i class="fa fa-pencil-square-o"></i>\
+            </button>
+        </p>
+        </legend>' )
+      $("#input_new_recipe_description").remove()
+      $("#recipe_description_label").remove()
+      $("#button_change_description_done").remove()
+
 
 return
 

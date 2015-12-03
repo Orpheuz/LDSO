@@ -23,4 +23,4 @@
 //= require jquery.plugin.js
 //= require jquery.countdown.js
 //= require_tree .
-
+#= require social-share-button

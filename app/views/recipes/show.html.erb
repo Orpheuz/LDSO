@@ -32,6 +32,10 @@
     </div>
     <div id="recipe-content" class="col-xs-6">
       <p><%= @recipe.description %></p>
+      <% if current_user.id==@author.id %>
+          <%= link_to "Edit recipe", edit_recipe_path(params[:id]), class: 'btn btn-success', id:'recipe-btn' %>
+          <%= link_to "", @recipe, :method => :delete, class: 'btn btn-success fa fa-trash', id:'recipe-btn'%>
+      <% end %>
       <%= link_to "Start cooking", steps_path(params[:id]), class: 'btn btn-success', id:'recipe-btn' %>
     </div>
 
@@ -43,6 +47,12 @@
   <div class="panel panel-default">
     <div class="panel-body">
       <legend> Created by: <%= link_to @author.username, userpage_path(@author.id) %> </legend>
+      <div class="tags">
+        <% @tags.each do |t| %>
+        <a href="#"> <%= t.name %></a>
+        <% end %>
+
+      </div>
     </div>
   </div>
   <br />

@@ -7,6 +7,7 @@ class RecipesController < ApplicationController
     @tips=@recipe.comments.where(typen: 'Tip')
     @comment=Comment.new(:recipe_id=>@recipe.id)
     @author=User.find(@recipe.user_id)
+    @tags=@recipe.tags
     if(current_user)
       @bookmark_visible=true
       if Bookmark.exists?(recipe_id: params[:id], user_id: current_user.id)
@@ -107,6 +108,7 @@ class RecipesController < ApplicationController
       bookmark.destroy
       redirect_to :back
     end
+  end
 
     def viewbookmarks
       if User.exists?(:id => params[:id])
@@ -118,11 +120,82 @@ class RecipesController < ApplicationController
       end
     end
 
-
-    private
-
-    def recipe_params
-      params.require(:recipe).permit(:name, :description)
+    def edit
+      @recipe=Recipe.find(params[:id])
+      @ingredients=@recipe.ingredients
+      @steps=@recipe.steps
+      @tags=@recipe.tags
+      @tagStringArr=Array.new
+      @tags.each  do |tagStr|
+        @tagStringArr.push(tagStr.name)
+      end
+      @tagSentence=@tagStringArr.push(" ").join(', ')
     end
+
+    def update
+      @recipe=Recipe.find(params[:id])
+      @steps=@recipe.steps
+      @ingredients=@recipe.ingredients
+
+      if params[:new_name].present?
+        @recipe.update(name: params[:new_name])
+      end
+
+      if params[:new_description].present?
+        @recipe.update(description: params[:description])
+      end
+
+      stepID=0
+      @steps.each do |s|
+        if params[:SN][stepID] != s.name
+          s.update(name: params[:SN][stepID])
+        end
+        if params[:S][stepID] != s.description
+          s.update(description: params[:S][stepID])
+        end
+        stepID=stepID+1
+      end
+
+      IngredientRecipeAssociation.destroy_all(:recipe_id => @recipe.id)
+
+      if params[:IN].present?
+        ingredientN = 0
+        while params[:IN][ingredientN].present? do
+          @temp = params[:IN][ingredientN].to_f
+          @ingredient = Ingredient.find(@temp)
+            @recipe.ingredients << @ingredient
+          ingredientN=ingredientN+1
+        end
+      end
+
+      RecipeTagAssociation.destroy_all(:recipe_id => @recipe.id)
+      if params[:tags].present?
+        @tagarray = params[:tags].split(/[\s,]+/)
+        @tagarray.each do |tag|
+          @tag = Tag.find_by_name(tag)
+          if @tag.nil?
+            @tag = @recipe.tags.create(name: tag)
+          else
+            @tag.recipes << @recipe
+          end
+        end
+      end
+
+      redirect_to :back
+
+    end
+
+  def destroy
+    @recipe=Recipe.find(params[:id])
+    @tags=@recipe.tags
+    RecipeTagAssociation.destroy_all(:recipe_id => @recipe.id)
+    @steps=@recipe.steps
+    @steps.destroy_all()
+    @ingredients=@recipe.ingredients
+    IngredientRecipeAssociation.destroy_all(:recipe_id => @recipe.id)
+    @recipe.destroy
+    flash[:success] = "Recipe deleted"
+    redirect_to home_index_path
   end
+
 end

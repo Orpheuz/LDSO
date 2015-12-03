@@ -60,4 +60,6 @@ gem 'omniauth-oauth2', "1.3.1"
 
 gem 'jquery-ui-rails'
 gem 'bootstrap-select-rails'
-gem "acts_as_follower"
+
+gem 'stream_rails'
+gem 'social-share-button'

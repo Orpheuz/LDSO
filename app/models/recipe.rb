@@ -20,5 +20,17 @@ class Recipe < ActiveRecord::Base
   has_many :comments
 
 
+  include StreamRails::Activity
+  as_activity
+
+  def activity_actor
+    self.user
+  end
+
+  def activity_object
+    self
+  end
+
+
 
 end
