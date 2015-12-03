@@ -5,6 +5,11 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :email,              null: false, default: ""
       t.string :encrypted_password, null: false, default: ""
       t.string :name
+      t.string :gender, default: nil
+      t.string :image, default: nil
+      t.date :birth, default: nil
+      t.integer :private, default: 0
+      t.string :about
       t.string :slug              , unique: true
       t.string :lastname
       t.string :uid

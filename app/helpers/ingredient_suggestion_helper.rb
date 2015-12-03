@@ -1,0 +1,2 @@
+module IngredientSuggestionHelper
+end

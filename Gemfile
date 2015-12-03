@@ -36,7 +36,7 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data'
-
+gem 'rake'
 gem 'angular-rails-templates'
 gem 'bower-rails'
 gem 'devise'
@@ -60,3 +60,7 @@ gem 'omniauth-oauth2', "1.3.1"
 
 gem 'jquery-ui-rails'
 gem 'bootstrap-select-rails'
+
+gem 'stream_rails'
+gem 'social-share-button'
+gem "paperclip", "~> 4.3"

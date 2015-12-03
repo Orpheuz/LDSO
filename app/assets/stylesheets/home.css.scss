@@ -1,100 +1,76 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+// You can use Sass (SCSS) here:http://sass-lang.com/
 .list-group.panel-default > .list-group-item {
   border-bottom-right-radius: 4px;
   border-bottom-left-radius: 4px;
-  -webkit-box-shadow: -5px 3px 60px -17px rgba(0,0,0,0.58);
-  -moz-box-shadow: -5px 3px 60px -17px rgba(0,0,0,0.58);
-  box-shadow: -5px 3px 60px -17px rgba(0,0,0,0.58);
-
-
-
+  -webkit-box-shadow: -5px 3px 60px -17px rgba(0, 0, 0, 0.58);
+  -moz-box-shadow: -5px 3px 60px -17px rgba(0, 0, 0, 0.58);
+  box-shadow: -5px 3px 60px -17px rgba(0, 0, 0, 0.58);
 }
-
-#cat-bar{
+#cat-bar {
   visibility: hidden;
-
 }
-#cat-bar > a{
-  border:0;
+#cat-bar > a {
+  border: 0;
   visibility: visible;
-
   background-color: #333333;
   color: #ffffff;
-
 }
-#cat-bar div a{
-  border:0;
+#cat-bar div a {
+  border: 0;
   visibility: visible;
   background-color: #a4afab;
   color: #ffffff;
-
-
 }
-
-
-.panel > .list-group
-{
+.panel > .list-group {
   margin-bottom: 0;
 }
-.panel > .list-group .list-group-item
-{
+.panel > .list-group .list-group-item {
   border-width: 1px 0;
 }
-.panel > .list-group .list-group-item:first-child
-{
+.panel > .list-group .list-group-item:first-child {
   border-top-right-radius: 0;
   border-top-left-radius: 0;
 }
-.panel > .list-group .list-group-item:last-child
-{
+.panel > .list-group .list-group-item:last-child {
   border-bottom: 0;
 }
-.panel-heading + .list-group .list-group-item:first-child
-{
+.panel-heading + .list-group .list-group-item:first-child {
   border-top-width: 0;
 }
-.panel-default .list-group-item.active
-{
+.panel-default .list-group-item.active {
   color: #000;
   background-color: #DDD;
   border-color: #DDD;
 }
-.panel-primary .list-group-item.active
-{
+.panel-primary .list-group-item.active {
   color: #FFF;
   background-color: #428BCA;
   border-color: #428BCA;
 }
-.panel-success .list-group-item.active
-{
+.panel-success .list-group-item.active {
   color: #3C763D;
   background-color: #DFF0D8;
   border-color: #D6E9C6;
 }
-.panel-info .list-group-item.active
-{
+.panel-info .list-group-item.active {
   color: #31708F;
   background-color: #D9EDF7;
   border-color: #BCE8F1;
 }
-.panel-warning .list-group-item.active
-{
+.panel-warning .list-group-item.active {
   color: #8A6D3B;
   background-color: #FCF8E3;
   border-color: #FAEBCC;
 }
-.panel-danger .list-group-item.active
-{
+.panel-danger .list-group-item.active {
   color: #A94442;
   background-color: #F2DEDE;
   border-color: #EBCCD1;
 }
-.panel a.list-group-item.active:hover, a.list-group-item.active:focus
-{
+.panel a.list-group-item.active:hover, a.list-group-item.active:focus {
   color: #000;
   background-color: #DDD;
   border-color: #DDD;
-
 }

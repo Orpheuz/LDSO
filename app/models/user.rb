@@ -11,6 +11,8 @@ class User < ActiveRecord::Base
 
   #validates_format_of :name, with: /\A[a-zA-Z\.\s]*\Z/
 
+  validates_format_of :gender, with: /\A(Male|Female)\Z/, :allow_nil => true
+
   attr_accessor :login
 
   extend FriendlyId
@@ -38,6 +40,11 @@ class User < ActiveRecord::Base
 
   has_many :recipes
   has_many :bookmarks
+  has_many :follows
+
+  def followed(user)
+    user.follows.where(target_id: self.id).first
+  end
 
   def self.from_fb_omniauth(auth)
     where(uid: auth.uid).first_or_create! do |user|

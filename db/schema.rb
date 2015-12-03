@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151116193912) do
+ActiveRecord::Schema.define(version: 20151201174837) do
 
   create_table "average_caches", force: :cascade do |t|
     t.integer  "rater_id"
@@ -60,6 +60,16 @@ ActiveRecord::Schema.define(version: 20151116193912) do
   add_index "comments", ["recipe_id"], name: "index_comments_on_recipe_id"
   add_index "comments", ["user_id"], name: "index_comments_on_user_id"
 
+  create_table "follows", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "target_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_index "follows", ["target_id"], name: "index_follows_on_target_id"
+  add_index "follows", ["user_id"], name: "index_follows_on_user_id"
+
   create_table "ingredient_recipe_associations", force: :cascade do |t|
     t.integer  "recipe_id"
     t.integer  "ingredient_id"
@@ -69,6 +79,13 @@ ActiveRecord::Schema.define(version: 20151116193912) do
 
   add_index "ingredient_recipe_associations", ["ingredient_id"], name: "index_ingredient_recipe_associations_on_ingredient_id"
   add_index "ingredient_recipe_associations", ["recipe_id"], name: "index_ingredient_recipe_associations_on_recipe_id"
+
+  create_table "ingredient_suggestions", force: :cascade do |t|
+    t.string   "name"
+    t.integer  "calories"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "name"
@@ -156,6 +173,11 @@ ActiveRecord::Schema.define(version: 20151116193912) do
     t.string   "email",                  default: "", null: false
     t.string   "encrypted_password",     default: "", null: false
     t.string   "name"
+    t.string   "gender"
+    t.string   "image"
+    t.date     "birth"
+    t.integer  "private",                default: 0
+    t.string   "about"
     t.string   "slug"
     t.string   "lastname"
     t.string   "uid"
