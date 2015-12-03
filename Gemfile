@@ -62,3 +62,4 @@ gem 'jquery-ui-rails'
 gem 'bootstrap-select-rails'
 
 gem 'stream_rails'
+gem 'social-share-button'
