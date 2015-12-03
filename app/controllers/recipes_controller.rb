@@ -39,11 +39,6 @@ class RecipesController < ApplicationController
       totalTime=totalTime+t.to_f
     end
 
-    if totalTime < params[:recipe][:duration].to_f
-      totalTime = params[:recipe][:duration].to_f
-    end
-
-
 
     @recipe = current_user.recipes.create(name: params[:recipe][:name], description: params[:recipe][:description],time: totalTime,difficulty: params[:difficulty])
     stepID=0

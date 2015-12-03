@@ -43,6 +43,7 @@ class SearchController < ApplicationController
     end
 
     if params[:searchIng].present?
+      recipes = Array.new
        params[:searchIng].each do |pIng|
         @search = Ingredient.search do
           fulltext pIng do
@@ -51,13 +52,12 @@ class SearchController < ApplicationController
         end
         @ingredients = @search.results
 
-        recipes = Array.new
+
         @ingredients.each do |ing|
           recipes.concat ing.recipes
         end
-
-        @recipes = recipes
       end
+      @recipes = recipes.uniq
     end
   end
 end

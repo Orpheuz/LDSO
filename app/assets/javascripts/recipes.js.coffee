@@ -53,7 +53,8 @@ $(document).ready ->
         '<input required type=\'text\' class=\'step\' placeholder=\'Title for step ' + stepN + '\' name= \'SN[]\' id= \'SN' + stepN + '\'/>' +
         '<textarea required type=\'text\' class=\'step\' placeholder=\'Describe step ' + stepN + '\' name= \'S[]\' id= \'S' + stepN + '\'/></div>' +
         '<label for="inputsm">Time (minutes):</label>' +
-        '<input class="input-sm col-sm-2 col-lg-2 input-xs" value="0" min="0" id="inputsm" name="T[]" type="number">'
+        '<input type="range" value="30" name="points" min="0" max="180" class="change-duration"><br>' +
+        '<input class="recipe-form recipe_duration" value="30" min="0" max="180" id="inputsm" name="T[]" type="number">'
 
     stepN++
 
@@ -105,11 +106,11 @@ $(document).ready ->
     size: 4
   ###
 
-  $('#change-duration').change ->
-    $('#recipe_duration').val $(this).val()
+  $('body').on 'change', '.change-duration',(event) ->
+    $('.recipe_duration').val $(this).val()
 
-  $('#recipe_duration').change ->
-    $('#change-duration').val $(this).val()
+  $('body').on 'change' , '.recipe_duration',(event) ->
+    $('.change-duration').val $(this).val()
 
 return
 
