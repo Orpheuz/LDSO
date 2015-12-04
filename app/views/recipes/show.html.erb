@@ -33,8 +33,8 @@
     <div id="recipe-content" class="col-xs-6">
       <p><%= @recipe.description %></p>
       <% if current_user.id==@author.id %>
-          <%= link_to "Edit recipe", edit_recipe_path(params[:id]), class: 'btn btn-success', id:'recipe-btn' %>
-          <%= link_to "", @recipe, :method => :delete, class: 'btn btn-success fa fa-trash', id:'recipe-btn'%>
+      <%= link_to "Edit recipe", edit_recipe_path(params[:id]), class: 'btn btn-success', id:'recipe-btn' %>
+      <%= link_to "", @recipe, :method => :delete, class: 'btn btn-success fa fa-trash', id:'recipe-btn'%>
       <% end %>
       <%= link_to "Start cooking", steps_path(params[:id]), class: 'btn btn-success', id:'recipe-btn' %>
     </div>
@@ -80,26 +80,26 @@
         <h4>Leave a review:</h4>
         <%= form_for([@recipe, @comment]) do |f| %>
         <div class="btn btn-default open_modal" data-toggle="modal" data-target="#MyModal1" id =""> Add Instagram content</div>
-          <div class="modal fade" id="MyModal1" role="dialog">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title">Select a photo</h4>
-                </div>
-                <div class="modal-body">
-                  <div class="row" id="modal-body_'+stepN+'">
-                    <div id="modal_'+stepN+'"> </div>
-                  </div>
+        <div class="modal fade" id="MyModal1" role="dialog">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h4 class="modal-title">Select a photo</h4>
+              </div>
+              <div class="modal-body">
+                <div class="row" id="modal-body_'+stepN+'">
+                  <div id="modal_'+stepN+'"> </div>
                 </div>
               </div>
             </div>
           </div>
-            <div class="form-group">
-              <textarea class="form-control" rows="3" name="text"></textarea>
-            </div>
-            <input id="media" name="media" type="hidden" value="NaN" />
-            <input id="tags_list" name="typecom" type="hidden" value="Review" />
-            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="form-group">
+          <textarea class="form-control" rows="3" name="text"></textarea>
+        </div>
+        <input id="media" name="media" type="hidden" value="NaN" />
+        <input id="tags_list" name="typecom" type="hidden" value="Review" />
+        <button type="submit" class="btn btn-primary">Submit</button>
         <% end %>
 
       </div>
@@ -149,14 +149,14 @@
         </div>
         <br/>
 
-
         <% end %>
-
-    <section id="content2">
-      <!-- Suggestions Form -->
-      <div class="well">
-        <h4>Leave a suggestion:</h4>
-        <%= form_for([@recipe, @comment]) do |f| %>
+        <% end %>
+      </section>
+      <section id="content2">
+        <!-- Suggestions Form -->
+        <div class="well">
+          <h4>Leave a suggestion:</h4>
+          <%= form_for([@recipe, @comment]) do |f| %>
           <div class="btn btn-default open_modal" data-toggle="modal" data-target="#MyModal2" id =""> Add Instagram content</div>
           <div class="modal fade" id="MyModal2" role="dialog">
             <div class="modal-dialog">
@@ -172,99 +172,23 @@
               </div>
             </div>
           </div>
-            <div class="form-group">
-              <textarea class="form-control" rows="3" name="text"></textarea>
-            </div>
-            <input id="tags_list" name="typecom" type="hidden" value="Suggestion" />
-            <button type="submit" class="btn btn-primary">Submit</button>
-        <% end %>
-      </section>
-
-      <section id="content2">
-        <!-- Suggestions Form -->
-        <div class="well">
-          <h4>Leave a suggestion:</h4>
-          <%= form_for([@recipe, @comment]) do |f| %>
           <div class="form-group">
             <textarea class="form-control" rows="3" name="text"></textarea>
           </div>
           <input id="tags_list" name="typecom" type="hidden" value="Suggestion" />
           <button type="submit" class="btn btn-primary">Submit</button>
           <% end %>
-
-        </div>
-
-        <hr>
-
-        <br />
-
-        <% if @suggestions.present? %>
-
-
-        <% @suggestions.each do |suggestion|
-          user=User.find(suggestion.user_id)%>
-
-          <div class="media">
-            <a class="pull-left" href="#">
-              <img class="media-object img-circle avatar avatar-original" style="-webkit-user-select:none;
-              display:block; margin:auto;" src="http://cdn.overclock.net/a/a0/120x120px-LS-a0ae1256_avatar95329_4.jpeg"  alt="">
-            </a>
-            <div class="media-body">
-              <h4 class="media-heading"><legend> <%= link_to user.username, userpage_path(suggestion.user_id) %> said:</legend>
-
-              </h4>
-              <div class="bubble">
-                <p><%= suggestion.comment_text %></p>
-              </div>
-
-              <div class="panel panel-default">
-                <div class="panel-body">
-                  <div class="commentstats">
-                    <ul class=>
-                      <li>
-                        <div id="rating-col" class="media pull-left ">
-                          <h4 class="media-heading "><small> Rating: <%= rating_for Comment.find(suggestion.id), "points" %></small></h4>
-                        </div>
-                      </li>
-                      <li>
-                        <h4 class="media-heading pull-right"><small> <%= suggestion.created_at.strftime("%B %d, %Y, %H:%M:%S") %> </small></h4>
-                      </li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <% end %>
-
-          <% end %>
         </section>
 
-    <section id="content3">
-      <!-- Suggestions Form -->
-      <div class="well">
-        <h4>Leave a tip:</h4>
-        <%= form_for([@recipe, @comment]) do |f| %>
-        <div class="btn btn-default open_modal" data-toggle="modal" data-target="#MyModal3" id =""> Add Instagram content</div>
-          <div class="modal fade" id="MyModal3" role="dialog">
-            <div class="modal-dialog">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h4 class="modal-title">Select a photo</h4>
-                </div>
-                <div class="modal-body">
-                  <div class="row" id="modal-body_'+stepN+'">
-                    <div id="modal_'+stepN+'"> </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <section id="content2">
+          <!-- Suggestions Form -->
+          <div class="well">
+            <h4>Leave a suggestion:</h4>
+            <%= form_for([@recipe, @comment]) do |f| %>
             <div class="form-group">
               <textarea class="form-control" rows="3" name="text"></textarea>
             </div>
-            <input id="tags_list" name="typecom" type="hidden" value="Tip" />
+            <input id="tags_list" name="typecom" type="hidden" value="Suggestion" />
             <button type="submit" class="btn btn-primary">Submit</button>
             <% end %>
 
@@ -274,11 +198,11 @@
 
           <br />
 
-          <% if @tips.present? %>
+          <% if @suggestions.present? %>
 
 
-          <% @tips.each do |tip|
-            user=User.find(tip.user_id)%>
+          <% @suggestions.each do |suggestion|
+            user=User.find(suggestion.user_id)%>
 
             <div class="media">
               <a class="pull-left" href="#">
@@ -286,23 +210,24 @@
                 display:block; margin:auto;" src="http://cdn.overclock.net/a/a0/120x120px-LS-a0ae1256_avatar95329_4.jpeg"  alt="">
               </a>
               <div class="media-body">
-                <h4 class="media-heading"><legend> <%= link_to user.username, userpage_path(tip.user_id) %> said:</legend>
+                <h4 class="media-heading"><legend> <%= link_to user.username, userpage_path(suggestion.user_id) %> said:</legend>
 
                 </h4>
                 <div class="bubble">
-                  <p><%= tip.comment_text %></p>
+                  <p><%= suggestion.comment_text %></p>
                 </div>
+
                 <div class="panel panel-default">
                   <div class="panel-body">
                     <div class="commentstats">
                       <ul class=>
                         <li>
                           <div id="rating-col" class="media pull-left ">
-                            <h4 class="media-heading "><small> Rating: <%= rating_for Comment.find(tip.id), "points" %></small></h4>
+                            <h4 class="media-heading "><small> Rating: <%= rating_for Comment.find(suggestion.id), "points" %></small></h4>
                           </div>
                         </li>
                         <li>
-                          <h4 class="media-heading pull-right"><small> <%= tip.created_at.strftime("%B %d, %Y, %H:%M:%S") %> </small></h4>
+                          <h4 class="media-heading pull-right"><small> <%= suggestion.created_at.strftime("%B %d, %Y, %H:%M:%S") %> </small></h4>
                         </li>
                       </ul>
                     </div>
@@ -314,22 +239,91 @@
             <% end %>
 
             <% end %>
-
           </section>
 
-          <section id="content4">
-            <p>
-              Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin ball tip turducken. Pork belly meatball t-bone bresaola tail filet mignon kevin turkey ribeye shank flank doner cow kielbasa shankle. Pig swine chicken hamburger, tenderloin turkey rump ball tip sirloin frankfurter meatloaf boudin brisket ham hock. Hamburger venison brisket tri-tip andouille pork belly ball tip short ribs biltong meatball chuck. Pork chop ribeye tail short ribs, beef hamburger meatball kielbasa rump corned beef porchetta landjaeger flank. Doner rump frankfurter meatball meatloaf, cow kevin pork pork loin venison fatback spare ribs salami beef ribs.
-            </p>
-            <p>
-              Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta turkey.
-            </p>
-          </section>
+          <section id="content3">
+            <!-- Suggestions Form -->
+            <div class="well">
+              <h4>Leave a tip:</h4>
+              <%= form_for([@recipe, @comment]) do |f| %>
+              <div class="btn btn-default open_modal" data-toggle="modal" data-target="#MyModal3" id =""> Add Instagram content</div>
+              <div class="modal fade" id="MyModal3" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h4 class="modal-title">Select a photo</h4>
+                    </div>
+                    <div class="modal-body">
+                      <div class="row" id="modal-body_'+stepN+'">
+                        <div id="modal_'+stepN+'"> </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <textarea class="form-control" rows="3" name="text"></textarea>
+              </div>
+              <input id="tags_list" name="typecom" type="hidden" value="Tip" />
+              <button type="submit" class="btn btn-primary">Submit</button>
+              <% end %>
 
-        </main>
+            </div>
+
+            <hr>
+
+            <br />
+
+            <% if @tips.present? %>
 
 
+            <% @tips.each do |tip|
+              user=User.find(tip.user_id)%>
 
+              <div class="media">
+                <a class="pull-left" href="#">
+                  <img class="media-object img-circle avatar avatar-original" style="-webkit-user-select:none;
+                  display:block; margin:auto;" src="http://cdn.overclock.net/a/a0/120x120px-LS-a0ae1256_avatar95329_4.jpeg"  alt="">
+                </a>
+                <div class="media-body">
+                  <h4 class="media-heading"><legend> <%= link_to user.username, userpage_path(tip.user_id) %> said:</legend>
 
+                  </h4>
+                  <div class="bubble">
+                    <p><%= tip.comment_text %></p>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-body">
+                      <div class="commentstats">
+                        <ul class=>
+                          <li>
+                            <div id="rating-col" class="media pull-left ">
+                              <h4 class="media-heading "><small> Rating: <%= rating_for Comment.find(tip.id), "points" %></small></h4>
+                            </div>
+                          </li>
+                          <li>
+                            <h4 class="media-heading pull-right"><small> <%= tip.created_at.strftime("%B %d, %Y, %H:%M:%S") %> </small></h4>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
 
-      </div>
+              <% end %>
+
+              <% end %>
+
+            </section>
+
+            <section id="content4">
+              <p>
+                Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin ball tip turducken. Pork belly meatball t-bone bresaola tail filet mignon kevin turkey ribeye shank flank doner cow kielbasa shankle. Pig swine chicken hamburger, tenderloin turkey rump ball tip sirloin frankfurter meatloaf boudin brisket ham hock. Hamburger venison brisket tri-tip andouille pork belly ball tip short ribs biltong meatball chuck. Pork chop ribeye tail short ribs, beef hamburger meatball kielbasa rump corned beef porchetta landjaeger flank. Doner rump frankfurter meatball meatloaf, cow kevin pork pork loin venison fatback spare ribs salami beef ribs.
+              </p>
+              <p>
+                Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta turkey.
+              </p>
+            </section>
+          </main>
+        </div>
