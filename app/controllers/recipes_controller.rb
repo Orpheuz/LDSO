@@ -25,12 +25,7 @@ class RecipesController < ApplicationController
   end
 
   def search
-    @search = Ingredient.search do
-      fulltext params[:ingredients] do
-        fields(:name)
-      end
-    end
-    @ingredients = @search.results
+    @ingredients = Ingredient.where("name LIKE ?", "%#{params[:ingredients]}%")
   end
 
 
@@ -66,16 +61,16 @@ class RecipesController < ApplicationController
     if params[:IN].present?
       ingredientN = 0
       while params[:IN][ingredientN].present? do
-        @temp = params[:IN][ingredientN].to_f
-        @ingredient = Ingredient.find(@temp)
-        if @recipe.save
-          @recipe.ingredients << @ingredient
-        else
-          render :new
-        end
-        ingredientN=ingredientN+1
-      end
-    end
+       @temp = params[:IN][ingredientN].to_f
+       @ingredient = Ingredient.find(@temp)
+       if @recipe.save
+         @recipe.ingredients << @ingredient
+       else
+         render :new
+       end
+       ingredientN=ingredientN+1
+     end
+   end
 
     if params[:tags].present?
       @tagarray = params[:tags].split(/[\s,]+/)

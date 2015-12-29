@@ -50,7 +50,6 @@ gem 'omniauth-instagram'
 gem 'font-awesome-rails'
 gem 'ratyrate'
 gem 'gon'
-gem 'rails-simple-search'
 gem 'friendly_id', '~> 5.1.0'
 gem "koala", "~> 2.2"
 gem 'instagram'

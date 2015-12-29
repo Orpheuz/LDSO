@@ -3,14 +3,10 @@
     <div class="row">
       <div class="col-xs-6">
         <div class="input-group">
-          <div class="input-group-btn">
-            <%= hidden_field_tag 'SCN' ,'Name' %>
-            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="search-choice-btn">Name</button>
-            <ul class="dropdown-menu">
-              <li><a href="#" id="search-choice-opt-tag" class="search-choice">Tag</a></li>
-            </ul>
-          </div><!-- /btn-group -->
-          <%= text_field_tag :search, params[:search], class: "form-control"%>
+            <div class="input-group-addon">
+              <span id="search-ing-btn">Name</span>
+            </div>
+          <%= text_field_tag :name, params[:name], class: "form-control"%>
         </div>
 
       </div>
@@ -27,6 +23,23 @@
       </div>
       <%= submit_tag "Search", :name => nil,class: "btn btn-default" %>
     </div>
+
+    <div class="row">
+      <div class="col-xs-6">
+        <div class="input-group">
+          <div class="input-group-addon">
+            <span id="search-ing-btn">Tags</span>
+          </div>
+          <div class="all-tags">
+            <input name="tags[]" class="form-control" id="searchTag1" />
+          </div>
+          <div class="input-group-btn">
+            <button type="button" class="btn btn-default" id="add-tag"><span class="glyphicon glyphicon-plus"></span></button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
 
     <div class="row">
       <div class="col-xs-6">
