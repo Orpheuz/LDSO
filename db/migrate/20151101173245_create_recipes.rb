@@ -5,6 +5,7 @@ class CreateRecipes < ActiveRecord::Migration
       t.text :description
       t.string :difficulty
       t.float :time
+      t.text :media
       t.timestamps
     end
   end

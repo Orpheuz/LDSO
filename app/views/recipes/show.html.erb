@@ -3,7 +3,8 @@
   <div class="row">
     <div id="recipe-specs" class="col-xs-6">
       <h1> <%= @recipe.name %></h1>
-      <%= image_tag @recipe.image.url, :style => "width: 100%" %>
+      
+    <%= image_tag(@recipe.media, :class => "recipe-image", :style =>"") %>
       <div class="row">
         <div id="rating-col" class="col-xs-6">
           <h3>Rating <%= rating_for @recipe, "rating" %></h3>

@@ -29,14 +29,18 @@ class RecipesController < ApplicationController
   end
 
 
+  def recipe_params
+    params.require(:recipe).permit(:image)
+  end
+
   def create
     totalTime=0
     params[:T].each do |t|
       totalTime=totalTime+t.to_f
     end
 
-
-    @recipe = current_user.recipes.create(name: params[:recipe][:name], description: params[:recipe][:description],time: totalTime,difficulty: params[:difficulty])
+    params.require(:recipe).permit(:image)
+    @recipe = current_user.recipes.create!(name: params[:recipe][:name], description: params[:recipe][:description],time: totalTime,difficulty: params[:difficulty],media: params[:media])
     stepID=0
 
     while params[:S][stepID].present? do

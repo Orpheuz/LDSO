@@ -3,7 +3,26 @@
               <legend><span class="number">1</span> Recipe name</legend>
               <%= f.text_field :name, :required => true%><br />
               <legend><span class="number">2</span> Recipe image</legend>
-              <%= f.file_field :image %>
+
+
+
+          <div class="btn btn-default open_modal" data-toggle="modal" data-target="#Modal-1" id ="-1" >Add Instagram content</div>
+            <div class="modal fade" id="Modal-1" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Select a photo</h4>
+                  </div>
+                  <div class="modal-body">
+                    <div class="row" id="modal-body_-1">
+                      <div id="modal_-1"> </div>
+                    </div>
+                  </div>
+                </div>
+               </div>
+              </div>
+              <input type="hidden" value="NaN" name="media" id= "SM_-1"/>'
+              <br>
               <br>
               <legend><span class="number">3</span>Recipe description</legend>
               <%= f.text_area :description, size: "60x12", :required => true %><br />
