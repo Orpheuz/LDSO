@@ -99,13 +99,13 @@ p {
   height: 80px;
 }
 .navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
-  background-color: #494C4D;
+  background-color: #2A696F;
 }
 #loggedin > li {
-  background-color: #727778;
+  background-color: #408288;
 
   &:hover {
-    background-color: #494C4D;
+    background-color: #2A696F;
   }
 }
 .navbar-inverse .navbar-nav > li > a, #loggedin > li > a {
@@ -119,7 +119,7 @@ p {
 
   &:hover {
     color: white;
-    background-color: #494C4D;
+    background-color: #2A696F;
   }
 }
 .nav > li > a {
@@ -163,7 +163,7 @@ p {
 }
 .navbar {
   position: relative;
-  background-color: #727778;
+  background-color: #408288;
   border-bottom-color: $border-gray;
   border-bottom-width: 1px;
 }

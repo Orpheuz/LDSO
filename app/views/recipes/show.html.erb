@@ -179,28 +179,12 @@
           <input id="tags_list" name="typecom" type="hidden" value="Suggestion" />
           <button type="submit" class="btn btn-primary">Submit</button>
           <% end %>
-        </section>
-
-        <section id="content2">
-          <!-- Suggestions Form -->
-          <div class="well">
-            <h4>Leave a suggestion:</h4>
-            <%= form_for([@recipe, @comment]) do |f| %>
-            <div class="form-group">
-              <textarea class="form-control" rows="3" name="text"></textarea>
-            </div>
-            <input id="tags_list" name="typecom" type="hidden" value="Suggestion" />
-            <button type="submit" class="btn btn-primary">Submit</button>
-            <% end %>
-
-          </div>
-
+          </div>        
           <hr>
 
           <br />
 
           <% if @suggestions.present? %>
-
 
           <% @suggestions.each do |suggestion|
             user=User.find(suggestion.user_id)%>
