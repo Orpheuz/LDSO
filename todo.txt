@@ -1,1 +1,6 @@
-deploy
+- Deploy
+
+- User profile 
+	- Badges are default -> new image needed probably
+	- Recipe images and links
+- General css changes
