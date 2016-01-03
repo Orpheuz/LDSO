@@ -11,7 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151203154314) do
+ActiveRecord::Schema.define(version: 20151201174837) do
+
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
 
   create_table "average_caches", force: :cascade do |t|
     t.integer  "rater_id"
@@ -29,8 +32,8 @@ ActiveRecord::Schema.define(version: 20151203154314) do
     t.integer  "recipe_id"
   end
 
-  add_index "bookmarks", ["recipe_id"], name: "index_bookmarks_on_recipe_id"
-  add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id"
+  add_index "bookmarks", ["recipe_id"], name: "index_bookmarks_on_recipe_id", using: :btree
+  add_index "bookmarks", ["user_id"], name: "index_bookmarks_on_user_id", using: :btree
 
   create_table "categories", force: :cascade do |t|
     t.string   "name"
@@ -45,8 +48,8 @@ ActiveRecord::Schema.define(version: 20151203154314) do
     t.datetime "updated_at"
   end
 
-  add_index "categories_to_recipes", ["category_id"], name: "index_categories_to_recipes_on_category_id"
-  add_index "categories_to_recipes", ["recipe_id"], name: "index_categories_to_recipes_on_recipe_id"
+  add_index "categories_to_recipes", ["category_id"], name: "index_categories_to_recipes_on_category_id", using: :btree
+  add_index "categories_to_recipes", ["recipe_id"], name: "index_categories_to_recipes_on_recipe_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.integer  "user_id"
@@ -58,8 +61,8 @@ ActiveRecord::Schema.define(version: 20151203154314) do
     t.text     "media"
   end
 
-  add_index "comments", ["recipe_id"], name: "index_comments_on_recipe_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["recipe_id"], name: "index_comments_on_recipe_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "follows", force: :cascade do |t|
     t.integer  "user_id"
@@ -68,8 +71,8 @@ ActiveRecord::Schema.define(version: 20151203154314) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "follows", ["target_id"], name: "index_follows_on_target_id"
-  add_index "follows", ["user_id"], name: "index_follows_on_user_id"
+  add_index "follows", ["target_id"], name: "index_follows_on_target_id", using: :btree
+  add_index "follows", ["user_id"], name: "index_follows_on_user_id", using: :btree
 
   create_table "ingredient_recipe_associations", force: :cascade do |t|
     t.integer  "recipe_id"
@@ -78,8 +81,8 @@ ActiveRecord::Schema.define(version: 20151203154314) do
     t.datetime "updated_at"
   end
 
-  add_index "ingredient_recipe_associations", ["ingredient_id"], name: "index_ingredient_recipe_associations_on_ingredient_id"
-  add_index "ingredient_recipe_associations", ["recipe_id"], name: "index_ingredient_recipe_associations_on_recipe_id"
+  add_index "ingredient_recipe_associations", ["ingredient_id"], name: "index_ingredient_recipe_associations_on_ingredient_id", using: :btree
+  add_index "ingredient_recipe_associations", ["recipe_id"], name: "index_ingredient_recipe_associations_on_recipe_id", using: :btree
 
   create_table "ingredient_suggestions", force: :cascade do |t|
     t.string   "name"
@@ -113,8 +116,8 @@ ActiveRecord::Schema.define(version: 20151203154314) do
     t.datetime "updated_at"
   end
 
-  add_index "rates", ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type"
-  add_index "rates", ["rater_id"], name: "index_rates_on_rater_id"
+  add_index "rates", ["rateable_id", "rateable_type"], name: "index_rates_on_rateable_id_and_rateable_type", using: :btree
+  add_index "rates", ["rater_id"], name: "index_rates_on_rater_id", using: :btree
 
   create_table "rating_caches", force: :cascade do |t|
     t.integer  "cacheable_id"
@@ -126,7 +129,7 @@ ActiveRecord::Schema.define(version: 20151203154314) do
     t.datetime "updated_at"
   end
 
-  add_index "rating_caches", ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type"
+  add_index "rating_caches", ["cacheable_id", "cacheable_type"], name: "index_rating_caches_on_cacheable_id_and_cacheable_type", using: :btree
 
   create_table "recipe_tag_associations", force: :cascade do |t|
     t.integer  "recipe_id"
@@ -135,24 +138,21 @@ ActiveRecord::Schema.define(version: 20151203154314) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "recipe_tag_associations", ["recipe_id"], name: "index_recipe_tag_associations_on_recipe_id"
-  add_index "recipe_tag_associations", ["tag_id"], name: "index_recipe_tag_associations_on_tag_id"
+  add_index "recipe_tag_associations", ["recipe_id"], name: "index_recipe_tag_associations_on_recipe_id", using: :btree
+  add_index "recipe_tag_associations", ["tag_id"], name: "index_recipe_tag_associations_on_tag_id", using: :btree
 
   create_table "recipes", force: :cascade do |t|
     t.string   "name"
     t.text     "description"
     t.string   "difficulty"
     t.float    "time"
+    t.text     "media"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
-    t.string   "image_file_name"
-    t.string   "image_content_type"
-    t.integer  "image_file_size"
-    t.datetime "image_updated_at"
   end
 
-  add_index "recipes", ["user_id"], name: "index_recipes_on_user_id"
+  add_index "recipes", ["user_id"], name: "index_recipes_on_user_id", using: :btree
 
   create_table "steps", force: :cascade do |t|
     t.integer  "recipe_id"
@@ -165,7 +165,7 @@ ActiveRecord::Schema.define(version: 20151203154314) do
     t.datetime "updated_at"
   end
 
-  add_index "steps", ["recipe_id"], name: "index_steps_on_recipe_id"
+  add_index "steps", ["recipe_id"], name: "index_steps_on_recipe_id", using: :btree
 
   create_table "tags", force: :cascade do |t|
     t.string   "name"
@@ -200,8 +200,9 @@ ActiveRecord::Schema.define(version: 20151203154314) do
     t.string   "username"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
-  add_index "users", ["username"], name: "index_users_on_username", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index "users", ["username"], name: "index_users_on_username", unique: true, using: :btree
 
+  add_foreign_key "comments", "users"
 end
