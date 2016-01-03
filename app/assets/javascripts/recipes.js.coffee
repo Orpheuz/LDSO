@@ -46,7 +46,7 @@ $(document).ready ->
     </div>
   </div></legend>
 
-  <input type="hidden" value="NaN" name="SM[]" id= "SM_' + stepN + '"/>' +
+        <input type="text" class="step" placeholder="Image URL" name="SM[]"" id= "SM_' + stepN + '"/>' +
         '<input required type=\'text\' class=\'step\' placeholder=\'Title for step ' + stepN + '\' name= \'SN[]\' id= \'SN' + stepN + '\'/>' +
         '<textarea required type=\'text\' class=\'step\' placeholder=\'Describe step ' + stepN + '\' name= \'S[]\' id= \'S' + stepN + '\'/></div>' +
         '<label for="inputsm">Time (minutes):</label>' +
