@@ -92,7 +92,11 @@
 <hr/>
 <div id="createdby" class="panel panel-default">
   <div class="panel-body">
-    <legend> Created by: <%= link_to @author.username, userpage_path(@author.id) %> </legend>
+    <% if @author.fbtoken.nil? %>
+      <legend> Created by: <%= link_to @author.username, userpage_path(@author.id) %> </legend>
+    <%else%>
+      <legend> Created by: <%= link_to @author.name, userpage_path(@author.id) %> </legend>
+    <%end%>
     <div class="tags">
       <% @tags.each do |t| %>
       <a href="#"> <%= t.name %></a>
