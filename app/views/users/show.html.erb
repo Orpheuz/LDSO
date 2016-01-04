@@ -13,8 +13,9 @@
   <h2 style="align=center"> This user's profile is private :( </h2>
   <% else %>
   <div class="row " style="padding-bottom:50px; ">
+    <br /><br />
     <div class="col-md-3">
-      <img src="http://www.johndoe.pro/img/John_Doe.jpg" class="img-responsive img-thumbnail" />
+      <img src="http://swantoon.com/attachments/Image/placeholder-photo.png" class="img-responsive img-thumbnail" />
       <br/>
       <% if @user != current_user %>
       <% if @user.followed(current_user) %>
@@ -28,8 +29,6 @@
       <% end %>
     </div>
     <div class="col-md-9">
-      <br /><br />
-      <hr />
       <div >
         <h3><strong> Name:</strong> <%= @user.name %></h3>
         <h3><strong> Email:</strong><%= @user.email %></h3>
