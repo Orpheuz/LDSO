@@ -62,3 +62,7 @@ gem 'bootstrap-select-rails'
 gem 'stream_rails'
 gem 'social-share-button'
 gem "paperclip", "~> 4.3"
+
+gem 'rails_12factor', group: :production
+
+ruby "2.1.7"
