@@ -14,6 +14,9 @@ class RecipesController < ApplicationController
         @bookmark_visible=false
       end
     end
+    gon.push({
+     :current_user => current_user
+    })
   end
 
   def new

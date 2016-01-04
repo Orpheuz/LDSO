@@ -119,16 +119,17 @@
     <div class="well">
       <h4>Leave a review:</h4>
       <%= form_for([@recipe, @comment]) do |f| %>
-      <div class="btn btn-default open_modal" data-toggle="modal" data-target="#MyModal1" id =""> Add Instagram content</div>
-      <div class="modal fade" id="MyModal1" role="dialog">
+      <div class="btn btn-default open_modal" data-toggle="modal" data-target="#Modal-1" id ="-1" >Add Instagram content</div>
+      <input type="text" class="form-control" placeholder="Image URL" name="media" id= "SM_-1"/>  
+      <div class="modal fade" id="Modal-1" role="dialog">
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <h4 class="modal-title">Select a photo</h4>
             </div>
             <div class="modal-body">
-              <div class="row" id="modal-body_'+stepN+'">
-                <div id="modal_'+stepN+'"> </div>
+              <div class="row" id="modal-body_-1">
+                <div id="modal_-1"> </div>
               </div>
             </div>
           </div>
@@ -137,7 +138,6 @@
       <div class="form-group">
         <textarea class="form-control" rows="3" name="text"></textarea>
       </div>
-      <input id="media" name="media" type="hidden" value="NaN" />
       <input id="tags_list" name="typecom" type="hidden" value="Review" />
       <button type="submit" class="btn btn-primary">Submit</button>
       <% end %>
@@ -163,6 +163,18 @@
           <h4 class="media-heading"><legend> <%= link_to user.username, userpage_path(review.user_id) %> said:</legend>
 
           </h4>
+
+          <div class="btn btn-default" data-toggle="modal" data-target="#review<%= review.id%>" id ="-1" >View media content</div>
+          <div class="modal fade" id="review<%= review.id %>" role="dialog">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-body">
+                  <%= image_tag(review.media, :class => "", :style => "max-width:100%;max-height:100%;") %>
+                </div>
+              </div>
+            </div>
+          </div>
+            
           <div class="bubble">
 
             <p><%= review.comment_text %></p>
@@ -191,21 +203,22 @@
 
       <% end %>
       <% end %>
-    </section>
-    <section id="content2">
+  </section>
+  <section id="content2">
       <div class="well">
         <h4>Leave a suggestion:</h4>
         <%= form_for([@recipe, @comment]) do |f| %>
-        <div class="btn btn-default open_modal" data-toggle="modal" data-target="#MyModal2" id =""> Add Instagram content</div>
-        <div class="modal fade" id="MyModal2" role="dialog">
+        <div class="btn btn-default open_modal" data-toggle="modal" data-target="#Modal-2" id ="-2" >Add Instagram content</div>
+        <input type="text" class="form-control" placeholder="Image URL" name="media" id= "SM_-2"/>  
+        <div class="modal fade" id="Modal-2" role="dialog">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
                 <h4 class="modal-title">Select a photo</h4>
               </div>
               <div class="modal-body">
-                <div class="row" id="modal-body_'+stepN+'">
-                  <div id="modal_'+stepN+'"> </div>
+                <div class="row" id="modal-body_-2">
+                  <div id="modal_-2"> </div>
                 </div>
               </div>
             </div>
@@ -236,6 +249,17 @@
             <h4 class="media-heading"><legend> <%= link_to user.username, userpage_path(suggestion.user_id) %> said:</legend>
 
             </h4>
+
+            <div class="btn btn-default" data-toggle="modal" data-target="#suggestion<%= suggestion.id%>" id ="-1" >View media content</div>
+            <div class="modal fade" id="suggestion<%= suggestion.id %>" role="dialog">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-body">
+                    <%= image_tag(suggestion.media, :class => "", :style => "max-width:100%;max-height:100%;") %>
+                  </div>
+                </div>
+              </div>
+            </div>
             <div class="bubble">
               <p><%= suggestion.comment_text %></p>
             </div>
@@ -268,16 +292,17 @@
         <div class="well">
           <h4>Leave a tip:</h4>
           <%= form_for([@recipe, @comment]) do |f| %>
-          <div class="btn btn-default open_modal" data-toggle="modal" data-target="#MyModal3" id =""> Add Instagram content</div>
-          <div class="modal fade" id="MyModal3" role="dialog">
+          <div class="btn btn-default open_modal" data-toggle="modal" data-target="#Modal-3" id ="-3" >Add Instagram content</div>
+          <input type="text" class="form-control" placeholder="Image URL" name="media" id= "SM_-3"/>  
+          <div class="modal fade" id="Modal-3" role="dialog">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
                   <h4 class="modal-title">Select a photo</h4>
                 </div>
                 <div class="modal-body">
-                  <div class="row" id="modal-body_'+stepN+'">
-                    <div id="modal_'+stepN+'"> </div>
+                  <div class="row" id="modal-body_-3">
+                    <div id="modal_-3"> </div>
                   </div>
                 </div>
               </div>
@@ -311,6 +336,16 @@
               <h4 class="media-heading"><legend> <%= link_to user.username, userpage_path(tip.user_id) %> said:</legend>
 
               </h4>
+              <div class="btn btn-default" data-toggle="modal" data-target="#tip<%= tip.id%>" id ="-1" >View media content</div>
+              <div class="modal fade" id="tip<%= tip.id %>" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-body">
+                      <%= image_tag(tip.media, :class => "", :style => "max-width:100%;max-height:100%;") %>
+                    </div>
+                  </div>
+                </div>
+              </div>
               <div class="bubble">
                 <p><%= tip.comment_text %></p>
               </div>
@@ -348,4 +383,4 @@
           </p>
         </section>
       </main>
-    </div>
+  </div>
