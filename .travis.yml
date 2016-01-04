@@ -5,5 +5,7 @@ notifications:
   slack: superldso:rcBWVLO1AxWgdF9sA19AoyCG
 script:
   - bundle install
-  - rake db:drop
+  - rake db:drop:all
+  - rake db:create:all
   - rake db:migrate
+  - rake db:seed
