@@ -44,10 +44,11 @@
         <%end%>
 
         <br />
-
-        <a href="#" class="btn btn-primary" >Facebook <i class="glyphicon glyphicon-play"></i></a>
-        <a href="#" class="btn btn-danger" >Google <i class="glyphicon glyphicon-play"></i></a>
-        <a href="#" class="btn btn-info" >Twitter <i class="glyphicon glyphicon-play"></i></a>
+        <div class="social-share-button" data-title="My InstaChef Page" data-img="" data-url="<%=request.original_url%>" data-desc="" data-popup="" data-via="">
+          <a rel="nofollow " data-site="twitter" class="btn btn-info" onclick="return SocialShareButton.share(this);" title="Share to Twitter" href="#">Twitter <i class="glyphicon glyphicon-play"></i></a>
+          <a rel="nofollow " data-site="facebook" class="btn btn-primary" onclick="return SocialShareButton.share(this);" title="Share to Facebook" href="#">Facebook <i class="glyphicon glyphicon-play"></i></a>
+          <a rel="nofollow " data-site="google_plus" class="btn btn-danger" onclick="return SocialShareButton.share(this);" title="Share to Google+" href="#">Google <i class="glyphicon glyphicon-play"></i></a>
+        </div>
         <% if user_signed_in? %>
         <% if @user == current_user %>
         <%= link_to raw("<i class=\"glyphicon glyphicon-pencil\"></i>  Edit"), edit_user_registration_path, class: "btn btn-default pull-right pull-down" %>
