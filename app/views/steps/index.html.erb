@@ -4,7 +4,9 @@
     <div class="col-xs-12">
       <h1><%= @recipe.name %></h1>
     </div>
-    <%= image_tag(@recipe.media, :class => "recipe-image", :style =>"") %>
+    <div id="recipe-img-steps">
+      <%= image_tag(@recipe.media, :class => "recipe-image", :style =>"", :align =>"middle") %>
+    </div>
     <div class="col-xs-12" id="steps-content">
       <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
         <% @steps.each do |step| %>
@@ -19,7 +21,7 @@
           </div>
           <div id="collapse<%=step.stepnumber%>" class="panel-collapse collapse <%= if step.stepnumber == 1 then 'in' end%>" role="tabpanel" aria-labelledby="heading<%=step.stepnumber%>">
             <div class="panel-body">
-              <%if step.media != "NaN" %>
+              <%if step.media.present? %>
               <%= image_tag(step.media, :class => "recipe-step-image", :style =>"") %>
               <%end%>
               <div id="step-description">
@@ -30,7 +32,7 @@
               <br>
               <br>
               <div id="left-menu">
-              <a><span id="chrBtn-<%=step.stepnumber%>" class="glyphicon glyphicon-time"></span></a>
+                <a><span id="chrBtn-<%=step.stepnumber%>" class="glyphicon glyphicon-time"></span></a>
               </div>
               <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse<%=step.stepnumber+1%>" aria-expanded=<%= if step.stepnumber == 1 then 'true' else 'false class=collapsed' end%>
                 aria-controls="collapse<%=step.stepnumber%>">              

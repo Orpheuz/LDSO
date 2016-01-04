@@ -26,8 +26,8 @@
   padding: 15px;
 }
 #step-btn {
-  background-color: #0C0C0C;
-  border-color: #151515;
+  background-color: #408288;
+  border-color: #3D7A80;
   position: absolute;
   right: 0px;
   bottom: 0px;
@@ -51,4 +51,7 @@
 }
 [id^=chronometerSection] {
   margin-top: 20px;
+}
+#recipe-img-steps {
+  text-align: center;
 }
