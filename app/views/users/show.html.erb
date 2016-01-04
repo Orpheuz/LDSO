@@ -64,10 +64,10 @@
   <div class="row">
     <div class="col-md-6">
       <div class="profile-section">
-       <h3 style="padding-left: 15px;">About me:</h3>
+       <h3 style="padding-left: 15px;">About me</h3>
        <hr />
      </div>
-     <p>
+     <p style="padding-left: 15px;">
       <% if @user.about? %>
       <%= @user.about %>
       <% else %>
@@ -91,11 +91,11 @@
      <h3 style="padding-left: 15px;">Recipes</h3>
      <hr>
    </div>
-   <% @recipes.each do |recipe| %>
-   <%= div_for recipe, :class => "row" do %>
-   <%= link_to image_tag(recipe.media, :class => "recipe-image-profile"), recipe_path(recipe) %> <br>
-   <% end %>
-   <% end %>
+   <div id="profile-img-content">
+     <% @recipes.each do |recipe| %>
+     <%= link_to image_tag(recipe.media, :class => "recipe-image-profile inline-block"), recipe_path(recipe) %>
+     <% end %>
+   </div>
  </div>
  <% end %>
 </div>

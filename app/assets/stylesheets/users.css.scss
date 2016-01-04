@@ -22,8 +22,13 @@ img.avatar {
 	border-radius: 8px;
 }
 .recipe-image-profile {
+	width: 100%;
 	max-width: 300px;
 	padding-left: 30px;
-	padding-right: 30px;
-	margin-bottom: 15px;
+	padding-right: 15px;
+	margin-bottom: 30px;
+}
+#profile-img-content {
+	padding-left: 10%;
+	padding-right: 8%;
 }
