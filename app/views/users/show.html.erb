@@ -31,7 +31,7 @@
     <div class="col-md-9">
       <div >
         <h3><strong> Name:</strong> <%= @user.name %></h3>
-        <h3><strong> Email:</strong><%= @user.email %></h3>
+        <h3><strong> Email:</strong> <%= @user.email %></h3>
         <% if @user.birth != nil%>
         <h3><strong> Age: </strong><%= age(@user.birth) %></h3>
         <%else%>

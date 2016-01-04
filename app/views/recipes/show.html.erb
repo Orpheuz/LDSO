@@ -1,16 +1,35 @@
-
-<div id="main-container" class="container">
-  <div class="row">
-    <div id="recipe-specs" class="col-xs-6">
-      <h1> <%= @recipe.name %></h1>
-      
-    <%= image_tag(@recipe.media, :class => "recipe-image", :style =>"") %>
+<div class="container">
+  <div id="recipe-content">
+    <div class="row">
+      <div class="col-md-12">
+        <h1> <%= @recipe.name %></h1>
+        <hr/>
+      </div>
+    </div>
+    <div class="row vdivide">
+     <div class="col-md-6">
+      <%= image_tag(@recipe.media, :class => "recipe-image", :style => "") %>
       <div class="row">
-        <div id="rating-col" class="col-xs-6">
-          <h3>Rating <%= rating_for @recipe, "rating" %></h3>
+        <div class="col-md-7 share-btns">
+          <a href="#" class="btn btn-primary">Facebook <i class="glyphicon glyphicon-play"></i></a>
+          <a href="#" class="btn btn-danger">Google <i class="glyphicon glyphicon-play"></i></a>
+          <a href="#" class="btn btn-info">Twitter <i class="glyphicon glyphicon-play"></i></a>
         </div>
-        <div id="bookmark-col" class="col-xs-6">
-          <p> <% if current_user %> Bookmark
+        <div id="recipe-owner-opt" class="col-md-5">
+         <% if current_user.id==@author.id %>
+         <%= link_to "Edit", edit_recipe_path(params[:id]), class: 'btn btn-success', id:'edit-recipe'%>
+         <%= link_to "Remove", @recipe, :method => :delete, class: 'btn btn-success', id:'remove-recipe'%>
+         <% end %>
+       </div>
+     </div>
+     <div class="row">
+      <div class="col-md-12">
+        <div id="rating">
+          <p id="rating-title">Rate this recipe! <%= rating_for @recipe, "rating" %></p>
+        </div>
+        <div id="bookmark">
+          <p> <% if current_user %> 
+            Bookmark
             <% if @bookmark_visible %>
             <%= link_to bookmark_recipe_path(@recipe,type: "add"), method: :put, id:'book-btn' do %>
             <span class="fa-stack fa-lg bookmark-recipe-btn" id="bookmark-recipe-btn1">
@@ -31,57 +50,154 @@
         </div>
       </div>
     </div>
-    <div id="recipe-content" class="col-xs-6">
-      <p><%= @recipe.description %></p>
-      <% if current_user.id==@author.id %>
-      <%= link_to "Edit recipe", edit_recipe_path(params[:id]), class: 'btn btn-success', id:'recipe-btn' %>
-      <%= link_to "", @recipe, :method => :delete, class: 'btn btn-success fa fa-trash', id:'recipe-btn'%>
-      <% end %>
-      <%= link_to "Start cooking", steps_path(params[:id]), class: 'btn btn-success', id:'recipe-btn' %>
-    </div>
-
-
-
-
-  </div>
-
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <legend> Created by: <%= link_to @author.username, userpage_path(@author.id) %> </legend>
-      <div class="tags">
-        <% @tags.each do |t| %>
-        <a href="#"> <%= t.name %></a>
-        <% end %>
-
+    <div class="row">
+      <div class="col-md-12">
+        <%= link_to "Start cooking", steps_path(params[:id]), class: 'btn-std-recipe' %>
       </div>
     </div>
   </div>
-  <br />
-  <br />
-  <br />
-  <br />
+  <div class="col-md-6">
+    <div class="row">
+      <h1> Info </h1>
+      <div class="col-md-4 recipe-specs">
+        <i class="glyphicon glyphicon-time"></i><br/>
+        <p> <%= @recipe.time %> </p>
+      </div>
+      <div class="col-md-4 recipe-specs">
+        <i class="fa fa-cutlery"></i>
+        <p> 4 </p>
+      </div>
+      <div class="col-md-4 recipe-specs">
+        <i class="fa fa-balance-scale"></i>
+        <p> Unknown </p>
+      </div>
+    </div>
+    <hr/>
+    <div class="row">
+      <h1> About </h1>
+      <p style="text-align: justify; padding-left: 30px;"><%= @recipe.description %></p>
+    </div>
+    <hr/>
+    <div class="row">
+      <h1> Ingredients </h1>
+      <div id="ingredient-list">
+        <% @ingredients.each do |ingr| %>
+        <li><%= ingr.name %></li>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+<hr/>
+<div id="createdby" class="panel panel-default">
+  <div class="panel-body">
+    <legend> Created by: <%= link_to @author.username, userpage_path(@author.id) %> </legend>
+    <div class="tags">
+      <% @tags.each do |t| %>
+      <a href="#"> <%= t.name %></a>
+      <% end %>
 
-  <main>
+    </div>
+  </div>
+</div>
+<main>
 
-    <input id="tab1" type="radio" name="tabs" checked>
-    <label for="tab1">Reviews</label>
+  <input id="tab1" type="radio" name="tabs" checked>
+  <label for="tab1">Reviews</label>
 
-    <input id="tab2" type="radio" name="tabs">
-    <label for="tab2">Suggestions</label>
+  <input id="tab2" type="radio" name="tabs">
+  <label for="tab2">Suggestions</label>
 
-    <input id="tab3" type="radio" name="tabs">
-    <label for="tab3">Tips</label>
+  <input id="tab3" type="radio" name="tabs">
+  <label for="tab3">Tips</label>
 
-    <input id="tab4" type="radio" name="tabs">
-    <label for="tab4">Photos</label>
+  <input id="tab4" type="radio" name="tabs">
+  <label for="tab4">Photos</label>
 
-    <section id="content1">
-      <!-- Reviews Form -->
+  <section id="content1">
+    <div class="well">
+      <h4>Leave a review:</h4>
+      <%= form_for([@recipe, @comment]) do |f| %>
+      <div class="btn btn-default open_modal" data-toggle="modal" data-target="#MyModal1" id =""> Add Instagram content</div>
+      <div class="modal fade" id="MyModal1" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Select a photo</h4>
+            </div>
+            <div class="modal-body">
+              <div class="row" id="modal-body_'+stepN+'">
+                <div id="modal_'+stepN+'"> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <textarea class="form-control" rows="3" name="text"></textarea>
+      </div>
+      <input id="media" name="media" type="hidden" value="NaN" />
+      <input id="tags_list" name="typecom" type="hidden" value="Review" />
+      <button type="submit" class="btn btn-primary">Submit</button>
+      <% end %>
+
+    </div>
+
+    <hr>
+
+    <br />
+
+    <% if @reviews.present? %>
+
+
+    <% @reviews.each do |review|
+      user=User.find(review.user_id)%>
+
+      <div class="media">
+        <a class="pull-left" href="#">
+          <img class="media-object img-circle avatar avatar-original" style="-webkit-user-select:none;
+          display:block; margin:auto;" src="http://cdn.overclock.net/a/a0/120x120px-LS-a0ae1256_avatar95329_4.jpeg"  alt="">
+        </a>
+        <div class="media-body">
+          <h4 class="media-heading"><legend> <%= link_to user.username, userpage_path(review.user_id) %> said:</legend>
+
+          </h4>
+          <div class="bubble">
+
+            <p><%= review.comment_text %></p>
+          </div>
+          <div class="panel panel-default">
+            <div class="panel-body">
+              <div class="commentstats">
+                <ul class=>
+                  <li>
+                    <div id="rating-col" class="media pull-left ">
+                      <h4 class="media-heading "><small> Rating: <%= rating_for Comment.find(review.id), "points" %></small></h4>
+                    </div>
+                  </li>
+                  <li>
+                    <h4 class="media-heading pull-right"><small> <%= review.created_at.strftime("%B %d, %Y, %H:%M:%S") %> </small></h4>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br/>
+
+      </div>
+      <br/>
+
+      <% end %>
+      <% end %>
+    </section>
+    <section id="content2">
       <div class="well">
-        <h4>Leave a review:</h4>
+        <h4>Leave a suggestion:</h4>
         <%= form_for([@recipe, @comment]) do |f| %>
-        <div class="btn btn-default open_modal" data-toggle="modal" data-target="#MyModal1" id =""> Add Instagram content</div>
-        <div class="modal fade" id="MyModal1" role="dialog">
+        <div class="btn btn-default open_modal" data-toggle="modal" data-target="#MyModal2" id =""> Add Instagram content</div>
+        <div class="modal fade" id="MyModal2" role="dialog">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
@@ -98,22 +214,18 @@
         <div class="form-group">
           <textarea class="form-control" rows="3" name="text"></textarea>
         </div>
-        <input id="media" name="media" type="hidden" value="NaN" />
-        <input id="tags_list" name="typecom" type="hidden" value="Review" />
+        <input id="tags_list" name="typecom" type="hidden" value="Suggestion" />
         <button type="submit" class="btn btn-primary">Submit</button>
         <% end %>
-
-      </div>
-
+      </div>        
       <hr>
 
       <br />
 
-      <% if @reviews.present? %>
+      <% if @suggestions.present? %>
 
-
-      <% @reviews.each do |review|
-        user=User.find(review.user_id)%>
+      <% @suggestions.each do |suggestion|
+        user=User.find(suggestion.user_id)%>
 
         <div class="media">
           <a class="pull-left" href="#">
@@ -121,45 +233,43 @@
             display:block; margin:auto;" src="http://cdn.overclock.net/a/a0/120x120px-LS-a0ae1256_avatar95329_4.jpeg"  alt="">
           </a>
           <div class="media-body">
-            <h4 class="media-heading"><legend> <%= link_to user.username, userpage_path(review.user_id) %> said:</legend>
+            <h4 class="media-heading"><legend> <%= link_to user.username, userpage_path(suggestion.user_id) %> said:</legend>
 
             </h4>
             <div class="bubble">
-
-              <p><%= review.comment_text %></p>
+              <p><%= suggestion.comment_text %></p>
             </div>
+
             <div class="panel panel-default">
               <div class="panel-body">
                 <div class="commentstats">
                   <ul class=>
                     <li>
                       <div id="rating-col" class="media pull-left ">
-                        <h4 class="media-heading "><small> Rating: <%= rating_for Comment.find(review.id), "points" %></small></h4>
+                        <h4 class="media-heading "><small> Rating: <%= rating_for Comment.find(suggestion.id), "points" %></small></h4>
                       </div>
                     </li>
                     <li>
-                      <h4 class="media-heading pull-right"><small> <%= review.created_at.strftime("%B %d, %Y, %H:%M:%S") %> </small></h4>
+                      <h4 class="media-heading pull-right"><small> <%= suggestion.created_at.strftime("%B %d, %Y, %H:%M:%S") %> </small></h4>
                     </li>
                   </ul>
                 </div>
               </div>
             </div>
           </div>
-          <br/>
-
         </div>
-        <br/>
 
         <% end %>
+
         <% end %>
       </section>
-      <section id="content2">
-        <!-- Suggestions Form -->
+
+      <section id="content3">
         <div class="well">
-          <h4>Leave a suggestion:</h4>
+          <h4>Leave a tip:</h4>
           <%= form_for([@recipe, @comment]) do |f| %>
-          <div class="btn btn-default open_modal" data-toggle="modal" data-target="#MyModal2" id =""> Add Instagram content</div>
-          <div class="modal fade" id="MyModal2" role="dialog">
+          <div class="btn btn-default open_modal" data-toggle="modal" data-target="#MyModal3" id =""> Add Instagram content</div>
+          <div class="modal fade" id="MyModal3" role="dialog">
             <div class="modal-dialog">
               <div class="modal-content">
                 <div class="modal-header">
@@ -176,139 +286,66 @@
           <div class="form-group">
             <textarea class="form-control" rows="3" name="text"></textarea>
           </div>
-          <input id="tags_list" name="typecom" type="hidden" value="Suggestion" />
+          <input id="tags_list" name="typecom" type="hidden" value="Tip" />
           <button type="submit" class="btn btn-primary">Submit</button>
           <% end %>
-          </div>        
-          <hr>
 
-          <br />
-
-          <% if @suggestions.present? %>
-
-          <% @suggestions.each do |suggestion|
-            user=User.find(suggestion.user_id)%>
-
-            <div class="media">
-              <a class="pull-left" href="#">
-                <img class="media-object img-circle avatar avatar-original" style="-webkit-user-select:none;
-                display:block; margin:auto;" src="http://cdn.overclock.net/a/a0/120x120px-LS-a0ae1256_avatar95329_4.jpeg"  alt="">
-              </a>
-              <div class="media-body">
-                <h4 class="media-heading"><legend> <%= link_to user.username, userpage_path(suggestion.user_id) %> said:</legend>
-
-                </h4>
-                <div class="bubble">
-                  <p><%= suggestion.comment_text %></p>
-                </div>
-
-                <div class="panel panel-default">
-                  <div class="panel-body">
-                    <div class="commentstats">
-                      <ul class=>
-                        <li>
-                          <div id="rating-col" class="media pull-left ">
-                            <h4 class="media-heading "><small> Rating: <%= rating_for Comment.find(suggestion.id), "points" %></small></h4>
-                          </div>
-                        </li>
-                        <li>
-                          <h4 class="media-heading pull-right"><small> <%= suggestion.created_at.strftime("%B %d, %Y, %H:%M:%S") %> </small></h4>
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <% end %>
-
-            <% end %>
-          </section>
-
-          <section id="content3">
-            <!-- Suggestions Form -->
-            <div class="well">
-              <h4>Leave a tip:</h4>
-              <%= form_for([@recipe, @comment]) do |f| %>
-              <div class="btn btn-default open_modal" data-toggle="modal" data-target="#MyModal3" id =""> Add Instagram content</div>
-              <div class="modal fade" id="MyModal3" role="dialog">
-                <div class="modal-dialog">
-                  <div class="modal-content">
-                    <div class="modal-header">
-                      <h4 class="modal-title">Select a photo</h4>
-                    </div>
-                    <div class="modal-body">
-                      <div class="row" id="modal-body_'+stepN+'">
-                        <div id="modal_'+stepN+'"> </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="form-group">
-                <textarea class="form-control" rows="3" name="text"></textarea>
-              </div>
-              <input id="tags_list" name="typecom" type="hidden" value="Tip" />
-              <button type="submit" class="btn btn-primary">Submit</button>
-              <% end %>
-
-            </div>
-
-            <hr>
-
-            <br />
-
-            <% if @tips.present? %>
-
-
-            <% @tips.each do |tip|
-              user=User.find(tip.user_id)%>
-
-              <div class="media">
-                <a class="pull-left" href="#">
-                  <img class="media-object img-circle avatar avatar-original" style="-webkit-user-select:none;
-                  display:block; margin:auto;" src="http://cdn.overclock.net/a/a0/120x120px-LS-a0ae1256_avatar95329_4.jpeg"  alt="">
-                </a>
-                <div class="media-body">
-                  <h4 class="media-heading"><legend> <%= link_to user.username, userpage_path(tip.user_id) %> said:</legend>
-
-                  </h4>
-                  <div class="bubble">
-                    <p><%= tip.comment_text %></p>
-                  </div>
-                  <div class="panel panel-default">
-                    <div class="panel-body">
-                      <div class="commentstats">
-                        <ul class=>
-                          <li>
-                            <div id="rating-col" class="media pull-left ">
-                              <h4 class="media-heading "><small> Rating: <%= rating_for Comment.find(tip.id), "points" %></small></h4>
-                            </div>
-                          </li>
-                          <li>
-                            <h4 class="media-heading pull-right"><small> <%= tip.created_at.strftime("%B %d, %Y, %H:%M:%S") %> </small></h4>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <% end %>
-
-              <% end %>
-
-            </section>
-
-            <section id="content4">
-              <p>
-                Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin ball tip turducken. Pork belly meatball t-bone bresaola tail filet mignon kevin turkey ribeye shank flank doner cow kielbasa shankle. Pig swine chicken hamburger, tenderloin turkey rump ball tip sirloin frankfurter meatloaf boudin brisket ham hock. Hamburger venison brisket tri-tip andouille pork belly ball tip short ribs biltong meatball chuck. Pork chop ribeye tail short ribs, beef hamburger meatball kielbasa rump corned beef porchetta landjaeger flank. Doner rump frankfurter meatball meatloaf, cow kevin pork pork loin venison fatback spare ribs salami beef ribs.
-              </p>
-              <p>
-                Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta turkey.
-              </p>
-            </section>
-          </main>
         </div>
+
+        <hr>
+
+        <br />
+
+        <% if @tips.present? %>
+
+
+        <% @tips.each do |tip|
+          user=User.find(tip.user_id)%>
+
+          <div class="media">
+            <a class="pull-left" href="#">
+              <img class="media-object img-circle avatar avatar-original" style="-webkit-user-select:none;
+              display:block; margin:auto;" src="http://cdn.overclock.net/a/a0/120x120px-LS-a0ae1256_avatar95329_4.jpeg"  alt="">
+            </a>
+            <div class="media-body">
+              <h4 class="media-heading"><legend> <%= link_to user.username, userpage_path(tip.user_id) %> said:</legend>
+
+              </h4>
+              <div class="bubble">
+                <p><%= tip.comment_text %></p>
+              </div>
+              <div class="panel panel-default">
+                <div class="panel-body">
+                  <div class="commentstats">
+                    <ul class=>
+                      <li>
+                        <div id="rating-col" class="media pull-left ">
+                          <h4 class="media-heading "><small> Rating: <%= rating_for Comment.find(tip.id), "points" %></small></h4>
+                        </div>
+                      </li>
+                      <li>
+                        <h4 class="media-heading pull-right"><small> <%= tip.created_at.strftime("%B %d, %Y, %H:%M:%S") %> </small></h4>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <% end %>
+
+          <% end %>
+
+        </section>
+
+        <section id="content4">
+          <p>
+            Bacon ipsum dolor sit amet landjaeger sausage brisket, jerky drumstick fatback boudin ball tip turducken. Pork belly meatball t-bone bresaola tail filet mignon kevin turkey ribeye shank flank doner cow kielbasa shankle. Pig swine chicken hamburger, tenderloin turkey rump ball tip sirloin frankfurter meatloaf boudin brisket ham hock. Hamburger venison brisket tri-tip andouille pork belly ball tip short ribs biltong meatball chuck. Pork chop ribeye tail short ribs, beef hamburger meatball kielbasa rump corned beef porchetta landjaeger flank. Doner rump frankfurter meatball meatloaf, cow kevin pork pork loin venison fatback spare ribs salami beef ribs.
+          </p>
+          <p>
+            Jerky jowl pork chop tongue, kielbasa shank venison. Capicola shank pig ribeye leberkas filet mignon brisket beef kevin tenderloin porchetta. Capicola fatback venison shank kielbasa, drumstick ribeye landjaeger beef kevin tail meatball pastrami prosciutto pancetta. Tail kevin spare ribs ground round ham ham hock brisket shoulder. Corned beef tri-tip leberkas flank sausage ham hock filet mignon beef ribs pancetta turkey.
+          </p>
+        </section>
+      </main>
+    </div>

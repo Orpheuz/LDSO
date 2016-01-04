@@ -2,47 +2,6 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here:http://sass-lang.com/
 
-
-
-#recipe-content {
-  text-align: center;
-  margin-top: 87px;
-}
-#recipe-btn {
-  margin-top: 153px;
-  background-color: #0C0C0C;
-  border-color: #151515;
-}
-#bookmark-btn {
-  margin-top: 45%;
-  background-color: #0C0C0C;
-  border-color: #151515;
-}
-#main-container {
-  margin-top: -20px;
-  border-style: solid;
-  border-bottom: 0;
-  border-top: 0;
-  height: 2000px;
-  padding-top: 7%;
-  width: 60%;
-}
-#bookmark-col {
-  margin-top: 37px;
-  margin-bottom: 10px;
-  font-size: 20px;
-}
-#rating-col {
-  text-align: center;
-}
-#bookmark-recipe-btn1 {
-  color: black;
-  font-size: 20px;
-}
-#bookmark-recipe-btn2 {
-  color: black;
-  font-size: 20px;
-}
 .form-style-5 {
   max-width: 500px;
   padding: 10px 20px;
@@ -90,7 +49,7 @@
   height: 35px;
 }
 .form-style-5 .number {
-  background: #1abc9c;
+  background: #408288;
   color: #fff;
   height: 30px;
   width: 30px;
@@ -139,17 +98,18 @@
   padding: 19px 39px 18px 39px;
   color: #FFF;
   margin: 0 auto;
-  background: #1abc9c;
+  background: #408288;
   font-size: 18px;
   text-align: center;
   font-style: normal;
   width: 100%;
-  border: 1px solid #16a085;
+  border: 1px solid #3B7368;
+  border-radius: 8px;
   border-width: 1px 1px 3px;
   margin-bottom: 10px;
 }
 .form-style-5 input[type="submit"]:hover, .form-style-5 input[type="button"]:hover {
-  background: #109177;
+  background: #408288;
 }
 .form-style-5 button[type="button"] {
   position: relative;
@@ -157,12 +117,13 @@
   padding: 19px 39px 18px 39px;
   color: #FFF;
   margin: 0 auto;
-  background: #1abc9c;
+  background: #408288;
   font-size: 18px;
   text-align: center;
   font-style: normal;
   width: 100%;
-  border: 1px solid #16a085;
+  border: 1px solid #3B7368;
+  border-radius: 8px;
   border-width: 1px 1px 3px;
   margin-bottom: 10px;
 }
@@ -537,6 +498,69 @@ main input:checked + label {
   color: #FFF;
   text-shadow: -1px -1px 0 rgba(153, 102, 51, 0.3);
 }
-recipe-image {
-  max-width: 500px;
+.recipe-image {
+  width: 100%;
+}
+#bookmark {
+  float: right;
+  display: inline-block;
+  margin-top: 20px;
+}
+#rating {
+  float: left;
+  display: inline-block;
+  margin-top: 20px;
+}
+#createdby {
+  margin-top: 20px;
+}
+#book-btn {
+  color: #408288;
+}
+#rating-title {
+  text-align: center;
+  margin-right: 5px;
+}
+.share-btns {
+  margin-top: 20px;
+  display: inline-block;
+}
+.recipe-specs {
+  font-size: 1.4em;
+  text-align: center;
+  margin-bottom: 20px;
+}
+#recipe-content {
+  margin-bottom: 50px;
+}
+#ingredient-list {
+  padding-left: 50px;
+}
+.btn-std-recipe {
+  position: relative;
+  display: block;
+  padding: 19px 39px 18px 39px;
+  color: #FFF;
+  margin: 0 auto;
+  background: #408288;
+  font-size: 18px;
+  text-align: center;
+  font-style: normal;
+  width: 100%;
+  border: 1px solid #3B7368;
+  border-radius: 8px;
+  border-width: 1px 1px 3px;
+  margin-bottom: 10px;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+#recipe-owner-opt {
+  margin-top: 20px;
+  display: inline-block;
+}
+#edit-recipe, #remove-recipe {
+  float: right;
+  margin-right: 10px;
 }

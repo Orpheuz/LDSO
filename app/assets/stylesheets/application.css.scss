@@ -50,9 +50,6 @@ body {
 }
 #main-container {
   margin-top: -20px;
-  border-style: solid;
-  border-bottom: 0;
-  border-top: 0;
   height: 2000px;
   padding-top: 7%;
   width: 60%;
@@ -80,6 +77,8 @@ h1 {
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
+  font-family: 'Dosis', sans-serif;
+  text-transform: uppercase;
 }
 h2 {
   font-size: 1.2em;
@@ -88,6 +87,9 @@ h2 {
   text-align: center;
   font-weight: normal;
   color: $gray-light;
+}
+h3 {
+  font-family: 'Dosis', sans-serif;
 }
 p {
   font-size: 1.1em;
@@ -316,5 +318,16 @@ footer {
   text-align: left;
   margin-right: 25%;
   margin-left: 25%;
+}
+.row.vdivide [class*='col-']:not(:last-child):after {
+  background: #e0e0e0;
+  width: 1px;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  min-height: 70px;
 }
 @import "social-share-button";

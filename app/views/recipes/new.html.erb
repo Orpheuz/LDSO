@@ -1,53 +1,50 @@
-        <div class="form-style-5">
-        <%= form_for @recipe, url: {action: "new"}, :html=> { :'data-type' => 'html',class: "nifty_form", :id => 'create_recipe_form'} do |f| %>
-              <legend><span class="number">1</span> Recipe name</legend>
-              <%= f.text_field :name, :required => true%><br />
-              <legend><span class="number">2</span> Recipe image</legend>
-
-
-
-          <div class="btn btn-default open_modal" data-toggle="modal" data-target="#Modal-1" id ="-1" >Add Instagram content</div>
-            <div class="modal fade" id="Modal-1" role="dialog">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h4 class="modal-title">Select a photo</h4>
-                  </div>
-                  <div class="modal-body">
-                    <div class="row" id="modal-body_-1">
-                      <div id="modal_-1"> </div>
-                    </div>
-                  </div>
-                </div>
-               </div>
-              </div>
-              <br>
-              <br>
-              <input type="text" class="step" placeholder="Image URL" name="media" id= "SM_-1"/>  
-              <br>
-              <br>
-              <legend><span class="number">3</span>Recipe description</legend>
-              <%= f.text_area :description, size: "60x12", :required => true %><br />
-              <legend><span class="number">4</span> Tags</legend>
-              <input name="tags" id="taginput" class="recipe-form"><br />
-              <legend><span class="number">5</span> Ingredients</legend>
-              <div id="sel-ingredients"></div>
-              <input name="ingredients" id="ingredients-input" class="recipe-form"><br />
-              <div id="search-result"></div>
-              <button type="button" class="btn-md" id="add_step">Add step</button>
-              <button type="button" class="btn-md" id="add_category">Add category</button>
-
-              <legend>Difficulty:</legend>
-              <select class="selectpicker" name="difficulty">
-                <option>Easy</option>
-                <option>Average</option>
-                <option>Hard</option>
-              </select>
-
-              <div class="actions">
-              <%= f.submit "Create recipe", :id => 'create' %>
-            </div>
-        <% end %>
+<div class="form-style-5">
+  <%= form_for @recipe, url: {action: "new"}, :html=> { :'data-type' => 'html',class: "nifty_form", :id => 'create_recipe_form'} do |f| %>
+  <legend><span class="number">1</span> Recipe name</legend>
+  <%= f.text_field :name, :required => true%><br />
+  <legend><span class="number">2</span> Recipe image</legend>
+  <div class="btn btn-default open_modal" data-toggle="modal" data-target="#Modal-1" id ="-1" >Add Instagram content</div>
+  <div class="modal fade" id="Modal-1" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Select a photo</h4>
         </div>
+        <div class="modal-body">
+          <div class="row" id="modal-body_-1">
+            <div id="modal_-1"> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <br>
+  <input type="text" class="step" placeholder="Image URL" name="media" id= "SM_-1"/>  
+  <br>
+  <br>
+  <legend><span class="number">3</span>Recipe description</legend>
+  <%= f.text_area :description, size: "60x12", :required => true %><br />
+  <legend><span class="number">4</span> Tags</legend>
+  <input name="tags" id="taginput" class="recipe-form"><br />
+  <legend><span class="number">5</span> Ingredients</legend>
+  <div id="sel-ingredients"></div>
+  <input name="ingredients" id="ingredients-input" class="recipe-form"><br />
+  <div id="search-result"></div>
+  <button type="button" class="btn-md" id="add_step">Add step</button>
+  <button type="button" class="btn-md" id="add_category">Add category</button>
+
+  <legend>Difficulty:</legend>
+  <select class="selectpicker" name="difficulty">
+    <option>Easy</option>
+    <option>Average</option>
+    <option>Hard</option>
+  </select>
+
+  <div class="actions">
+    <%= f.submit "Create recipe", :id => 'create' %>
+  </div>
+  <% end %>
+</div>
 
 
