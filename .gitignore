@@ -20,4 +20,8 @@ Gemfile.lock
 *.lock
 Gemfile.lock
 
+
 solr/development/*
+
+
+/config/initializers/stream_rails.rb

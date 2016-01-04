@@ -15,24 +15,20 @@
 	<div class="container">
 		<div class="container-feed row cold-md">
 			<% for activity in @activities %>
-			<div class="col-md-8">
+			<div class="col-md-8 center">
 				<% if activity['verb'] == 'Recipe' %>
 				<%= link_to activity['actor'].slug , activity['actor'] %>
 				<%= " create a new recipe called \'"  %>
 				<%= link_to activity['object'].name , activity['object']%>
 				<%= "\'" %>
-				<a href="#" class="thumbnail">
-					<%= image_tag(activity['object'].image, :alt => activity['object']) %>
-				</a>
+				<div class="thumbnail">
+					<%= image_tag(activity['object'].media, :class => "recipe-step-image", :style =>"") %>
+				</div>
 				<% end %>
 				<% if activity['verb'] == 'Follow' %>
 				<%= link_to activity['actor'].slug , activity['actor'] %>
 				<%= " followed  "  %>
 				<%= link_to activity['object'].slug , activity['object']%>
-
-				<a href="#" class="thumbnail">
-					<%= image_tag(activity['object'].image, :alt => activity['object']) %>
-				</a>
 				<% end %>
 				<% if activity['verb'] == 'Comment' %>
 				<%= link_to activity['actor'].slug , activity['actor'] %>
@@ -41,10 +37,20 @@
 				<%="\'s recipe : \'" %>
 				<%= link_to activity['object'].recipe.name , activity['object'].recipe %>
 				<%= " \'" %>
-				<a href="#" class="thumbnail">
-					<%= image_tag(activity['object'].recipe.image, :alt => activity['object'].recipe) %>
-				</a>
+				<div class="thumbnail">
+					<%= image_tag(activity['object'].recipe.media, :class => "recipe-step-image", :style =>"") %>
+				</div>
 				<% end %>
+				<% if activity['verb'] == 'Bookmark' %>
+				<%= link_to activity['actor'].slug , activity['actor'] %>
+				<%= " bookmarked the recipe \'"  %>
+				<%= link_to activity['object'].name , activity['object']%>
+				<%= "\'" %>
+				<div class="thumbnail">
+					<%= image_tag(activity['object'].media, :class => "recipe-step-image", :style =>"") %>
+				</div>
+				<% end %>
+
 				<%= time_ago_in_words(activity['object'].created_at)  + " ago"%>
 				<br></br>
 			</div>
