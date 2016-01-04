@@ -31,7 +31,7 @@ $screen-sm: 992px;
 /* mixins, variables, etc. */
 @font-face {
   font-family: billabong;
-  src: url('https://social-fonts.com/assets/fonts/billabong/billabong.ttf') format('truetype');
+  src: font-url('billabong.ttf') format('truetype');
 }
 $gray-medium-light: #eaeaea;
 $border-gray: #edeeee;

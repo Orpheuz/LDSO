@@ -25,3 +25,6 @@ solr/development/*
 
 
 /config/initializers/stream_rails.rb
+Gemfile
+*.lock
+Gemfile
