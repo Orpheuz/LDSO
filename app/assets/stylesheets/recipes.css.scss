@@ -555,6 +555,8 @@ main input:checked + label {
 
   &:hover {
     text-decoration: none;
+    font-weight: bold;
+    color: white;
   }
 }
 #recipe-owner-opt {
