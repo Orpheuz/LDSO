@@ -8,11 +8,7 @@
     </div>
     <div class="row vdivide">
      <div class="col-md-6">
-      <%if @recipe.media.length > 0%>
         <%= image_tag(@recipe.media, :class => "recipe-image", :style => "") %>
-      <%else%>
-        <%= image_tag("default_food.jpg", :class => "recipe-image", :style => "") %>
-      <%end%>
       <div class="row">
         <div class="col-md-7 share-btns">
           <div class="social-share-button" data-title="<%= @recipe.name %>" data-img="" data-url="<%=request.original_url%>" data-desc="" data-popup="" data-via="">
