@@ -1,27 +1,27 @@
-<div id="main-container-cat">
 
-  <div class="list-group panel col-md-1" id="cat-bar">
-    <a href="#cats" class="list-group-item list-group-item-success" id="cat_men" data-toggle="collapse" ><%= @category.name %></a>
-    <div class="collapse" id="cats">
-      <% @categories.each do |category| %>
-      <% if @category.name == category.name %>
-      <% else %>
-      <%=link_to category.name , category ,class: "list-group-item cat_name"  %>
-      <%end%>
-      <% end %>
-    </div>
-  </div>
-  <div id="results" class ="col-md-6 col-md-offset-2">
-    <h3>Recipes</h3>
+<div id="main-container-cat">
+<div class="container">
+<table style="width:100%;table-layout: fixed;">
+  <tr>
+  <% @categories.each do |category| %>
+    <td><a class="list-group-item cat_name" href="/category/<%=category.id%>" style="text-align:center; <%if category.name== @category.name %>background-color:gray;color:black<%end%>"><%=category.name%></a></td>
+    <% end %>
+  </tr>
+</table>
+  <div id="results">
     <ul class="list-group">
       <% @recipes.each do |recipe| %>
-      <li class="list-group-item">
-        <strong>
-          <%=link_to recipe.name, recipe %>
-        </strong>
-        <%= recipe.description %>
-      </li>
+      <div id="profile-img-content">
+         <% if @recipes.present? %>
+         <% @recipes.each do |recipe| %>
+         <%= link_to image_tag(recipe.media, :class => "recipe-image-profile inline-block", :rel => "tooltip", :title => recipe.name), recipe_path(recipe) %>
+         <% end %>
+         <% else %>
+         <h2> No recipes yet! </h2>
+         <% end %>
+       </div>
       <% end %>
     </ul>
   </div>
+</div>
 </div>
