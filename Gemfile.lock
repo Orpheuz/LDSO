@@ -46,7 +46,6 @@ GEM
       execjs
       json
     bcrypt (3.1.10)
-    bcrypt (3.1.10-x86-mingw32)
     bootstrap-sass (3.3.5)
       autoprefixer-rails (>= 5.0.0.1)
       sass (>= 3.2.19)
@@ -126,8 +125,6 @@ GEM
     multipart-post (2.0.0)
     nokogiri (1.6.7.1)
       mini_portile2 (~> 2.0.0.rc2)
-    nokogiri (1.6.7.1-x86-mingw32)
-      mini_portile2 (~> 2.0.0.rc2)
     oauth2 (1.0.0)
       faraday (>= 0.8, < 0.10)
       jwt (~> 1.0)
@@ -147,7 +144,6 @@ GEM
       omniauth (~> 1.2)
     orm_adapter (0.5.0)
     pg (0.18.4)
-    pg (0.18.4-x86-mingw32)
     rack (1.6.4)
     rack-test (0.6.3)
       rack (>= 1.0)
@@ -233,7 +229,6 @@ GEM
 
 PLATFORMS
   ruby
-  x86-mingw32
 
 DEPENDENCIES
   angular-rails-templates
