@@ -12,6 +12,8 @@ IngredientN = 1
 
 $(document).ready ->
 
+  $('[rel=tooltip]').tooltip placement: 'bottom'
+
   $("body").on "click", ".modal-image",(event) ->
     $("#SM_"+event.target.id).attr 'value', event.target.src
     $('#Modal'+event.target.id).modal 'hide'
