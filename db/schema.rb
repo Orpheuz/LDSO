@@ -95,6 +95,7 @@ ActiveRecord::Schema.define(version: 20151201174837) do
   create_table "ingredients", force: :cascade do |t|
     t.string   "name"
     t.string   "unit"
+    t.float    "calories"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

@@ -2,6 +2,10 @@ class RecipesController < ApplicationController
   def show
     @recipe = Recipe.find(params[:id])
     @ingredients = @recipe.ingredients
+    @rCalories = 0
+    @ingredients.each do |ing|
+      @rCalories +=  ing.calories * IngredientRecipeAssociation.where("recipe_id = ? and ingredient_id = ?", @recipe.id, ing.id).first.quantity
+    end
     @reviews=@recipe.comments.where(typen: 'Review')
     @suggestions=@recipe.comments.where(typen: 'Suggestion')
     @tips=@recipe.comments.where(typen: 'Tip')
