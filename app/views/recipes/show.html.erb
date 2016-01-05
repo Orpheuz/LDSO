@@ -30,7 +30,7 @@
           <p id="rating-title">Rate this recipe! <%= rating_for @recipe, "rating" %></p>
         </div>
         <div id="bookmark">
-          <p> <% if current_user %> 
+          <p> <% if current_user %>
             Bookmark
             <% if @bookmark_visible %>
             <%= link_to bookmark_recipe_path(@recipe,type: "add"), method: :put, id:'book-btn' do %>
@@ -67,7 +67,7 @@
       </div>
       <div class="col-md-4 recipe-specs">
         <i class="fa fa-cutlery"></i>
-        <p> 4 </p>
+        <p> <%= @recipe.portions %> </p>
       </div>
       <div class="col-md-4 recipe-specs">
         <i class="fa fa-balance-scale"></i>
@@ -84,7 +84,7 @@
       <h1> Ingredients </h1>
       <div id="ingredient-list">
         <% @ingredients.each do |ingr| %>
-        <li><%= ingr.name %></li>
+        <li><%= ingr.name %> <%= IngredientRecipeAssociation.where("recipe_id = ? and ingredient_id = ?", @recipe.id, ingr.id).first.quantity %><%= ingr.unit %> </li>
         <% end %>
       </div>
     </div>
@@ -126,7 +126,7 @@
       <h4>Leave a review:</h4>
       <%= form_for([@recipe, @comment]) do |f| %>
       <div class="btn btn-default open_modal" data-toggle="modal" data-target="#Modal-1" id ="-1" >Add Instagram content</div>
-      <input type="text" class="form-control" placeholder="Image URL" name="media" id= "SM_-1"/>  
+      <input type="text" class="form-control" placeholder="Image URL" name="media" id= "SM_-1"/>
       <div class="modal fade" id="Modal-1" role="dialog">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -180,7 +180,7 @@
               </div>
             </div>
           </div>
-            
+
           <div class="bubble">
 
             <p><%= review.comment_text %></p>
@@ -215,7 +215,7 @@
         <h4>Leave a suggestion:</h4>
         <%= form_for([@recipe, @comment]) do |f| %>
         <div class="btn btn-default open_modal" data-toggle="modal" data-target="#Modal-2" id ="-2" >Add Instagram content</div>
-        <input type="text" class="form-control" placeholder="Image URL" name="media" id= "SM_-2"/>  
+        <input type="text" class="form-control" placeholder="Image URL" name="media" id= "SM_-2"/>
         <div class="modal fade" id="Modal-2" role="dialog">
           <div class="modal-dialog">
             <div class="modal-content">
@@ -236,7 +236,7 @@
         <input id="tags_list" name="typecom" type="hidden" value="Suggestion" />
         <button type="submit" class="btn btn-primary">Submit</button>
         <% end %>
-      </div>        
+      </div>
       <hr>
 
       <br />
@@ -299,7 +299,7 @@
           <h4>Leave a tip:</h4>
           <%= form_for([@recipe, @comment]) do |f| %>
           <div class="btn btn-default open_modal" data-toggle="modal" data-target="#Modal-3" id ="-3" >Add Instagram content</div>
-          <input type="text" class="form-control" placeholder="Image URL" name="media" id= "SM_-3"/>  
+          <input type="text" class="form-control" placeholder="Image URL" name="media" id= "SM_-3"/>
           <div class="modal fade" id="Modal-3" role="dialog">
             <div class="modal-dialog">
               <div class="modal-content">

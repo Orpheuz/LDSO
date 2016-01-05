@@ -77,6 +77,7 @@ ActiveRecord::Schema.define(version: 20151201174837) do
   create_table "ingredient_recipe_associations", force: :cascade do |t|
     t.integer  "recipe_id"
     t.integer  "ingredient_id"
+    t.integer  "quantity"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -93,7 +94,7 @@ ActiveRecord::Schema.define(version: 20151201174837) do
 
   create_table "ingredients", force: :cascade do |t|
     t.string   "name"
-    t.integer  "calories"
+    t.string   "unit"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -146,6 +147,7 @@ ActiveRecord::Schema.define(version: 20151201174837) do
     t.text     "description"
     t.string   "difficulty"
     t.float    "time"
+    t.integer  "portions"
     t.text     "media"
     t.datetime "created_at"
     t.datetime "updated_at"

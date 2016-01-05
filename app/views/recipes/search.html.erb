@@ -1,7 +1,10 @@
 <div id="div-ing">
     <% @ingredients.each do |ing| %>
 
-          <div class="SIResult btn btn-default" data-name="<%= ing.name %>" id="ing-<%= ing.id %>"href=""><%= ing.name %>  <%= ing.calories %> Calories</div>
+    <div class="btn-group" role="group" aria-label="...">
+      <div type="button" class="SIResult btn btn-default" data-name="<%= ing.name %>" id="ing-<%= ing.id %>"><%= ing.name %> (<%= ing.unit %>)</div>
+      <input type="number" class="SIResult-quantity btn btn-default" name="ingQuant-<%= ing.id %>" value="1" min="0">
+    </div>
 
     <% end %>
 </div>

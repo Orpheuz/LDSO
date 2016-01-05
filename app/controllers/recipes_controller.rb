@@ -43,7 +43,7 @@ class RecipesController < ApplicationController
     end
 
     params.require(:recipe).permit(:image)
-    @recipe = current_user.recipes.create!(name: params[:recipe][:name], description: params[:recipe][:description],time: totalTime,difficulty: params[:difficulty],media: params[:media])
+    @recipe = current_user.recipes.create!(name: params[:recipe][:name], description: params[:recipe][:description],time: totalTime,difficulty: params[:difficulty],media: params[:media], portions: params[:portions])
     stepID=0
 
     while params[:S][stepID].present? do
@@ -72,6 +72,8 @@ class RecipesController < ApplicationController
        @ingredient = Ingredient.find(@temp)
        if @recipe.save
          @recipe.ingredients << @ingredient
+         @association = IngredientRecipeAssociation.where("recipe_id = ? and ingredient_id = ?", @recipe.id, @ingredient.id).first
+         @association.update(quantity: params[:quantity][ingredientN])
        else
          render :new
        end

@@ -20,14 +20,16 @@
   </div>
   <br>
   <br>
-  <input type="text" class="step" placeholder="Image URL" name="media" id= "SM_-1"/>  
+  <input type="text" class="step" placeholder="Image URL" name="media" id= "SM_-1"/>
   <br>
   <br>
   <legend><span class="number">3</span>Recipe description</legend>
   <%= f.text_area :description, size: "60x12", :required => true %><br />
-  <legend><span class="number">4</span> Tags</legend>
+  <legend><span class="number">4</span> Portions</legend>
+  <input id="portions" class="recipe-form" name="portions" type="number" min="1" value="1" step="1" /><br />
+  <legend><span class="number">5</span> Tags</legend>
   <input name="tags" id="taginput" class="recipe-form"><br />
-  <legend><span class="number">5</span> Ingredients</legend>
+  <legend><span class="number">6</span> Ingredients</legend>
   <div id="sel-ingredients"></div>
   <input name="ingredients" id="ingredients-input" class="recipe-form"><br />
   <div id="search-result"></div>

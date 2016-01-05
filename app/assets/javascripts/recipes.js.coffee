@@ -81,21 +81,26 @@ $(document).ready ->
 
   $("body").on "click", ".SIResult",(event) ->
     IngID = event.target.id.slice(4)
+    IngQuant = $(".SIResult-quantity").val()
+    console.log IngQuant
     $('#sel-ingredients').append '<span id="span-sel-ing">' + ($(event.target).data 'name') + '  </span>'
     $('#ingredients-input').before '<input type="hidden" name="IN[]" id="IN' + IngredientN + '" value="' + IngID + '">'
+    $('#ingredients-input').before '<input type="hidden" name="quantity[]" value="' + IngQuant + '">'
     $(event.target).remove()
+    $(".SIResult-quantity").remove()
     $('#ingredients-input').val ''
     IngredientN++
 
   $("#ingredients-input").keyup ->
     tempValue = $(this).val()
-    $.ajax
-      url: '/recipe/ingredients'
-      type: 'post'
-      data: ingredients: tempValue
-      success: (response) ->
-        ing=$(response).find('#div-ing').html()
-        $('#search-result').html ing
+    if tempValue != ""
+      $.ajax
+        url: '/recipe/ingredients'
+        type: 'post'
+        data: ingredients: tempValue
+        success: (response) ->
+          ing=$(response).find('#div-ing').html()
+          $('#search-result').html ing
 
   $(( ".remove_ingredient" )).on "click", (e) ->
     realID=$(".remove_ingredient").index(this)+1
