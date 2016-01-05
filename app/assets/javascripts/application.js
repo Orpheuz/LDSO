@@ -22,5 +22,6 @@
 //= require bootstrap/dropdown
 //= require jquery.plugin.js
 //= require jquery.countdown.js
-//= require_tree .
+//= require bootstrap-select
 //= require social-share-button
+//= require_tree .

@@ -58,7 +58,6 @@ gem 'omniauth-oauth2', "1.3.1"
 
 gem 'jquery-ui-rails'
 gem 'bootstrap-select-rails'
-
 gem 'stream_rails'
 gem 'social-share-button'
 gem 'rails_12factor', group: :production
