@@ -79,17 +79,13 @@
     </div>
     <div class="col-md-12">
       <%= @diff %>
-      <ul>
         <% if @recipes.present? %>
         <% @recipes.each do |recipe| %>
-        <div id="profile-img-content">
          <%= link_to image_tag(recipe.media, :class => "recipe-image-profile inline-block", :rel => "tooltip", :title => recipe.name), recipe_path(recipe) %>
-       </div>
        <% end %>
        <% else %>
        <h3> No results to show </h3>
        <% end %>
-     </ul>
    </div>
  </div>
 </div>

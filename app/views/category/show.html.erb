@@ -9,17 +9,13 @@
   </tr>
 </table>
   <div id="results">
-    <ul class="list-group">
       <% @recipes.each do |recipe| %>
-      <div id="profile-img-content">
          <% if @recipes.present? %>
          <%= link_to image_tag(recipe.media, :class => "recipe-image-profile inline-block", :rel => "tooltip", :title => recipe.name), recipe_path(recipe) %>
          <% else %>
          <h2> No recipes yet! </h2>
          <% end %>
-       </div>
       <% end %>
-    </ul>
   </div>
 </div>
 </div>
