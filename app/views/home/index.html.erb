@@ -24,7 +24,7 @@
 				<% if activity['verb'] == 'Follow' %>
 					<%= link_to activity['actor'].name , activity['actor'] %>
 					<%= " followed  "  %>
-					<%= link_to activity['object'].slug , activity['object']%>
+					<%= link_to activity['object'].name , activity['object']%>
 				<% end %>
 				<% if activity['verb'] == 'Comment' %>
 					<%= link_to activity['actor'].name , activity['actor'] %>
