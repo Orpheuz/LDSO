@@ -56,9 +56,9 @@
         <div class="input-group">
           <div class="input-group-addon">
             <span>Difficulty</span>
-            <%= hidden_field_tag(:difficulty, params[:difficulty], :value => params[:difficulty], :class => "dif-input") %>
+            <%= hidden_field_tag(:difficulty, params[:difficulty], :value => 'Easy', :class => "dif-input") %>
           </div>
-          <select class="selectpicker">
+          <select class="selectpicker" value="Easy" >
             <option class="sel-difficulty">Easy</option>
             <option class="sel-difficulty">Intermediate</option>
             <option class="sel-difficulty">Hard</option>
