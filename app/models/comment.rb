@@ -7,7 +7,7 @@ class Comment < ActiveRecord::Base
   as_activity
 
   def activity_actor
-    self.recipe.user
+    self.user
   end
 
   def activity_object

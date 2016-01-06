@@ -1,5 +1,4 @@
 <% if current_user %>
-
 <div class="container">
 <table style="width:100%;table-layout: fixed;">
   <tr>
@@ -8,14 +7,13 @@
     <% end %>
   </tr>
 </table>
-</div>
 
 <div class ='list-group col-md-8 col-md-offset-3'>
 	<div class="container-feed row cold-md">
 		<% for activity in @activities %>
 			<div class="col-md-8 center" style="margin-top: 30px">
 				<% if activity['verb'] == 'Recipe' %>
-					<%= link_to activity['actor'].slug , activity['actor'] %>
+					<%= link_to activity['actor'].name , activity['actor'] %>
 					<%= " create a new recipe called \'"  %>
 					<%= link_to activity['object'].name , activity['object']%>
 					<%= "\'" %>
@@ -24,14 +22,14 @@
 					</div>
 				<% end %>
 				<% if activity['verb'] == 'Follow' %>
-					<%= link_to activity['actor'].slug , activity['actor'] %>
+					<%= link_to activity['actor'].name , activity['actor'] %>
 					<%= " followed  "  %>
 					<%= link_to activity['object'].slug , activity['object']%>
 				<% end %>
 				<% if activity['verb'] == 'Comment' %>
-					<%= link_to activity['actor'].slug , activity['actor'] %>
+					<%= link_to activity['actor'].name , activity['actor'] %>
 					<%= " commented " %>
-					<%= link_to activity['object'].recipe.user.slug , activity['object'].recipe.user%>
+					<%= link_to activity['object'].recipe.user.name , activity['object'].recipe.user%>
 					<%="\'s recipe : \'" %>
 					<%= link_to activity['object'].recipe.name , activity['object'].recipe %>
 					<%= " \'" %>
@@ -40,7 +38,7 @@
 					</div>
 				<% end %>
 				<% if activity['verb'] == 'Bookmark' %>
-					<%= link_to activity['actor'].slug , activity['actor'] %>
+					<%= link_to activity['actor'].name , activity['actor'] %>
 					<%= " bookmarked the recipe \'"  %>
 					<%= link_to activity['object'].name , activity['object']%>
 					<%= "\'" %>
@@ -53,6 +51,7 @@
 			</div>
 		<% end %>
 	</div>
+</div>
 </div>
 <% else %>
 
