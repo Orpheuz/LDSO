@@ -1,7 +1,12 @@
 # LDSO
 
-Para correr ou fazer seed a base de dados é preciso correr primeiro:
-  rake sunspot:solr:Start
-  rake sunspot:solr:reindex
+Para correr:
 
-so depois de correr o servidor de pesquisa e que da para adicionar cenas a base de dados e correr a pesquisa
+bundle install
+rake db:create:all
+rake db:migrate
+rake db:seed
+rails s
+
+Utilização da API de facebook e instagram necessita de keys validas
+Utilizacão do servico getstream.io necessita de key e secret especificos de forma a manter um feed limpo 
